@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Riyadh Cement – Annual Report 2025</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    @font-face {
+      font-family: 'Swissra';
+      src: url('fonts/Swissra-Light.otf') format('opentype');
+      font-weight: 300;
+    }
+    @font-face {
+      font-family: 'Swissra';
+      src: url('fonts/Swissra-Normal.otf') format('opentype');
+      font-weight: 400;
+    }
+    @font-face {
+      font-family: 'Swissra';
+      src: url('fonts/Swissra-Medium.otf') format('opentype');
+      font-weight: 500;
+    }
+    @font-face {
+      font-family: 'Swissra';
+      src: url('fonts/Swissra-Bold.otf') format('opentype');
+      font-weight: 700;
+    }
+    /* Swissra على كل الصفحة */
+    body {
+      font-family: 'Swissra', sans-serif;
+    }
+
+    /* Override Montserrat في سكشن استعرض التقرير */
+    .explore-header h2,
+    .explore-header p,
+    .explore-card strong,
+    .explore-card span,
+    .ex-stat strong,
+    .ex-stat span,
+    .ex-stat small {
+      font-family: 'Swissra', sans-serif !important;
+    }
+
+    /* تصحيح ارتفاع السطر في الهيدر */
+    .hero-text h1 {
+      line-height: 1.25;
+    }
+
+    .hero-bg { background-image: url('assets/Containerar.png'); }
+    .stat-item:first-child { padding-right: 0; padding-left: 20px; }
+    .stat-item:last-child  { padding-left: 0;  padding-right: 20px; }
+
+  </style>
+</head>
+<body>
+
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="ar.html" class="logo">
+        <img src="assets/Link.png" alt="أسمنت الرياض" />
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="ar-overview.html">نظرة عامة</a></li>
+        <li><a href="#">القيادة</a></li>
+        <li><a href="ar-strategic-review.html">المراجعة الاستراتيجية</a></li>
+        <li><a href="ar-operating-review.html">المراجعة التشغيلية</a></li>
+        <li><a href="ar-sustainability.html">الاستدامة</a></li>
+        <li><a href="ar-governance.html">الحوكمة</a></li>
+        <li><a href="ar-financial-review.html">المراجعة المالية</a></li>
+      </ul>
+      <div class="nav-ctas">
+        <a href="#" class="cta-download">
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M6.5 1v7.5M3.5 6l3 3 3-3M1.5 11.5h10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          تحميل
+        </a>
+        <a href="index.html" class="cta-lang">
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><circle cx="6.5" cy="6.5" r="5.5" stroke="currentColor" stroke-width="1.4"/><path d="M6.5 1c-1.8 1.8-1.8 7.4 0 11M6.5 1c1.8 1.8 1.8 7.4 0 11M1 6.5h11" stroke="currentColor" stroke-width="1.4"/></svg>
+          EN
+        </a>
+      </div>
+      <button class="burger" id="burger" aria-label="القائمة">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- FULLSCREEN MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <ul class="mobile-menu-links">
+      <li><a href="ar-overview.html">نظرة عامة</a></li>
+      <li><a href="#">القيادة</a></li>
+      <li><a href="ar-strategic-review.html">المراجعة الاستراتيجية</a></li>
+      <li><a href="ar-operating-review.html">المراجعة التشغيلية</a></li>
+      <li><a href="ar-sustainability.html">الاستدامة</a></li>
+      <li><a href="ar-governance.html">الحوكمة</a></li>
+      <li><a href="ar-financial-review.html">المراجعة المالية</a></li>
+    </ul>
+    <div class="mobile-menu-footer">
+      <a href="#" class="cta-download">
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M6.5 1v7.5M3.5 6l3 3 3-3M1.5 11.5h10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        تحميل
+      </a>
+      <a href="index.html" class="cta-lang">
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><circle cx="6.5" cy="6.5" r="5.5" stroke="currentColor" stroke-width="1.4"/><path d="M6.5 1c-1.8 1.8-1.8 7.4 0 11M6.5 1c1.8 1.8 1.8 7.4 0 11M1 6.5h11" stroke="currentColor" stroke-width="1.4"/></svg>
+        EN
+      </a>
+    </div>
+  </div>
+
+  <section class="hero">
+    <div class="hero-bg"></div>
+    <div class="hero-overlay"></div>
+    <div class="hero-inner">
+      <div class="hero-text">
+        <p class="eyebrow"><span class="eyebrow-line"></span>التقرير السنوي 2025</p>
+        <h1>عام وسّعنا<br>فيه نطاق<br><span class="gold">تأثيرنا</span></h1>
+        <p class="sub">شركة أسمنت الرياض — تقديم الجودة والاستدامة والابتكار<br>في قلب أكبر ممر للبناء في المملكة العربية السعودية.</p>
+        <div class="btns">
+          <a href="#" class="btn-fill">موضوع العام <span>→</span></a>
+          <a href="#" class="btn-ghost">استعرض التقرير</a>
+        </div>
+        <div class="stats">
+          <div class="stat-item">
+            <strong>787.6 مليون ر.س</strong>
+            <span>الإيرادات</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <strong>207.8 مليون ر.س</strong>
+            <span>صافي الربح</span>
+          </div>
+          <div class="stat-divider"></div>
+          <div class="stat-item">
+            <strong>3.6 م+ طن</strong>
+            <span>الطاقة الإنتاجية</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="scroll-hint">
+      <span>تمرير</span>
+      <div class="scroll-bar"></div>
+    </div>
+  </section>
+
+  <!-- THEME OF THE YEAR SECTION -->
+  <section class="theme-section">
+    <div class="theme-bg"></div>
+    <div class="theme-inner">
+
+      <div class="theme-header">
+        <h2>موضوع العام — <span>الأثر البيئي</span></h2>
+        <p>المبادرات التشغيلية والشراكات والنتائج التي تُجسّد الأثر البيئي لشركة أسمنت الرياض وانسجامها مع رؤية 2030 ومبادرة السعودية الخضراء.</p>
+      </div>
+
+      <div class="theme-body">
+
+        <!-- RIGHT COLUMN (shown first in RTL) -->
+        <div class="theme-left">
+          <div class="theme-img-wrap">
+            <img src="assets/Container (2).png" alt="منشأة أسمنت الرياض" />
+          </div>
+
+          <div class="theme-card-group">
+            <h3 class="group-title">الشراكات والتقدير والمشاركة</h3>
+
+            <div class="theme-card green">
+              <div class="theme-card-header">شراكات مجتمعية وحكومية</div>
+              <div class="theme-card-body two-col">
+                <div>
+                  <strong>10,000</strong>
+                  <p>جمعية أروى الخيرية — المستفيدة من 10,000 شتلة؛ تنفيذ أنشطة الزراعة والتوعية المشتركة عبر التطوع متعدد الأطراف.</p>
+                </div>
+                <div>
+                  <strong>بلدية محافظة أروى،</strong>
+                  <p>الشرطة والدفاع المدني — شركاء التنسيق لتوزيع الشتلات وزراعتها.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="theme-card green">
+              <div class="theme-card-header">الهيئات البيئية الوطنية</div>
+              <div class="theme-card-body two-col">
+                <div>
+                  <p>استضافة وفود من المركز الوطني لتنمية الغطاء النباتي ومكافحة التصحر والبرنامج الوطني للتشجير (بالتزامن مع إطلاق موسم التشجير 2025).</p>
+                </div>
+                <div>
+                  <strong>شاركت الوفود في زراعة الشتلات داخل الرياض.</strong>
+                  <p>تفقّدت أراضي الشركة واستعرضت برنامج المشتل والتخضير.</p>
+                </div>
+              </div>
+            </div>
+
+            <div class="theme-card green">
+              <div class="theme-card-header">التقدير في مجال الاستدامة الصناعية</div>
+              <div class="theme-card-body two-col">
+                <div>
+                  <strong>صندوق التنمية الصناعية السعودي (صندوق)</strong>
+                  <p>"نحو مستقبل صناعي مستدام" — قدّمت أسمنت الرياض مسيرتها في الاقتصاد الدائري ومبادرات كفاءة الموارد وجهود التوطين.</p>
+                </div>
+                <div>
+                  <strong>تقدير مستشار الرئيس التنفيذي في صندوق</strong>
+                  <p>لتعزيز ممارسات الاستدامة والكفاءة التشغيلية — وتموضع الشركة نموذجاً صناعياً متوافقاً مع بيئة تشغيلية أكثر تنافسية واستدامة.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- LEFT COLUMN (shown second in RTL) -->
+        <div class="theme-right">
+          <h3 class="group-title">الإجراءات والاستثمارات البيئية الرئيسية</h3>
+
+          <div class="theme-card green">
+            <div class="theme-card-header"><span class="card-icon"><img src="assets/Icon.svg" alt="" /></span> التشجير وتنمية الغطاء النباتي</div>
+            <div class="theme-card-body three-col">
+              <div><strong class="big-num">10,000</strong><p>شتلة سُلّمت من مشتل أسمنت الرياض إلى جمعية أروى الخيرية؛ نُفّذت الزراعة والتوزيع بمشاركة المتطوعين وبالتنسيق مع بلدية محافظة أروى والشرطة والدفاع المدني.</p></div>
+              <div><strong>تخضير مستمر لممرات النباتات</strong><p>والمساحات المفتوحة في مواقع الشركة.</p></div>
+              <div><strong>مشتل زراعي داخل الموقع</strong><p>أُسّس كمبادرة رائدة لتعزيز الغطاء النباتي وتطوير الحاضنات البيئية ودعم جودة حياة المجتمع.</p></div>
+            </div>
+          </div>
+
+          <div class="theme-card green">
+            <div class="theme-card-header"><span class="card-icon"><img src="assets/Icon (1).svg" alt="" /></span> الربط بالشبكة الكهربائية والتحول في الطاقة</div>
+            <div class="theme-card-body two-col">
+              <div><strong class="big-num"><img src="assets/SAR.svg" alt="SAR" class="sar-icon" /> 85 مليون</strong><p>عقد محطة تحويل كهربائي 11/33 كيلوفولت موقّع مع معهد تشنغدو للتصميم والبحث لربط مصانع المزاحمية بالشبكة ضمن برنامج إحلال الوقود السائل (إجمالي الاستثمار 85 مليون ريال).</p></div>
+              <div><strong>الأثر المتوقع</strong><p>تحسين كفاءة الطاقة، وتقليل الاعتماد على الوقود السائل، وتعزيز الموثوقية التشغيلية، ودعم الاستدامة البيئية.</p></div>
+            </div>
+          </div>
+
+          <div class="theme-card green">
+            <div class="theme-card-header"><span class="card-icon"><img src="assets/Icon (2).svg" alt="" /></span> التوافق الاستراتيجي</div>
+            <div class="theme-card-body two-col">
+              <div><strong>يُسهم في رؤية 2030</strong><p>مبادرة السعودية الخضراء، ومبادرة الرياض الخضراء، ومبادرة ولي العهد للتشجير.</p></div>
+              <div><p>يدعم الأهداف الوطنية لتوسيع الغطاء النباتي ومكافحة التصحر وتعزيز التنمية المستدامة.</p></div>
+            </div>
+          </div>
+
+          <div class="theme-card green">
+            <div class="theme-card-header"><span class="card-icon"><img src="assets/Icon (3).svg" alt="" /></span> الاقتصاد الدائري وكفاءة الموارد</div>
+            <div class="theme-card-body two-col">
+              <div><strong>توطين الحلول التشغيلية الصديقة للبيئة</strong><p>ومبادرات تحسين كفاءة الموارد (المواد والطاقة والمياه) بما يتوافق مع مبادئ الاقتصاد الدائري.</p></div>
+              <div><p>عُرضت في فعالية صندوق "نحو مستقبل صناعي مستدام" عبر العروض التقديمية وجلسات النقاش مع الخبراء.</p></div>
+            </div>
+          </div>
+
+          <div class="theme-card green">
+            <div class="theme-card-header"><span class="card-icon"><img src="assets/Icon (4).svg" alt="" /></span> السلامة والحوكمة البيئية</div>
+            <div class="theme-card-body three-col">
+              <div><strong>إطار الحوكمة البيئية</strong><p>مُطبَّق لتعزيز الكفاءة التشغيلية والحد من الأثر البيئي.</p></div>
+              <div><strong>أنظمة وإجراءات سلامة متينة</strong><p>في جميع المصانع، تدعم بيئة عمل آمنة متوافقة مع أهداف التنمية المستدامة.</p></div>
+              <div><strong>اعتماد أنواع النباتات المحلية</strong><p>الملائمة للبيئات الصناعية، مع أفضل ممارسات الرعاية وتدابير مكافحة التصحر.</p></div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPLORE THE REPORT -->
+  <section class="explore-section">
+    <div class="explore-top">
+      <div class="explore-bg"></div>
+      <div class="explore-top-inner">
+        <div class="explore-header">
+          <h2>استعرض التقرير</h2>
+          <p>تصفّح جميع أقسام التقرير السنوي لشركة أسمنت الرياض 2025</p>
+        </div>
+        <div class="explore-cards">
+          <a href="ar-overview.html" class="explore-card">
+            <span class="explore-num">1</span>
+            <strong>نظرة عامة</strong>
+            <span>عن الشركة · التاريخ · المؤشرات</span>
+          </a>
+          <a href="ar-leadership.html" class="explore-card">
+            <span class="explore-num">2</span>
+            <strong>القيادة</strong>
+            <span>رسالة الرئيس · الرئيس التنفيذي</span>
+          </a>
+          <a href="ar-strategic-review.html" class="explore-card active">
+            <span class="explore-num">3</span>
+            <strong>المراجعة الاستراتيجية</strong>
+            <span>نموذج الأعمال · رؤية 2030</span>
+          </a>
+          <a href="ar-operating-review.html" class="explore-card">
+            <span class="explore-num">4</span>
+            <strong>المراجعة التشغيلية</strong>
+            <span>الأسمنت الرمادي · الأبيض · المشاريع</span>
+          </a>
+          <a href="ar-sustainability.html" class="explore-card">
+            <span class="explore-num">5</span>
+            <strong>الاستدامة</strong>
+            <span>البيئة · الأفراد · المسؤولية</span>
+          </a>
+          <a href="ar-governance.html" class="explore-card">
+            <span class="explore-num">6</span>
+            <strong>الحوكمة</strong>
+            <span>مجلس الإدارة · اللجان · الإدارة</span>
+          </a>
+          <a href="ar-financial-review.html" class="explore-card">
+            <span class="explore-num">7</span>
+            <strong>المراجعة المالية</strong>
+            <span>الأرباح والخسائر · الميزانية · الرسوم البيانية</span>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="explore-bottom">
+      <div class="explore-stats">
+        <div class="ex-stat">
+          <strong>787.6 مليون ر.س</strong>
+          <span>الإيرادات</span>
+          <small>+2.1% مقارنة بـ 2024</small>
+        </div>
+        <div class="ex-stat">
+          <strong>207.8 مليون ر.س</strong>
+          <span>صافي الربح</span>
+          <small>+3.1% مقارنة بـ 2024</small>
+        </div>
+        <div class="ex-stat">
+          <strong>3,497,830 طن</strong>
+          <span>مبيعات الأسمنت الرمادي</span>
+        </div>
+        <div class="ex-stat">
+          <strong>393,312 طن</strong>
+          <span>مبيعات الأسمنت الأبيض</span>
+        </div>
+        <div class="ex-stat">
+          <strong>3,626,304</strong>
+          <span>ساعات العمل الآمنة</span>
+          <small>صفر إصابات</small>
+        </div>
+        <div class="ex-stat">
+          <strong>85 مليون ر.س</strong>
+          <span>عقد الربط الكهربائي</span>
+          <small>إنجاز 2025</small>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="assets/Link.png" alt="أسمنت الرياض" />
+        <p>شركة أسمنت الرياض — السوق المالية السعودية<br>(تداول). المزاحمية، شمال غرب الرياض.</p>
+        <span>التقرير السنوي 2025</span>
+      </div>
+      <div class="footer-col">
+        <h4>الشركة</h4>
+        <ul>
+          <li><a href="ar-overview.html">نظرة عامة</a></li>
+          <li><a href="ar-leadership.html">القيادة</a></li>
+          <li><a href="ar-strategic-review.html">المراجعة الاستراتيجية</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>الأداء</h4>
+        <ul>
+          <li><a href="ar-operating-review.html">المراجعة التشغيلية</a></li>
+          <li><a href="ar-sustainability.html">الاستدامة</a></li>
+          <li><a href="ar-financial-review.html">المراجعة المالية</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>الحوكمة</h4>
+        <ul>
+          <li><a href="ar-governance.html">الحوكمة</a></li>
+          <li><a href="#">بوابة علاقات المستثمرين</a></li>
+          <li><a href="#">إفصاحات تداول</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 شركة أسمنت الرياض. جميع الحقوق محفوظة.</p>
+      <div class="footer-bottom-links">
+        <a href="#">سياسة الخصوصية</a>
+        <a href="#">شروط الاستخدام</a>
+        <a href="#">تواصل معنا</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/animations.js"></script>
+</body>
+</html>

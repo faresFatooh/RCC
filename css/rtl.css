@@ -1,0 +1,101 @@
+/* =====================
+   Swissra Font Face
+===================== */
+@font-face {
+  font-family: 'Swissra';
+  src: url('../fonts/Swissra-Light.otf') format('opentype');
+  font-weight: 300;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Swissra';
+  src: url('../fonts/Swissra-Normal.otf') format('opentype');
+  font-weight: 400;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Swissra';
+  src: url('../fonts/Swissra-Medium.otf') format('opentype');
+  font-weight: 500;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Swissra';
+  src: url('../fonts/Swissra-Bold.otf') format('opentype');
+  font-weight: 700;
+  font-style: normal;
+}
+
+/* =====================
+   RTL — Arabic overrides
+===================== */
+body { font-family: 'Swissra', sans-serif; }
+
+/* Navbar — logo right, links center, CTAs left */
+.nav-inner { flex-direction: row-reverse; }
+.nav-links  { flex-direction: row-reverse; }
+.nav-ctas   { flex-direction: row-reverse; }
+.burger     { margin-left: 0; margin-right: 12px; }
+.nav-links.open { align-items: flex-end; }
+
+/* Hero bg — flip so empty area lands on RIGHT */
+.hero-bg { transform: scaleX(-1); }
+
+/* Overlay from RIGHT */
+.hero-overlay {
+  background: linear-gradient(
+    to left,
+    rgba(8,35,24,0.82) 0%,
+    rgba(8,35,24,0.55) 38%,
+    rgba(8,35,24,0.10) 65%,
+    transparent 100%
+  );
+}
+
+/* Push ALL content to the RIGHT */
+.hero-inner {
+  justify-content: flex-end !important;
+  direction: rtl;
+}
+
+.hero-text {
+  text-align: right;
+  width: 42%;
+  min-width: 340px;
+}
+
+.eyebrow {
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+.eyebrow-line { order: 1; }
+
+.btns  { justify-content: flex-start; direction: rtl; }
+.stats { justify-content: flex-start; direction: rtl; }
+
+.stat-item:first-child { padding-right: 0;  padding-left: 20px; }
+.stat-item:last-child  { padding-left: 0;   padding-right: 20px; }
+
+/* Arrow */
+.btn-fill span { display: inline-block; transform: scaleX(-1); }
+.btn-fill:hover span { transform: scaleX(-1) translateX(3px); }
+
+/* Mobile */
+@media (max-width: 860px) {
+  .hero-inner { justify-content: flex-start !important; }
+  .hero-text  { width: 100%; min-width: unset; }
+  .nav-links.open { align-items: flex-end; padding: 18px 100px 24px; }
+  .hero-overlay {
+    background: linear-gradient(
+      to bottom,
+      rgba(8,35,24,0.75) 0%,
+      rgba(8,35,24,0.55) 60%,
+      rgba(8,35,24,0.4) 100%
+    );
+  }
+}
+
+/* ── ar-overview navbar exception ── */
+.navbar-overview-ar .nav-inner { flex-direction: row-reverse !important; }
+.navbar-overview-ar .nav-links { flex-direction: row !important; justify-content: center; }
+.navbar-overview-ar .nav-ctas  { flex-direction: row !important; }

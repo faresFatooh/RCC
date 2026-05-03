@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>نظرة عامة — التقرير السنوي لأسمنت الرياض 2025</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/style.css" />
+  <link rel="stylesheet" href="css/rtl.css" />
+  <link rel="stylesheet" href="css/overview.css" />
+  <style>
+    body { font-family: 'Swissra', sans-serif; }
+
+    /* flip all images horizontally */
+    .ov-frame,
+    .theme-img-wrap img { transform: scaleX(-1); }
+
+    /* helmet — centered over frame, flipped */
+    .ov-helmet {
+      transform: translate(-50%, -42%) scaleX(-1);
+    }
+
+    /* flip background image on history & investment sections */
+    .ov-history-section::before,
+    .ov-invest-section::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: inherit;
+      transform: scaleX(-1);
+      z-index: 0;
+    }
+    .ov-history-section,
+    .ov-invest-section {
+      position: relative;
+      background-image: url('assets/freepik__a-minimalist-highend-corporate-background-for-text__64990_upscayl_3x_upscayl-standard-4x 2 (1).png');
+      background-size: cover;
+      background-position: center;
+    }
+    .ov-history-section > *,
+    .ov-invest-section > * {
+      position: relative;
+      z-index: 1;
+    }
+
+    /* stake title border — right side for RTL */
+    .ov-stake-title {
+      border-left: none;
+      border-right: 3px solid #009189;
+      padding-left: 0;
+      padding-right: 12px;
+    }
+
+    /* sub-bar — flip for RTL */
+    .ov-sub-title {
+      flex-direction: row-reverse;
+      justify-content: flex-end;
+    }
+
+    /* navbar RTL handled by rtl.css */
+    .navbar-overview-ar {
+      background: #ffffff;
+      border-bottom: 1px solid rgba(0,0,0,0.08);
+    }
+    .navbar-overview-ar .nav-links a        { color: #333; opacity: 1; }
+    .navbar-overview-ar .nav-links a:hover,
+    .navbar-overview-ar .nav-links a.active { color: #009189; opacity: 1; }
+    .navbar-overview-ar .cta-download {
+      background: rgba(0,0,0,0.05);
+      border-color: rgba(0,0,0,0.15);
+      color: #333;
+    }
+    .navbar-overview-ar .cta-download:hover { background: rgba(0,0,0,0.1); }
+    .navbar-overview-ar .cta-lang           { border-color: rgba(0,0,0,0.2); color: #333; }
+    .navbar-overview-ar .cta-lang:hover     { background: rgba(0,0,0,0.05); }
+    .navbar-overview-ar .burger span        { background: #333; }
+    .navbar-overview-ar.scrolled            { box-shadow: 0 2px 16px rgba(0,0,0,0.1); }
+
+    /* RTL layout */
+    .navbar-overview-ar .nav-inner { flex-direction: row-reverse !important; }
+    .navbar-overview-ar .nav-links { flex-direction: row !important; justify-content: center; }
+    .navbar-overview-ar .nav-ctas  { flex-direction: row !important; }
+  </style>
+</head>
+<body class="page-overview">
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-overview-ar" id="navbar" dir="ltr">
+    <div class="nav-inner">
+      <a href="ar.html" class="logo">
+        <img src="assets/Link.svg" alt="أسمنت الرياض" />
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="ar-financial-review.html">المراجعة المالية</a></li>
+        <li><a href="ar-governance.html">الحوكمة</a></li>
+        <li><a href="ar-sustainability.html">الاستدامة</a></li>
+        <li><a href="ar-operating-review.html">المراجعة التشغيلية</a></li>
+        <li><a href="ar-strategic-review.html">المراجعة الاستراتيجية</a></li>
+        <li><a href="ar-leadership.html">القيادة</a></li>
+        <li><a href="ar-overview.html" class="active">نظرة عامة</a></li>
+      </ul>
+      <div class="nav-ctas">
+        <a href="#" class="cta-download">
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M6.5 1v7.5M3.5 6l3 3 3-3M1.5 11.5h10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          تحميل
+        </a>
+        <a href="overview.html" class="cta-lang">
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><circle cx="6.5" cy="6.5" r="5.5" stroke="currentColor" stroke-width="1.4"/><path d="M6.5 1c-1.8 1.8-1.8 7.4 0 11M6.5 1c1.8 1.8 1.8 7.4 0 11M1 6.5h11" stroke="currentColor" stroke-width="1.4"/></svg>
+          EN
+        </a>
+      </div>
+      <button class="burger" id="burger" aria-label="القائمة">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- MOBILE MENU -->
+  <div class="mobile-menu" id="mobileMenu">
+    <ul class="mobile-menu-links">
+      <li><a href="ar-overview.html">نظرة عامة</a></li>
+      <li><a href="ar-leadership.html">القيادة</a></li>
+      <li><a href="ar-strategic-review.html">المراجعة الاستراتيجية</a></li>
+      <li><a href="ar-operating-review.html">المراجعة التشغيلية</a></li>
+      <li><a href="ar-sustainability.html">الاستدامة</a></li>
+      <li><a href="ar-governance.html">الحوكمة</a></li>
+      <li><a href="ar-financial-review.html">المراجعة المالية</a></li>
+    </ul>
+    <div class="mobile-menu-footer">
+      <a href="#" class="cta-download">
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M6.5 1v7.5M3.5 6l3 3 3-3M1.5 11.5h10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        تحميل
+      </a>
+      <a href="overview.html" class="cta-lang">
+        <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><circle cx="6.5" cy="6.5" r="5.5" stroke="currentColor" stroke-width="1.4"/><path d="M6.5 1c-1.8 1.8-1.8 7.4 0 11M6.5 1c1.8 1.8 1.8 7.4 0 11M1 6.5h11" stroke="currentColor" stroke-width="1.4"/></svg>
+        EN
+      </a>
+    </div>
+  </div>
+
+  <!-- BANNER -->
+  <section class="ov-banner">
+    <div class="ov-banner-inner">
+      <div class="ov-banner-left">
+        <p class="ov-section-label">القسم 01</p>
+        <h1 class="ov-title">نظرة عامة</h1>
+        <div class="ov-tags">
+          <a href="#about">عن شركة أسمنت الرياض</a>
+          <a href="#glance">لمحة سريعة</a>
+          <a href="#review">2025 في مراجعة</a>
+          <a href="#operate">أين نعمل</a>
+          <a href="#history">التاريخ</a>
+          <a href="#stakeholder">تفاعل أصحاب المصلحة</a>
+          <a href="#investment">حالة الاستثمار</a>
+        </div>
+      </div>
+      <div class="ov-banner-right">
+        <a href="#" class="ov-more-btn">
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M6.5 1v7.5M3.5 6l3 3 3-3M1.5 11.5h10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          المزيد عن النظرة العامة
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SUB-NAV -->
+  <nav class="ov-subnav" id="ovSubnav">
+    <div class="ov-subnav-inner">
+      <a href="#about"       class="ov-tab active">عن شركة أسمنت الرياض</a>
+      <a href="#glance"      class="ov-tab">لمحة سريعة</a>
+      <a href="#review"      class="ov-tab">2025 في مراجعة</a>
+      <a href="#operate"     class="ov-tab">أين نعمل</a>
+      <a href="#history"     class="ov-tab">التاريخ</a>
+      <a href="#stakeholder" class="ov-tab">تفاعل أصحاب المصلحة</a>
+      <a href="#investment"  class="ov-tab">حالة الاستثمار</a>
+    </div>
+  </nav>
+
+  <!-- HERO IMAGE -->
+  <div class="ov-hero-wrap">
+    <img src="assets/Frame 1.png" alt="" class="ov-frame" />
+    <img src="assets/Overview 2 1.png" alt="خوذة أسمنت الرياض" class="ov-helmet" />
+  </div>
+
+  <!-- ABOUT SECTION -->
+  <section class="ov-section" id="about">
+    <div class="ov-section-inner">
+
+      <div class="ov-section-title">
+        <span class="ov-section-num">1</span>
+        <h2>عن شركة أسمنت الرياض</h2>
+      </div>
+      <div class="ov-divider"></div>
+
+      <div class="ov-card-beige">
+        <h3>نظرة عامة على الشركة</h3>
+        <p>تأسست شركة أسمنت الرياض عام 1997، وهي شركة مساهمة سعودية مدرجة في السوق المالية السعودية (تداول - السوق الرئيسية). تقوم الشركة بتصنيع وتوريد الأسمنت الأبيض والرمادي من مجمع صناعي متكامل في المزاحمية، شمال غرب الرياض، في منطقة تزخر بالحجر الجيري عالي النقاء والمواد الخام الأساسية. يضم المجمع خطوط إنتاج عالية الكفاءة تعمل بأحدث المعدات وأنظمة التحكم المدعومة بالذكاء الاصطناعي، مما يضمن جودة موثوقة وانضباطاً في التكاليف لخدمة المشاريع الوطنية وأسواق التصدير المختارة.</p>
+        <p>هدف الشركة واضح: تزويد المملكة بمنتجات أسمنت أبيض ورمادي عالية الجودة وصديقة للبيئة، مع تحسين الموارد ورفع كفاءة الطاقة وحماية البيئة وتوطين الوظائف. ويتجلى هذا الهدف في رؤية الشركة لتكون الخيار التنموي البيئي في المملكة العربية السعودية، ورسالتها، ومنظومة قيمها التي تُعلي من شأن الابتكار والتعاون والنمو والجودة والشفافية.</p>
+      </div>
+
+      <div class="ov-sub-section">
+        <div class="ov-sub-title">
+          <div class="ov-sub-bar"></div>
+          <h4>المنتجات</h4>
+        </div>
+        <div class="ov-products-block">
+          <p class="ov-body-text">تشمل محفظة أسمنت الرياض أبرز أنواع الأسمنت التي يطلبها المقاولون السعوديون ومنتجو الخرسانة الجاهزة:</p>
+          <ul class="ov-list">
+            <li>أسمنت بورتلاند الأبيض النوع الأول (CEM I 52.5N) للتطبيقات المعمارية والخرسانية عالية المقاومة.</li>
+            <li>أسمنت بورتلاند الأبيض النوع الثاني (CEM II 42.5N) للمونة والبياض الملون وأعمال الواجهات؛ وأسمنت التشطيب (FC) للبياض وطبقات الأرضيات.</li>
+            <li>أسمنت بورتلاند العادي (OPC) للخرسانة الإنشائية والمسبقة الصنع.</li>
+            <li>أسمنت بورتلاند المقاوم للكبريتات (SRC) للأقبية والأعمال البحرية وشبكات الصرف الصحي.</li>
+            <li>أسمنت التشطيب (FC) للبياض وطبقات الأرضيات.</li>
+          </ul>
+          <p class="ov-body-text">تُصنَّع هذه المنتجات وفق المعايير السعودية والدولية المعتمدة، ويدعمها فريق خدمة فنية متخصص لضمان التوافق بين الاستخدام والأداء.</p>
+        </div>
+      </div>
+
+      <div class="ov-sub-section">
+        <div class="ov-sub-title">
+          <div class="ov-sub-bar"></div>
+          <h4>خطوط أعمال الشركة</h4>
+        </div>
+        <p class="ov-body-text">تدير شركة أسمنت الرياض منصة أسمنت متكاملة تتمحور حول خطَّي عمل رئيسيَّين: الأسمنت الرمادي والأسمنت الأبيض، وكلاهما يُنتَج من حرم صناعي واحد في المزاحمية شمال غرب الرياض. يقع الموقع فوق حجر جيري عالي الجودة وسائر المواد الخام الأساسية، ويضم ثلاثة خطوط إنتاج عالية الكفاءة مدعومة بأحدث المعدات وتقنيات الذكاء الاصطناعي، مما يتيح تحكماً شاملاً من المحجر حتى الشحن.</p>
+
+        <div class="ov-two-cards">
+          <div class="ov-biz-card grey-card">
+            <h5>الأسمنت الرمادي</h5>
+            <div class="ov-biz-num">3.4 مليون طن</div>
+            <p>يحتوي المصنع على خطَّي إنتاج بطاقة تصميمية تبلغ 3.4 مليون طن من الكلنكر الرمادي سنوياً. يشترك الخطان في تحضير المواد الخام والمرافق والصيانة ومراقبة الجودة والبنية اللوجستية، مما يمنح الشركة وفورات الحجم والموثوقية.</p>
+            <div class="ov-biz-num">1.7 مليون طن</div>
+            <p>خط ثنائي العملية لإنتاج الكلنكر الرمادي والأبيض بأنواع متعددة. بدأ الإنتاج التجاري عام 2007 بطاقة تصميمية 1.7 مليون طن رمادي سنوياً، وطُوِّر عام 2019 لإنتاج الكلنكر الأبيض بطاقة 660,000 طن سنوياً.</p>
+            <div class="ov-biz-num">1.7 مليون طن</div>
+            <p>خط الإنتاج الثاني مخصص لإنتاج الكلنكر الرمادي. بدأ الإنتاج التجاري عام 2010 بطاقة تصميمية 1.7 مليون طن سنوياً.</p>
+          </div>
+
+          <div class="ov-biz-card white-card">
+            <h5>الأسمنت الأبيض</h5>
+            <p>مصنع الأسمنت الأبيض هو الأول من نوعه في المملكة. تأسس عام 1997 بطاقة إنتاجية 320,000 طن من الكلنكر الأبيض سنوياً. ومن خلال قدرة الخط الأول الثنائية، يمكن للشركة إنتاج نحو مليون طن من الكلنكر الأبيض سنوياً عند الحاجة، مما يوفر مرونة ونطاقاً لا مثيل لهما للتطبيقات المعمارية الراقية على المستوى الوطني.</p>
+            <p>يستلزم إنتاج الكلنكر الأبيض تحكماً صارماً في نقاء المواد الخام (لا سيما انخفاض محتوى الحديد والمنغنيز) وتشغيلاً دقيقاً للفرن لتحقيق درجة البياض والمقاومة المستهدفة.</p>
+            <p>يُورَّد الأسمنت الأبيض بالجملة وفي أكياس لمنتجي GRC وصانعي التيرازو والبلاط وعبّاء الخلطات الجافة ومقاولي التشطيب. يوفر الشحن المركزي من المزاحمية مهلاً قصيرة للتسليم في ممر المشاريع العملاقة بالرياض وتغطية وطنية موثوقة.</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CEMENT BAGS IMAGE -->
+  <div class="ov-bags-img">
+    <img src="assets/esment 1.png" alt="منتجات أسمنت الرياض" />
+  </div>
+
+  <!-- AT A GLANCE -->
+  <section class="ov-section" id="glance">
+    <div class="ov-section-inner">
+
+      <div class="ov-section-title">
+        <span class="ov-section-num">2</span>
+        <h2>لمحة سريعة</h2>
+      </div>
+      <div class="ov-divider"></div>
+
+      <div class="ov-highlights-group">
+        <h4 class="ov-highlights-title">أبرز المؤشرات التشغيلية</h4>
+        <div class="ov-kpi-grid">
+          <div class="ov-kpi-card">
+            <div class="ov-kpi-val">3,520,000</div>
+            <div class="ov-kpi-label">الطاقة التصميمية للكلنكر الرمادي</div>
+            <div class="ov-kpi-sub">3.4 م ط/س عبر خطَّين (1.7 ط/س لكل منهما)<br>المثبَّت 2024: 3,520 م ط/س</div>
+          </div>
+          <div class="ov-kpi-card">
+            <div class="ov-kpi-val">314,021 طن</div>
+            <div class="ov-kpi-label">الإنتاج (كلنكر أبيض)</div>
+            <div class="ov-kpi-sub red">2024: 588,547 طن</div>
+          </div>
+          <div class="ov-kpi-card">
+            <div class="ov-kpi-val">رمادي 3,497,830 طن</div>
+            <div class="ov-kpi-label">حجم المبيعات</div>
+            <div class="ov-kpi-sub">أبيض 393,312 طن</div>
+          </div>
+          <div class="ov-kpi-card">
+            <div class="ov-kpi-val">1.0 م ط/س</div>
+            <div class="ov-kpi-label">مرونة الكلنكر الأبيض</div>
+            <div class="ov-kpi-sub">حتى ~1.0 م ط/س عند تشغيل الخط 1 بوضع الأبيض إلى جانب مصنع أبيض مخصص بطاقة 320 ألف ط/س</div>
+          </div>
+          <div class="ov-kpi-card">
+            <div class="ov-kpi-val">2.6%</div>
+            <div class="ov-kpi-label">التوقف غير المخطط - رمادي (UKD)</div>
+            <div class="ov-kpi-sub red">2024: 4.62%</div>
+          </div>
+          <div class="ov-kpi-card">
+            <div class="ov-kpi-val">2.0%</div>
+            <div class="ov-kpi-label">التوقف غير المخطط - أبيض (UKD)</div>
+            <div class="ov-kpi-sub red">2024: 2.4%</div>
+          </div>
+          <div class="ov-kpi-card">
+            <div class="ov-kpi-val">93.9%</div>
+            <div class="ov-kpi-label">متوسط توافر الفرن (أبيض)</div>
+            <div class="ov-kpi-sub red">2024: 87.3%</div>
+          </div>
+          <div class="ov-kpi-card">
+            <div class="ov-kpi-val">107 كيلوواط/طن</div>
+            <div class="ov-kpi-label">الطاقة النوعية / طاقة الأسمنت</div>
+            <div class="ov-kpi-sub red">2024: 110.4 كيلوواط/طن</div>
+          </div>
+          <div class="ov-kpi-card">
+            <div class="ov-kpi-val">90%</div>
+            <div class="ov-kpi-label">متوسط توافر الفرن (رمادي)</div>
+            <div class="ov-kpi-sub green">2024: 86%</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ov-highlights-group">
+        <h4 class="ov-highlights-title">أبرز المؤشرات المالية</h4>
+        <div class="ov-kpi-grid">
+          <div class="ov-kpi-card">
+            <div class="ov-kpi-val">207.8</div>
+            <div class="ov-kpi-label">صافي الربح (مليون ر.س)</div>
+            <div class="ov-kpi-sub red">-33.1% مقارنة بـ 2024: 310.4</div>
+          </div>
+          <div class="ov-kpi-card">
+            <div class="ov-kpi-val">787.6</div>
+            <div class="ov-kpi-label">الإيرادات (مليون ر.س)</div>
+            <div class="ov-kpi-sub red">-0.2% مقارنة بـ 2024: 789.4</div>
+          </div>
+          <div class="ov-kpi-card">
+            <div class="ov-kpi-val">216.2</div>
+            <div class="ov-kpi-label">الربح التشغيلي (مليون ر.س)</div>
+            <div class="ov-kpi-sub red">-26.2% مقارنة بـ 2024: 292.9</div>
+          </div>
+          <div class="ov-kpi-card">
+            <div class="ov-kpi-val">131.4</div>
+            <div class="ov-kpi-label">النفقات الرأسمالية (مليون ر.س)</div>
+            <div class="ov-kpi-sub green">+43.1% مقارنة بـ 2024: 91.8</div>
+          </div>
+          <div class="ov-kpi-card">
+            <div class="ov-kpi-val">1.73 ر.س</div>
+            <div class="ov-kpi-label">ربحية السهم</div>
+            <div class="ov-kpi-sub red">-33.6% مقارنة بـ 2024: 2.59</div>
+          </div>
+          <div class="ov-kpi-card">
+            <div class="ov-kpi-val">243.1</div>
+            <div class="ov-kpi-label">التدفق النقدي من الأنشطة التشغيلية</div>
+            <div class="ov-kpi-sub red">-44.0% مقارنة بـ 2024: 434.2</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="ov-sub-title" style="margin-top:28px;">
+        <div class="ov-sub-bar"></div>
+        <h4>أبرز مؤشرات الاستدامة</h4>
+      </div>
+      <div class="ov-sustain-grid">
+        <div class="ov-sustain-tag">01 — حصلت على ISO 56001</div>
+        <div class="ov-sustain-tag">02 — استرداد الحرارة المهدرة (ORC)</div>
+        <div class="ov-sustain-tag">03 — توقيع مشروع إطار ونظم ESG</div>
+        <div class="ov-sustain-tag">04 — التقدم في برنامج المليون شجرة</div>
+        <div class="ov-sustain-tag">05 — إطلاق منصة رقمية داخلية موحدة</div>
+        <div class="ov-sustain-tag">06 — تطوير مسار السعودة</div>
+        <div class="ov-sustain-tag">07 — الحصول على شهادة "موائمة"</div>
+      </div>
+
+      <div class="ov-awards-card">
+        <h5>الجوائز</h5>
+        <ul class="ov-awards-list">
+          <li><span class="ov-award-dot"><img src="assets/star.svg" alt="★" /></span>أسمنت الرياض تفوز بجائزة المسؤولية الاجتماعية 2025</li>
+          <li><span class="ov-award-dot"><img src="assets/star.svg" alt="★" /></span>مصنفة ضمن أفضل 10 على المستوى الوطني</li>
+          <li><span class="ov-award-dot"><img src="assets/star.svg" alt="★" /></span>رائدة الصناعة — جائزة التميز المهني العربي 2025</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- 2025 IN REVIEW -->
+  <section class="ov-section" id="review">
+    <div class="ov-section-inner">
+      <div style="width:100%; height:1px; background:#EEEEEE; margin:28px 0 16px;"></div>
+      <div class="ov-section-title">
+        <span class="ov-section-num">3</span>
+        <h2>2025 في مراجعة</h2>
+      </div>
+      <div class="ov-divider" style="height:2px; margin-bottom:24px;"></div>
+
+      <div class="ov-timeline-grid">
+
+        <div class="ov-month-card">
+          <div class="ov-month-header">يناير</div>
+          <div class="ov-month-body">
+            <div class="ov-event"><span>01</span><p>اجتمع الرئيس التنفيذي مع شركة سوق الكربون الطوعي الإقليمية لاستكشاف التعاون في سوق الكربون</p></div>
+            <div class="ov-event"><span>02</span><p>إقامة يوم تكريم العملاء في الرياض</p></div>
+          </div>
+        </div>
+
+        <div class="ov-month-card">
+          <div class="ov-month-header">فبراير</div>
+          <div class="ov-month-body">
+            <div class="ov-event"><span>01</span><p>استضافة وفد VDMA/AMK في جولة بالمصنع ومراجعة تطوير المحجر</p></div>
+            <div class="ov-event"><span>02</span><p>تنظيم ورشة عمل ESG على مستوى الشركة</p></div>
+          </div>
+        </div>
+
+        <div class="ov-month-card">
+          <div class="ov-month-header">مارس</div>
+          <div class="ov-month-body">
+            <div class="ov-event"><span>01</span><p>زيارة ميدانية شهرية للرئيس التنفيذي وإفطار رمضاني مع الموظفين</p></div>
+            <div class="ov-event"><span>02</span><p>توقيع اتفاقية مع جمعية مبين لاستضافة حلقات تعليم القرآن داخل الموقع</p></div>
+          </div>
+        </div>
+
+        <div class="ov-month-card">
+          <div class="ov-month-header">أبريل</div>
+          <div class="ov-month-body">
+            <div class="ov-event"><span>01</span><p>نشر التقرير السنوي 2024</p></div>
+            <div class="ov-event"><span>02</span><p>توقيع اتفاقية تعاون في المواهب والبحث والتطوير مع الكلية التقنية بالرياض وكاكست والمعهد السعودي للإلكترونيات</p></div>
+            <div class="ov-event"><span>03</span><p>تجمع عيد الفطر</p></div>
+          </div>
+        </div>
+
+        <div class="ov-month-card">
+          <div class="ov-month-header">مايو</div>
+          <div class="ov-month-body">
+            <div class="ov-event"><span>01</span><p>تصنيف ضمن أفضل 10 وطنياً في برنامج مصانع المستقبل؛ تكريم الرئيس التنفيذي من أرقام بجائزة أفضل رئيس تنفيذي في قطاع الأسمنت</p></div>
+          </div>
+        </div>
+
+        <div class="ov-month-card">
+          <div class="ov-month-header">يونيو</div>
+          <div class="ov-month-body">
+            <div class="ov-event"><span>01</span><p>التقدم في نشر T5 وترقيات الورشة الكهربائية</p></div>
+            <div class="ov-event"><span>02</span><p>إتمام عمليات تدقيق الكفاءة والنظافة</p></div>
+          </div>
+        </div>
+
+        <div class="ov-month-card">
+          <div class="ov-month-header">يوليو</div>
+          <div class="ov-month-body">
+            <div class="ov-event"><span>01</span><p>إطلاق تقييمات همة 4 (70 متدرباً)</p></div>
+            <div class="ov-event"><span>02</span><p>إطلاق منصة رقمية داخلية موحدة</p></div>
+            <div class="ov-event"><span>03</span><p>ترأس الرئيس التنفيذي مراجعة مؤشرات الأداء الشهرية</p></div>
+            <div class="ov-event"><span>04</span><p>تكريم يوم موظفي الأمن</p></div>
+          </div>
+        </div>
+
+        <div class="ov-month-card">
+          <div class="ov-month-header">أغسطس</div>
+          <div class="ov-month-body">
+            <div class="ov-event"><span>01</span><p>إطلاق بوابة علاقات المستثمرين وموافقة مجلس الإدارة على توزيع أرباح مرحلية بواقع 1.00 ر.س/سهم (الاستحقاق 8 سبتمبر؛ الدفع 16 سبتمبر)</p></div>
+          </div>
+        </div>
+
+        <div class="ov-month-card">
+          <div class="ov-month-header">سبتمبر</div>
+          <div class="ov-month-body">
+            <div class="ov-event"><span>01</span><p>تقديم تدريب القيادة الدفاعية وسلامة المرور</p></div>
+            <div class="ov-event"><span>02</span><p>جولة ميدانية للرئيس التنفيذي استعرضت المنارات الصناعية وترقيات النقل والتقدم في استرداد الحرارة المهدرة (ORC)</p></div>
+          </div>
+        </div>
+
+        <div class="ov-month-card">
+          <div class="ov-month-header">أكتوبر</div>
+          <div class="ov-month-body">
+            <div class="ov-event"><span>01</span><p>إطلاق مشروع إطار ونظم ESG؛ الفوز بجائزة المسؤولية الاجتماعية 2025 من وزارة الموارد البشرية والتنمية الاجتماعية؛ توقيع اتفاقية مع وئام لزراعة 1,000 شجرة أرطى في محمية الملك عبدالعزيز الملكية</p></div>
+          </div>
+        </div>
+
+        <div class="ov-month-card">
+          <div class="ov-month-header">نوفمبر</div>
+          <div class="ov-month-body">
+            <div class="ov-event"><span>01</span><p>الحصول على شهادتَي ISO 56002 (الابتكار) وISO 55001 (إدارة الأصول)؛ توقيع اتفاقية مع شركة نقل الكهرباء الوطنية لإنشاء محطة شبكة لمصانع المزاحمية</p></div>
+          </div>
+        </div>
+
+        <div class="ov-month-card">
+          <div class="ov-month-header">ديسمبر</div>
+          <div class="ov-month-body">
+            <div class="ov-event"><span>01</span><p>توقيع عقد بقيمة 85 مليون ر.س لمحطة تحويل كهربائي 33/11 كيلوفولت جديدة في المزاحمية؛ الحصول على شهادة موائمة لإمكانية الوصول في بيئة العمل</p></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- WHERE WE OPERATE -->
+  <section class="ov-section" id="operate">
+    <div class="ov-section-inner">
+
+      <div class="ov-section-title">
+        <span class="ov-section-num">4</span>
+        <h2>أين نعمل</h2>
+      </div>
+      <div class="ov-divider"></div>
+
+      <p class="ov-body-text" style="max-width:860px;">
+        تدير شركة أسمنت الرياض منصة تصنيع وتوزيع متكاملة بالكامل من المزاحمية، شمال غرب الرياض، فوق حجر جيري عالي النقاء وسائر المواد الخام الأساسية. تتركز سلسلة القيمة بأكملها — من المحجر وتحضير الخلطة الخام والكلنكرة وطحن التشطيب ومختبرات الجودة والتعبئة والشحن — في حرم صناعي واحد، مما يتيح تحكماً دقيقاً في العمليات ومهلاً قصيرة للتسليم في ممر المشاريع بالمملكة وتغطية وطنية موثوقة مع صادرات انتقائية للأسواق المجاورة.
+      </p>
+
+      <div class="ov-operate-grid">
+
+        <div class="ov-map-col">
+          <div class="ov-map-card">
+            <img src="assets/Container (3).png" alt="خريطة المملكة العربية السعودية — موقع المزاحمية" class="ov-map-img" />
+          </div>
+          <div class="ov-map-label">
+            <span class="ov-map-city">المزاحمية</span>
+            <span class="ov-map-region">شمال غرب الرياض</span>
+            <span class="ov-map-desc">مجمع صناعي متكامل</span>
+          </div>
+        </div>
+
+        <div class="ov-revenue-card">
+          <h5 class="ov-revenue-title">مزيج الإيرادات: المملكة مقابل التصدير</h5>
+
+          <div class="ov-rev-row">
+            <div class="ov-rev-label-row">
+              <span class="ov-rev-name">المملكة العربية السعودية</span>
+              <span class="ov-rev-pct">99.7%</span>
+            </div>
+            <div class="ov-rev-bar-track">
+              <div class="ov-rev-bar-fill" style="width:99.7%;"></div>
+            </div>
+          </div>
+
+          <div class="ov-rev-row">
+            <div class="ov-rev-label-row">
+              <span class="ov-rev-name">التصدير</span>
+              <span class="ov-rev-pct muted">0.30%</span>
+            </div>
+            <div class="ov-rev-bar-track">
+              <div class="ov-rev-bar-fill export" style="width:0.3%;"></div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- HISTORY -->
+  <section class="ov-section ov-history-section" id="history" style="padding-top:0;">
+    <div class="ov-section-inner">
+      <div style="width:100%; height:1px; background:#EEEEEE; margin-bottom:40px;"></div>
+
+      <div class="ov-section-title">
+        <span class="ov-section-num">5</span>
+        <h2>التاريخ</h2>
+      </div>
+      <div class="ov-divider"></div>
+
+      <div class="ov-history-wrap">
+        <div class="ov-history-list">
+
+          <div class="ov-hist-row">
+            <span class="ov-hist-year">1997</span>
+            <span class="ov-hist-dot"></span>
+            <div class="ov-hist-box"><span class="ov-hist-text">وضع حجر الأساس (أول مصنع للأسمنت الأبيض في المملكة)</span></div>
+          </div>
+          <div class="ov-hist-row">
+            <span class="ov-hist-year">2001</span>
+            <span class="ov-hist-dot"></span>
+            <div class="ov-hist-box"><span class="ov-hist-text">دخول خط الأسمنت الأبيض مرحلة الإنتاج التجاري</span></div>
+          </div>
+          <div class="ov-hist-row">
+            <span class="ov-hist-year">2005</span>
+            <span class="ov-hist-dot"></span>
+            <div class="ov-hist-box"><span class="ov-hist-text">إنشاء خط الإنتاج الثاني (رمادي)</span></div>
+          </div>
+          <div class="ov-hist-row">
+            <span class="ov-hist-year">2007</span>
+            <span class="ov-hist-dot"></span>
+            <div class="ov-hist-box"><span class="ov-hist-text">بدء التوسع الهيكلي</span></div>
+          </div>
+          <div class="ov-hist-row">
+            <span class="ov-hist-year">2010</span>
+            <span class="ov-hist-dot"></span>
+            <div class="ov-hist-box"><span class="ov-hist-text">تشغيل خط الإنتاج الثالث</span></div>
+          </div>
+          <div class="ov-hist-row">
+            <span class="ov-hist-year">2011</span>
+            <span class="ov-hist-dot"></span>
+            <div class="ov-hist-box"><span class="ov-hist-text">رفع أداء خطوط الأسمنت الرمادي</span></div>
+          </div>
+          <div class="ov-hist-row">
+            <span class="ov-hist-year">2012</span>
+            <span class="ov-hist-dot"></span>
+            <div class="ov-hist-box"><span class="ov-hist-text">إعادة الهيكلة المؤسسية</span></div>
+          </div>
+          <div class="ov-hist-row">
+            <span class="ov-hist-year">2013</span>
+            <span class="ov-hist-dot"></span>
+            <div class="ov-hist-box"><span class="ov-hist-text">تجديد مصنع الأسمنت الأبيض وترقية طاقته</span></div>
+          </div>
+          <div class="ov-hist-row">
+            <span class="ov-hist-year">2019</span>
+            <span class="ov-hist-dot"></span>
+            <div class="ov-hist-box"><span class="ov-hist-text">هندسة المرونة الثنائية للعمليات</span></div>
+          </div>
+          <div class="ov-hist-row">
+            <span class="ov-hist-year">2020</span>
+            <span class="ov-hist-dot"></span>
+            <div class="ov-hist-box"><span class="ov-hist-text">الدخول إلى أسواق رأس المال (نمو)</span></div>
+          </div>
+          <div class="ov-hist-row">
+            <span class="ov-hist-year">2021</span>
+            <span class="ov-hist-dot"></span>
+            <div class="ov-hist-box"><span class="ov-hist-text">الاسم المؤسسي الجديد</span></div>
+          </div>
+          <div class="ov-hist-row">
+            <span class="ov-hist-year">2022</span>
+            <span class="ov-hist-dot"></span>
+            <div class="ov-hist-box"><span class="ov-hist-text">تجديد الهوية البصرية</span></div>
+          </div>
+          <div class="ov-hist-row">
+            <span class="ov-hist-year">2023</span>
+            <span class="ov-hist-dot"></span>
+            <div class="ov-hist-box"><span class="ov-hist-text">الانتقال إلى السوق الرئيسية (تاسي)</span></div>
+          </div>
+          <div class="ov-hist-row">
+            <span class="ov-hist-year">2024</span>
+            <span class="ov-hist-dot"></span>
+            <div class="ov-hist-box"><span class="ov-hist-text">عام الإنجازات القياسية وشهادات الأنظمة</span></div>
+          </div>
+          <div class="ov-hist-row ov-hist-current">
+            <span class="ov-hist-year current">2025</span>
+            <span class="ov-hist-dot current"></span>
+            <div class="ov-hist-box"><span class="ov-hist-text">مشروع محطة الطاقة الكهربائية</span></div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- STAKEHOLDER ENGAGEMENT -->
+  <section class="ov-section ov-stakeholder-section" id="stakeholder" style="padding-top:0;">
+    <div class="ov-section-inner">
+      <div style="width:100%; height:1px; background:#EEEEEE; margin-bottom:40px;"></div>
+
+      <div class="ov-section-title">
+        <span class="ov-section-num">6</span>
+        <h2>تفاعل أصحاب المصلحة</h2>
+      </div>
+      <div class="ov-divider" style="background:#009189;"></div>
+
+      <div class="ov-stake-grid">
+
+        <div class="ov-stake-card">
+          <h5 class="ov-stake-title">الموظفون</h5>
+          <p>تضع شركة أسمنت الرياض موظفيها في صميم التميز التشغيلي والاستدامة طويلة الأمد، وتعزز بيئة عمل آمنة وشاملة وموجهة نحو الأداء تدعم التطوير والرفاه والمشاركة على جميع المستويات.</p>
+          <p>يُحافَظ على التفاعل من خلال التواصل المنتظم والتدريب والتطوير المنظم وتقييمات الأداء وبرامج الصحة والسلامة المتينة. حققت ثقافة السلامة القوية في الشركة صفر إصابات مع إجازة وأكثر من 2.9 مليون ساعة عمل آمنة متراكمة خلال فترة التقرير.</p>
+        </div>
+
+        <div class="ov-stake-card">
+          <h5 class="ov-stake-title">العملاء</h5>
+          <p>تبني شركة أسمنت الرياض علاقات وثيقة وتعاونية مع العملاء بما فيهم منتجو الخرسانة الجاهزة ومقاولو البناء والموزعون والمطورون العامون والخاصون الكبار، ويُخدَمون أساساً عبر الموزعين ومصانع الخرسانة الجاهزة ومستودعات مواد البناء.</p>
+          <p>يتمحور التفاعل حول الجودة المتسقة والإمداد الموثوق والدعم الفني والخدمة المتجاوبة، مع استهداف حجوم أولوية 2025 في الإسكان والبنية التحتية والخرسانة الجاهزة والمسبقة الصنع والتجزئة.</p>
+        </div>
+
+        <div class="ov-stake-card">
+          <h5 class="ov-stake-title">الموردون وشركاء الأعمال</h5>
+          <p>تتعامل شركة أسمنت الرياض بشكل استباقي مع الموردين وشركاء الأعمال لضمان استمرارية الإمداد وتعزيز الكفاءة التشغيلية والحفاظ على معايير صارمة للجودة والسلامة والاستدامة.</p>
+          <p>يتحقق ذلك من خلال التأهيل المسبق المنظم وتقييمات الأداء المستمرة والتعاون الوثيق عبر المدخلات الحيوية — الطاقة والمواد الخام وقطع الغيار واللوجستيات.</p>
+        </div>
+
+        <div class="ov-stake-card">
+          <h5 class="ov-stake-title">المساهمون والمستثمرون</h5>
+          <p>تحافظ شركة أسمنت الرياض على تواصل شفاف وفي الوقت المناسب ومتسق مع المساهمين ومجتمع الاستثمار من خلال الإفصاحات المالية الدورية وعروض المستثمرين وإعلانات الأرباح والتحديثات على تداول والقنوات الرسمية.</p>
+          <p>تتبع الشركة سياسة منضبطة لتخصيص رأس المال وعوائد المساهمين — تتجلى في الأرباح المتسقة — مع الحفاظ على ميزانية عمومية قوية ورافعة مالية منخفضة.</p>
+        </div>
+
+        <div class="ov-stake-card">
+          <h5 class="ov-stake-title">المجتمع والبيئة</h5>
+          <p>تدمج شركة أسمنت الرياض الإشراف المجتمعي والبيئي في استراتيجيتها للاستدامة، بما يتوافق مع المبادرات الوطنية كمبادرة السعودية الخضراء.</p>
+          <p>نفّذت الشركة برامج تشجير وإعادة تأهيل واسعة النطاق بزراعة أكثر من 110,000 شجرة لتعزيز التنوع البيولوجي واستعادة النظم البيئية ودعم أهداف تعويض الكربون.</p>
+        </div>
+
+        <div class="ov-stake-card">
+          <h5 class="ov-stake-title">التفاعل المستمر وخلق القيمة</h5>
+          <p>إطار تفاعل أصحاب المصلحة في شركة أسمنت الرياض عملية مستمرة تتطور استجابةً لتغير توقعات أصحاب المصلحة والمتطلبات التنظيمية وديناميكيات السوق.</p>
+          <p>من خلال الحوار المفتوح ودمج التغذية الراجعة في صنع القرار ومواءمة ممارسات التفاعل مع أولوياتها الاستراتيجية، تسعى الشركة إلى تعزيز الثقة وتحسين المرونة وتحقيق قيمة مستدامة لجميع أصحاب المصلحة.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- INVESTMENT CASE -->
+  <section class="ov-section ov-invest-section" id="investment" style="padding-top:0;">
+    <div class="ov-section-inner">
+      <div style="width:100%; height:1px; background:#EEEEEE; margin-bottom:40px;"></div>
+
+      <div class="ov-section-title">
+        <span class="ov-section-num">7</span>
+        <h2>حالة الاستثمار</h2>
+      </div>
+      <div class="ov-divider" style="background:#009189;"></div>
+
+      <div class="ov-invest-grid">
+
+        <div class="ov-invest-card">
+          <div class="ov-invest-num">01</div>
+          <h5 class="ov-invest-title">موقع استراتيجي في قلب أكبر ممر طلب في المملكة</h5>
+          <p>توفر قاعدة إنتاج الشركة في المزاحمية (شمال غرب الرياض) ميزة لوجستية ملموسة في فئة منتجات ثقيلة وعالية الشحن كالأسمنت. يدعم القرب من الرياض ومشاريع المنطقة الوسطى كفاءة التوزيع واستجابة العملاء والتنافسية — لا سيما حيث تكون كثافة المشاريع عالية وموثوقية الإمداد حاسمة.</p>
+        </div>
+
+        <div class="ov-invest-card">
+          <div class="ov-invest-num">02</div>
+          <h5 class="ov-invest-title">حجم السوق ومزيج المنتجات المتميز بما فيه الريادة في الأسمنت الأبيض</h5>
+          <p>تُصنَّف الشركة ضمن كبار منتجي الأسمنت السعوديين بحصة سوقية ~6.4% وطاقة إنتاجية سنوية تتجاوز 3.6 مليون طن، مع مركز مهيمن في الأسمنت الأبيض (أكثر من 50% من حصة سوق الأسمنت الأبيض) — تميّز رئيسي في سوق يندر فيه المنتجون العاملون بحجم كبير في الأسمنت الأبيض.</p>
+        </div>
+
+        <div class="ov-invest-card">
+          <div class="ov-invest-num">03</div>
+          <h5 class="ov-invest-title">منصة إنتاج فعّالة ومرنة مع مجال لتحسين الاستخدام</h5>
+          <p>تشغّل الشركة ثلاثة خطوط إنتاج عالية الكفاءة مدعومة بمعدات متطورة وتقنيات الذكاء الاصطناعي، توفر مرونة إنتاجية عبر الكلنكر الرمادي والأبيض. تبلغ الطاقة التصميمية لمصنع الأسمنت الرمادي 3.52 مليون طن سنوياً، فيما تصل طاقة مصنع الأسمنت الأبيض إلى 320,000 طن سنوياً مع إمكانية الوصول إلى نحو مليون طن عند تشغيل الخط الأول لإنتاج الكلنكر الأبيض.</p>
+        </div>
+
+        <div class="ov-invest-card">
+          <div class="ov-invest-num">04</div>
+          <h5 class="ov-invest-title">التنفيذ في التميز التشغيلي والتحول الرقمي</h5>
+          <p>تتعزز حالة الاستثمار بتركيز الشركة على مبادرات التحسين المستمر التي تشمل تحسين الإنتاج وكفاءة الصيانة والتحول الرقمي. تشمل الأولويات التشغيلية خفض تكاليف الإنتاج وتحسين استخدام الطاقة وتعزيز مرونة سلسلة الإمداد عبر شراكات استراتيجية.</p>
+        </div>
+
+        <div class="ov-invest-card">
+          <div class="ov-invest-num">05</div>
+          <h5 class="ov-invest-title">القوة المالية وعوائد المساهمين المنضبطة</h5>
+          <p>يستند الملف المالي للشركة إلى قوة الميزانية العمومية وقدرة توليد النقد وسجل توزيعات الأرباح. للسنة المالية 2025، أعلنت الشركة عن إيرادات بلغت 787.6 مليون ر.س، مع تدفق نقدي حر معلن بـ 111.7 مليون ر.س وعائد على حقوق الملكية 10.96%. كما أعلنت الشركة عن توزيع أرباح بواقع 1 ر.س للسهم في سبتمبر 2025 (إجمالي 120 مليون ر.س).</p>
+        </div>
+
+        <div class="ov-invest-card">
+          <div class="ov-invest-num">06</div>
+          <h5 class="ov-invest-title">استثمارات الاستدامة وكفاءة الطاقة التي تحمي التنافسية</h5>
+          <p>في قطاع تُعدّ فيه تكلفة الطاقة وكثافة الكربون استراتيجيتين متزايدتَي الأهمية، تعزز مبادرات الاستدامة في الشركة التنافسية طويلة الأمد. استثمرت الشركة 249.8 مليون ر.س في إنتاج الكلنكر الموفر للطاقة، وتطور مشاريع استرداد الحرارة المهدرة بطاقة إجمالية 12.7 ميغاواط، وتتقدم في مبادرات الاقتصاد الدائري واستخدام المواد البديلة.</p>
+        </div>
+
+        <div class="ov-invest-card">
+          <div class="ov-invest-num">07</div>
+          <h5 class="ov-invest-title">الحوكمة والشفافية وأنظمة الجودة الداعمة للثقة والاستمرارية</h5>
+          <p>تُولي الشركة أهمية قصوى للتواصل الشفاف مع أصحاب المصلحة واستدامة الحوكمة، مدعومةً بتطور هويتها المؤسسية وحضورها في السوق، ومعززةً بشهادات أنظمة الإدارة المعترف بها دولياً (بما فيها شهادة إدارة الطاقة ISO المُفصَح عنها في التقرير السنوي).</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <img src="assets/Link.png" alt="أسمنت الرياض" />
+        <p>شركة أسمنت الرياض — السوق المالية السعودية<br>(تداول). المزاحمية، شمال غرب الرياض.</p>
+        <span>التقرير السنوي 2025</span>
+      </div>
+      <div class="footer-col">
+        <h4>الشركة</h4>
+        <ul>
+          <li><a href="ar-overview.html">نظرة عامة</a></li>
+          <li><a href="ar-leadership.html">القيادة</a></li>
+          <li><a href="ar-strategic-review.html">المراجعة الاستراتيجية</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>الأداء</h4>
+        <ul>
+          <li><a href="ar-operating-review.html">المراجعة التشغيلية</a></li>
+          <li><a href="ar-sustainability.html">الاستدامة</a></li>
+          <li><a href="ar-financial-review.html">المراجعة المالية</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>الحوكمة</h4>
+        <ul>
+          <li><a href="ar-governance.html">الحوكمة</a></li>
+          <li><a href="#">بوابة علاقات المستثمرين</a></li>
+          <li><a href="#">إفصاحات تداول</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2025 شركة أسمنت الرياض. جميع الحقوق محفوظة.</p>
+      <div class="footer-bottom-links">
+        <a href="#">سياسة الخصوصية</a>
+        <a href="#">شروط الاستخدام</a>
+        <a href="#">تواصل معنا</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/animations.js"></script>
+</body>
+</html>
