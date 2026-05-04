@@ -127,3 +127,50 @@ body { font-family: 'Swissra', sans-serif; }
   left: auto;
   right: 0;
 }
+
+/* =====================
+   RTL — MOBILE RESPONSIVE FIXES
+===================== */
+
+@media (max-width: 860px) {
+  /* Nav */
+  .nav-inner { padding: 0 20px; }
+
+  /* Mobile menu RTL */
+  .mobile-menu { padding: calc(var(--nav-h) + 28px) 28px 48px; }
+  .mobile-menu-links a { text-align: right; }
+  .mobile-menu-links a:hover { padding-left: 0; padding-right: 8px; }
+
+  /* Hero */
+  .hero-text { text-align: right; }
+  .btns  { flex-direction: row-reverse; flex-wrap: wrap; }
+  .stats { flex-direction: row-reverse; flex-wrap: wrap; gap: 14px; }
+  .stat-item { padding: 0 !important; }
+  .stat-divider { display: none; }
+
+  /* Overview banner RTL */
+  .ov-banner-inner { flex-direction: column; align-items: flex-start; }
+  .ov-tags { justify-content: flex-start; }
+
+  /* Overview subnav RTL */
+  .ov-subnav-inner { direction: rtl; }
+
+  /* Overview section title RTL */
+  .ov-section-title { flex-direction: row-reverse; }
+
+  /* History RTL mobile */
+  .ov-history-list::before {
+    right: calc(52px + 14px + 9px);
+    left: auto;
+  }
+  .ov-hist-row { flex-direction: row-reverse; }
+  .ov-hist-year { text-align: left; }
+}
+
+@media (max-width: 520px) {
+  .ov-history-list::before {
+    right: calc(44px + 12px + 9px);
+    left: auto;
+  }
+  .mobile-menu { padding: calc(var(--nav-h) + 20px) 20px 36px; }
+}

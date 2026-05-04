@@ -2,7 +2,8 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#ffffff" />
   <title>الحوكمة — التقرير السنوي لأسمنت الرياض 2025</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -39,6 +40,8 @@
     .bod-details { display:none; border-top:1px solid #e5e5e5; background:#fff; padding:24px; }
     .bod-item.open .bod-details { display:block; }
     .bod-details-grid { display:grid; grid-template-columns:1fr 1fr 1fr; gap:24px; }
+    @media (max-width:1024px) { .bod-details-grid { grid-template-columns:1fr 1fr; gap:16px; } }
+    @media (max-width:768px)  { .bod-details-grid { grid-template-columns:1fr; gap:12px; } .bod-details { padding:14px 16px; } }
     .bod-details-col h4 { font-size:clamp(10px,0.75vw,11px); font-weight:700; color:#009189; text-transform:uppercase; letter-spacing:0.06em; margin-bottom:10px; }
     .bod-details-col ul { list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:7px; }
     .bod-details-col ul li { font-size:clamp(10px,0.75vw,12px); color:#555; line-height:1.65; padding-right:12px; position:relative; }

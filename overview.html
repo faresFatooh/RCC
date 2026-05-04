@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#ffffff" />
   <title>Overview — Riyadh Cement Annual Report 2025</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -730,5 +731,333 @@
 
   <script src="js/main.js"></script>
   <script src="js/animations.js"></script>
+
+  <!-- ═══════════════════════════════════════════
+       OVERVIEW PAGE — PREMIUM SCROLL ANIMATIONS
+  ═══════════════════════════════════════════ -->
+  <script>
+  (function () {
+    'use strict';
+
+    /* ── Respect reduced-motion preference ── */
+    const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (prefersReduced) return;
+
+    /* ── Inject keyframes + base states ── */
+    const style = document.createElement('style');
+    style.textContent = `
+      /* Base hidden states */
+      .ov-anim          { will-change: transform, opacity; }
+      .ov-fade-up       { opacity:0; transform:translateY(40px); }
+      .ov-fade-down     { opacity:0; transform:translateY(-30px); }
+      .ov-fade-left     { opacity:0; transform:translateX(-50px); }
+      .ov-fade-right    { opacity:0; transform:translateX(50px); }
+      .ov-scale-up      { opacity:0; transform:scale(0.88); }
+      .ov-scale-in      { opacity:0; transform:scale(0.94) translateY(20px); }
+      .ov-flip-x        { opacity:0; transform:perspective(600px) rotateX(12deg) translateY(30px); }
+      .ov-slide-reveal  { opacity:0; clip-path:inset(0 100% 0 0); }
+      .ov-blur-in       { opacity:0; filter:blur(8px); transform:translateY(20px); }
+      .ov-count-num     { display:inline-block; }
+
+      /* Animated states */
+      .ov-fade-up.ov-in,
+      .ov-fade-down.ov-in,
+      .ov-fade-left.ov-in,
+      .ov-fade-right.ov-in {
+        opacity:1; transform:none;
+        transition: opacity .7s cubic-bezier(.16,1,.3,1),
+                    transform .7s cubic-bezier(.16,1,.3,1);
+      }
+      .ov-scale-up.ov-in {
+        opacity:1; transform:scale(1);
+        transition: opacity .65s cubic-bezier(.16,1,.3,1),
+                    transform .65s cubic-bezier(.16,1,.3,1);
+      }
+      .ov-scale-in.ov-in {
+        opacity:1; transform:scale(1) translateY(0);
+        transition: opacity .6s cubic-bezier(.16,1,.3,1),
+                    transform .6s cubic-bezier(.16,1,.3,1);
+      }
+      .ov-flip-x.ov-in {
+        opacity:1; transform:perspective(600px) rotateX(0deg) translateY(0);
+        transition: opacity .75s cubic-bezier(.16,1,.3,1),
+                    transform .75s cubic-bezier(.16,1,.3,1);
+      }
+      .ov-slide-reveal.ov-in {
+        opacity:1; clip-path:inset(0 0% 0 0);
+        transition: opacity .1s,
+                    clip-path .9s cubic-bezier(.16,1,.3,1);
+      }
+      .ov-blur-in.ov-in {
+        opacity:1; filter:blur(0); transform:translateY(0);
+        transition: opacity .8s cubic-bezier(.16,1,.3,1),
+                    filter .8s cubic-bezier(.16,1,.3,1),
+                    transform .8s cubic-bezier(.16,1,.3,1);
+      }
+
+      /* Stagger delays */
+      .ov-d1  { transition-delay:.05s !important; }
+      .ov-d2  { transition-delay:.12s !important; }
+      .ov-d3  { transition-delay:.19s !important; }
+      .ov-d4  { transition-delay:.26s !important; }
+      .ov-d5  { transition-delay:.33s !important; }
+      .ov-d6  { transition-delay:.40s !important; }
+      .ov-d7  { transition-delay:.47s !important; }
+      .ov-d8  { transition-delay:.54s !important; }
+      .ov-d9  { transition-delay:.61s !important; }
+
+      /* Revenue bar animated width */
+      .ov-rev-bar-fill { width:0 !important; transition: width 1.4s cubic-bezier(.16,1,.3,1) .3s; }
+      .ov-rev-bar-fill.ov-bar-in { width:var(--bar-w) !important; }
+
+      /* History dot pulse */
+      @keyframes ov-dot-pulse {
+        0%   { box-shadow: 0 0 0 0 rgba(0,145,137,.5); }
+        70%  { box-shadow: 0 0 0 8px rgba(0,145,137,0); }
+        100% { box-shadow: 0 0 0 0 rgba(0,145,137,0); }
+      }
+      .ov-hist-dot.ov-dot-active { animation: ov-dot-pulse 1.2s ease-out; }
+
+      /* KPI value count-up shimmer */
+      @keyframes ov-shimmer {
+        0%   { background-position: -200% center; }
+        100% { background-position: 200% center; }
+      }
+      .ov-kpi-val.ov-counting {
+        background: linear-gradient(90deg, #009189 30%, #00d4c8 50%, #009189 70%);
+        background-size: 200% auto;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+        animation: ov-shimmer .8s linear infinite;
+      }
+
+      /* Section title underline draw */
+      .ov-divider { transform-origin:left; transform:scaleX(0); transition: transform .8s cubic-bezier(.16,1,.3,1) .2s; }
+      .ov-divider.ov-in { transform:scaleX(1); }
+
+      /* Banner tag pop */
+      .ov-tags a { opacity:0; transform:translateY(10px) scale(.95);
+        transition: opacity .4s ease, transform .4s cubic-bezier(.16,1,.3,1); }
+      .ov-tags.ov-in a { opacity:1; transform:none; }
+
+      /* Hero image parallax hint */
+      .ov-hero-wrap { overflow:hidden; }
+      .ov-frame { transform:scale(1.06); transition: transform 1.2s cubic-bezier(.16,1,.3,1); }
+      .ov-hero-wrap.ov-in .ov-frame { transform:scale(1); }
+      .ov-helmet { opacity:0; transform:translateY(30px) scale(.95);
+        transition: opacity .9s cubic-bezier(.16,1,.3,1) .3s,
+                    transform .9s cubic-bezier(.16,1,.3,1) .3s; }
+      .ov-hero-wrap.ov-in .ov-helmet { opacity:1; transform:translateY(-42%) translateX(-50%) scale(1); }
+
+      /* Month card flip */
+      .ov-month-card {
+        opacity:0; transform:translateY(24px) rotateX(6deg);
+        transform-origin: top center;
+        perspective: 800px;
+        transition: opacity .55s cubic-bezier(.16,1,.3,1),
+                    transform .55s cubic-bezier(.16,1,.3,1);
+      }
+      .ov-month-card.ov-in { opacity:1; transform:translateY(0) rotateX(0); }
+
+      /* Invest card hover lift */
+      .ov-invest-card {
+        transition: transform .3s cubic-bezier(.16,1,.3,1),
+                    box-shadow .3s ease;
+      }
+      .ov-invest-card:hover {
+        transform: translateY(-6px);
+        box-shadow: 0 16px 40px rgba(0,145,137,.15);
+      }
+
+      /* Stake card hover */
+      .ov-stake-card {
+        transition: transform .3s cubic-bezier(.16,1,.3,1),
+                    box-shadow .3s ease,
+                    border-color .3s;
+      }
+      .ov-stake-card:hover {
+        transform: translateY(-4px);
+        box-shadow: 0 12px 32px rgba(0,0,0,.08);
+        border-color: #009189;
+      }
+
+      /* Bags image reveal */
+      .ov-bags-img { overflow:hidden; }
+      .ov-bags-img img {
+        transform:scale(1.08);
+        transition: transform 1.4s cubic-bezier(.16,1,.3,1);
+      }
+      .ov-bags-img.ov-in img { transform:scale(1); }
+    `;
+    document.head.appendChild(style);
+
+    /* ── Helpers ── */
+    const q  = s => document.querySelector(s);
+    const qa = s => [...document.querySelectorAll(s)];
+    const add = (el, ...cls) => el && el.classList.add(...cls);
+
+    /* ── Assign animation classes ── */
+    function assignClasses () {
+
+      /* Banner */
+      add(q('.ov-section-label'), 'ov-anim', 'ov-fade-down');
+      add(q('.ov-title'),         'ov-anim', 'ov-blur-in');
+      add(q('.ov-tags'),          'ov-anim');
+      add(q('.ov-more-btn'),      'ov-anim', 'ov-fade-right');
+
+      /* Hero */
+      add(q('.ov-hero-wrap'), 'ov-anim');
+
+      /* Section titles + dividers */
+      qa('.ov-section-title').forEach(el => add(el, 'ov-anim', 'ov-fade-up'));
+      qa('.ov-divider').forEach(el => add(el, 'ov-anim'));
+
+      /* About */
+      add(q('.ov-card-beige'),     'ov-anim', 'ov-flip-x');
+      qa('.ov-sub-title').forEach((el, i) => add(el, 'ov-anim', 'ov-fade-left', `ov-d${(i%3)+1}`));
+      add(q('.ov-products-block'), 'ov-anim', 'ov-fade-up', 'ov-d2');
+      add(q('.ov-lob-wrap'),       'ov-anim', 'ov-fade-up', 'ov-d1');
+      qa('.ov-biz-card').forEach((el, i) => add(el, 'ov-anim', 'ov-scale-in', `ov-d${i+1}`));
+
+      /* Bags image */
+      add(q('.ov-bags-img'), 'ov-anim');
+
+      /* KPI cards — staggered scale */
+      qa('.ov-kpi-card').forEach((el, i) => {
+        add(el, 'ov-anim', 'ov-scale-in', `ov-d${(i % 9) + 1}`);
+      });
+
+      /* Highlights titles */
+      qa('.ov-highlights-title').forEach(el => add(el, 'ov-anim', 'ov-fade-left'));
+
+      /* Sustainability tags */
+      qa('.ov-sustain-tag').forEach((el, i) => add(el, 'ov-anim', 'ov-scale-up', `ov-d${(i%7)+1}`));
+
+      /* Awards */
+      add(q('.ov-awards-card'), 'ov-anim', 'ov-fade-up', 'ov-d2');
+      qa('.ov-awards-list li').forEach((el, i) => add(el, 'ov-anim', 'ov-fade-left', `ov-d${i+1}`));
+
+      /* Timeline month cards */
+      qa('.ov-month-card').forEach((el, i) => {
+        el.style.transitionDelay = `${(i % 3) * 0.08}s`;
+      });
+
+      /* Where We Operate */
+      add(q('.ov-map-col'),     'ov-anim', 'ov-fade-left',  'ov-d1');
+      add(q('.ov-revenue-card'),'ov-anim', 'ov-fade-right', 'ov-d2');
+      add(q('.ov-body-text'),   'ov-anim', 'ov-fade-up');
+
+      /* Revenue bars — store target width */
+      qa('.ov-rev-bar-fill').forEach(el => {
+        const w = el.style.width || '0%';
+        el.style.setProperty('--bar-w', w);
+      });
+
+      /* History rows */
+      qa('.ov-hist-row').forEach((el, i) => {
+        add(el, 'ov-anim', 'ov-fade-left');
+        el.style.transitionDelay = `${i * 0.04}s`;
+      });
+
+      /* Stakeholder cards */
+      qa('.ov-stake-card').forEach((el, i) => add(el, 'ov-anim', 'ov-scale-in', `ov-d${(i%6)+1}`));
+
+      /* Investment cards */
+      qa('.ov-invest-card').forEach((el, i) => add(el, 'ov-anim', 'ov-fade-up', `ov-d${(i%7)+1}`));
+      qa('.ov-invest-num').forEach(el => add(el, 'ov-anim', 'ov-scale-up'));
+    }
+
+    /* ── IntersectionObserver ── */
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+
+        /* Banner tags — stagger children */
+        if (el.classList.contains('ov-tags')) {
+          el.classList.add('ov-in');
+          qa('.ov-tags a').forEach((a, i) => {
+            a.style.transitionDelay = `${i * 0.07}s`;
+          });
+          io.unobserve(el);
+          return;
+        }
+
+        /* Revenue bars */
+        if (el.classList.contains('ov-rev-bar-fill')) {
+          el.classList.add('ov-bar-in');
+          io.unobserve(el);
+          return;
+        }
+
+        /* KPI count-up */
+        if (el.classList.contains('ov-kpi-val')) {
+          el.classList.add('ov-in');
+          runCountUp(el);
+          io.unobserve(el);
+          return;
+        }
+
+        /* History dot pulse */
+        if (el.classList.contains('ov-hist-dot')) {
+          setTimeout(() => el.classList.add('ov-dot-active'), 300);
+          io.unobserve(el);
+          return;
+        }
+
+        el.classList.add('ov-in');
+        io.unobserve(el);
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+    /* ── Count-up for KPI values ── */
+    function runCountUp (el) {
+      const raw = el.textContent.trim();
+      const num = parseFloat(raw.replace(/[^0-9.]/g, ''));
+      if (isNaN(num) || num === 0) return;
+
+      const prefix = raw.match(/^[^0-9]*/)?.[0] || '';
+      const suffix = raw.match(/[^0-9.]+$/)?.[0] || '';
+      const decimals = (raw.split('.')[1] || '').replace(/[^0-9]/g,'').length;
+      const duration = 1200;
+      const start = performance.now();
+
+      el.classList.add('ov-counting');
+
+      function tick (now) {
+        const p = Math.min((now - start) / duration, 1);
+        const ease = 1 - Math.pow(1 - p, 3);
+        const val = num * ease;
+        el.textContent = prefix + (decimals > 0 ? val.toFixed(decimals) : Math.round(val).toLocaleString('en-US')) + suffix;
+        if (p < 1) {
+          requestAnimationFrame(tick);
+        } else {
+          el.textContent = raw;
+          el.classList.remove('ov-counting');
+        }
+      }
+      requestAnimationFrame(tick);
+    }
+
+    /* ── Observe everything ── */
+    function observeAll () {
+      qa('.ov-anim').forEach(el => io.observe(el));
+      qa('.ov-rev-bar-fill').forEach(el => io.observe(el));
+      qa('.ov-kpi-val').forEach(el => io.observe(el));
+      qa('.ov-hist-dot').forEach(el => io.observe(el));
+      qa('.ov-month-card').forEach(el => io.observe(el));
+    }
+
+    /* ── Init ── */
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => { assignClasses(); observeAll(); });
+    } else {
+      assignClasses();
+      observeAll();
+    }
+
+  })();
+  </script>
 </body>
 </html>

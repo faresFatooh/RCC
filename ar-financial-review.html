@@ -2,7 +2,8 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#ffffff" />
   <title>المراجعة المالية — التقرير السنوي لأسمنت الرياض 2025</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -216,12 +217,13 @@
         .fc-wrap:hover .fc-line { opacity:0.3; }
         .fc-wrap:hover .fc-line-hovered { opacity:1; }
         .fc-tooltip {
-          position:absolute; background:#1a1a1a; color:#fff;
-          font-size:11px; padding:8px 12px; border-radius:6px;
+          position:absolute; background:#fff; color:#1a1a1a;
+          font-size:clamp(11px,0.85vw,14px); padding:16px 20px;
+          border:1px solid #e0e0e0; border-radius:4px;
           pointer-events:none; white-space:nowrap;
           opacity:0; transition:opacity 0.15s;
-          transform:translate(-50%,-100%); margin-top:-10px;
-          line-height:1.7; z-index:10;
+          line-height:2; z-index:10;
+          font-family:'Swissra',sans-serif;
         }
         .fc-tooltip.show { opacity:1; }
         .fc-legend { display:flex; gap:20px; flex-wrap:wrap; margin-top:14px; justify-content:center; }
@@ -345,26 +347,62 @@
           });
         },{threshold:0.2});
         obs.observe(wrap);
-        svg.querySelectorAll('.fc-dot').forEach(function(dot){
-          dot.addEventListener('mouseenter', function(){
-            var svgRect  = svg.getBoundingClientRect();
-            var wrapRect = wrap.getBoundingClientRect();
-            var cx = parseFloat(this.getAttribute('cx'));
-            var cy = parseFloat(this.getAttribute('cy'));
-            var px = cx*(svgRect.width/1352)  + (svgRect.left-wrapRect.left);
-            var py = cy*(svgRect.height/320) + (svgRect.top-wrapRect.top);
-            tip.innerHTML = '<strong>'+this.dataset.year+'</strong><br>'+this.dataset.label+': '+this.dataset.val;
-            tip.style.left = px+'px'; tip.style.top = py+'px';
+
+        var cols = [
+          { x:65,     year:'2021', rev:'671k', gp:'267k', op:'233k', np:'214k' },
+          { x:385.5,  year:'2022', rev:'598k', gp:'232k', op:'202k', np:'190k' },
+          { x:706,    year:'2023', rev:'643k', gp:'237k', op:'201k', np:'189k' },
+          { x:1026.5, year:'2024', rev:'789k', gp:'329k', op:'293k', np:'310k' },
+          { x:1347,   year:'2025', rev:'788k', gp:'258k', op:'216k', np:'208k' }
+        ];
+
+        var cursor = document.createElementNS('http://www.w3.org/2000/svg','line');
+        cursor.setAttribute('y1','5'); cursor.setAttribute('y2','261');
+        cursor.setAttribute('stroke','#ccc'); cursor.setAttribute('stroke-width','1');
+        cursor.setAttribute('pointer-events','none');
+        cursor.style.display = 'none';
+        svg.appendChild(cursor);
+
+        var colW = 320.5;
+        cols.forEach(function(col, i){
+          var zoneX = col.x - colW/2;
+          if(i === 0) zoneX = 5;
+          var zoneW = (i === cols.length-1) ? (1347 - zoneX) : colW;
+
+          var zone = document.createElementNS('http://www.w3.org/2000/svg','rect');
+          zone.setAttribute('x', zoneX);
+          zone.setAttribute('y', '0');
+          zone.setAttribute('width', zoneW);
+          zone.setAttribute('height', '280');
+          zone.setAttribute('fill', 'transparent');
+          zone.style.cursor = 'crosshair';
+
+          zone.addEventListener('mouseenter', function(){
+            cursor.setAttribute('x1', col.x); cursor.setAttribute('x2', col.x);
+            cursor.style.display = '';
+            tip.innerHTML =
+              '<strong style="font-size:1.1em;color:#1a1a1a;">'+col.year+'</strong><br><br>'+
+              '<span style="color:#009189;">الإيرادات : ر.س '+col.rev+'</span><br>'+
+              '<span style="color:#20419A;">إجمالي الربح : ر.س '+col.gp+'</span><br>'+
+              '<span style="color:#00AE81;">الربح التشغيلي : ر.س '+col.op+'</span><br>'+
+              '<span style="color:#EF373E;">صافي الربح : ر.س '+col.np+'</span>';
             tip.classList.add('show');
-            var lid = this.dataset.line;
-            svg.querySelectorAll('.fc-line').forEach(function(l){ l.classList.remove('fc-line-hovered'); });
-            if(lid){ var el=document.getElementById(lid); if(el) el.classList.add('fc-line-hovered'); }
           });
-          dot.addEventListener('mouseleave', function(){
+          zone.addEventListener('mousemove', function(ev){
+            var wrapRect = wrap.getBoundingClientRect();
+            var px = ev.clientX - wrapRect.left;
+            var py = ev.clientY - wrapRect.top;
+            tip.style.left = (px - tip.offsetWidth - 16) + 'px';
+            tip.style.top  = (py - tip.offsetHeight/2) + 'px';
+            tip.style.transform = 'none';
+          });
+          zone.addEventListener('mouseleave', function(){
+            cursor.style.display = 'none';
             tip.classList.remove('show');
-            svg.querySelectorAll('.fc-line').forEach(function(l){ l.classList.remove('fc-line-hovered'); });
           });
+          svg.appendChild(zone);
         });
+
         wrap.querySelectorAll('.fc-legend-item').forEach(function(item){
           item.addEventListener('click', function(){
             var lid = this.dataset.line;
@@ -583,26 +621,60 @@
           });
         },{threshold:0.2});
         obs.observe(wrap);
-        svg.querySelectorAll('.fc-dot').forEach(function(dot){
-          dot.addEventListener('mouseenter', function(){
-            var svgRect  = svg.getBoundingClientRect();
-            var wrapRect = wrap.getBoundingClientRect();
-            var cx = parseFloat(this.getAttribute('cx'));
-            var cy = parseFloat(this.getAttribute('cy'));
-            var px = cx*(svgRect.width/1352)  + (svgRect.left-wrapRect.left);
-            var py = cy*(svgRect.height/280) + (svgRect.top-wrapRect.top);
-            tip.innerHTML = '<strong>'+this.dataset.year+'</strong><br>'+this.dataset.label+': '+this.dataset.val;
-            tip.style.left = px+'px'; tip.style.top = py+'px';
+
+        var cols3 = [
+          { x:65,     year:'2021', gm:'39.7%', nm:'31.8%' },
+          { x:385.5,  year:'2022', gm:'38.7%', nm:'31.7%' },
+          { x:706,    year:'2023', gm:'36.8%', nm:'29.3%' },
+          { x:1026.5, year:'2024', gm:'41.6%', nm:'39.3%' },
+          { x:1347,   year:'2025', gm:'32.7%', nm:'26.4%' }
+        ];
+
+        var cursor3 = document.createElementNS('http://www.w3.org/2000/svg','line');
+        cursor3.setAttribute('y1','5'); cursor3.setAttribute('y2','221');
+        cursor3.setAttribute('stroke','#ccc'); cursor3.setAttribute('stroke-width','1');
+        cursor3.setAttribute('pointer-events','none');
+        cursor3.style.display = 'none';
+        svg.appendChild(cursor3);
+
+        var colW3 = 320.5;
+        cols3.forEach(function(col, i){
+          var zoneX = col.x - colW3/2;
+          if(i === 0) zoneX = 5;
+          var zoneW = (i === cols3.length-1) ? (1347 - zoneX) : colW3;
+
+          var zone = document.createElementNS('http://www.w3.org/2000/svg','rect');
+          zone.setAttribute('x', zoneX);
+          zone.setAttribute('y', '0');
+          zone.setAttribute('width', zoneW);
+          zone.setAttribute('height', '260');
+          zone.setAttribute('fill', 'transparent');
+          zone.style.cursor = 'crosshair';
+
+          zone.addEventListener('mouseenter', function(){
+            cursor3.setAttribute('x1', col.x); cursor3.setAttribute('x2', col.x);
+            cursor3.style.display = '';
+            tip.innerHTML =
+              '<strong style="font-size:1.1em;color:#1a1a1a;">'+col.year+'</strong><br><br>'+
+              '<span style="color:#009189;">هامش إجمالي الربح : '+col.gm+'</span><br>'+
+              '<span style="color:#20419A;">هامش صافي الربح : '+col.nm+'</span>';
             tip.classList.add('show');
-            var lid = this.dataset.line;
-            svg.querySelectorAll('.fc-line').forEach(function(l){ l.classList.remove('fc-line-hovered'); });
-            if(lid){ var el=document.getElementById(lid); if(el) el.classList.add('fc-line-hovered'); }
           });
-          dot.addEventListener('mouseleave', function(){
+          zone.addEventListener('mousemove', function(ev){
+            var wrapRect = wrap.getBoundingClientRect();
+            var px = ev.clientX - wrapRect.left;
+            var py = ev.clientY - wrapRect.top;
+            tip.style.left = (px - tip.offsetWidth - 16) + 'px';
+            tip.style.top  = (py - tip.offsetHeight/2) + 'px';
+            tip.style.transform = 'none';
+          });
+          zone.addEventListener('mouseleave', function(){
+            cursor3.style.display = 'none';
             tip.classList.remove('show');
-            svg.querySelectorAll('.fc-line').forEach(function(l){ l.classList.remove('fc-line-hovered'); });
           });
+          svg.appendChild(zone);
         });
+
         wrap.querySelectorAll('.fc-legend-item').forEach(function(item){
           item.addEventListener('click', function(){
             var lid = this.dataset.line;
@@ -658,43 +730,80 @@
 
         <!-- الهيكل الرأسمالي -->
         <div>
-          <p style="font-size:clamp(12px,0.9vw,14px); font-weight:700; color:#1a1a1a; margin-bottom:20px;">الهيكل الرأسمالي (2025)</p>
-          <div style="display:flex; align-items:center; justify-content:center; gap:16px;">
-            <span style="font-size:clamp(10px,0.78vw,12px); color:#009189; font-weight:600; white-space:nowrap;">حقوق الملكية: 90.6%</span>
-            <div style="width:160px; height:160px; flex-shrink:0;">
-              <img src="assets/Group (6).svg" alt="الهيكل الرأسمالي" style="width:100%; height:100%; display:block;" />
-            </div>
-            <span style="font-size:clamp(10px,0.78vw,12px); color:#555; font-weight:500; white-space:nowrap;">الالتزامات: 9.4%</span>
+          <p style="font-size:clamp(12px,0.9vw,14px); font-weight:700; color:#1a1a1a; margin-bottom:16px;">الهيكل الرأسمالي (2025)</p>
+          <div style="position:relative;">
+            <svg viewBox="0 0 429 200" style="width:100%; height:auto; display:block; overflow:visible;" direction="ltr">
+              <path fill="#009189" stroke="#fff" stroke-width="2"
+                d="M 299.5,100A 85,85,0,1,0,285.03966130745476,147.42526945236654L 260.1433102577648,130.68693905741364A 55,55,0,1,1,269.5,100 Z"
+                data-name="حقوق الملكية" data-val="ر.س 1,718,191"
+                onmouseenter="showDonutTip('ar-donut1-tip',this)" onmouseleave="hideDonutTip('ar-donut1-tip')" style="cursor:pointer;transition:opacity 0.2s;" onmouseover="this.style.opacity=0.8" onmouseout="this.style.opacity=1"/>
+              <path fill="#343741" stroke="#fff" stroke-width="2"
+                d="M 285.03966130745476,147.42526945236654A 85,85,0,0,0,299.5,100.00000000000001L 269.5,100.00000000000001A 55,55,0,0,1,260.1433102577648,130.68693905741364 Z"
+                data-name="الالتزامات" data-val="ر.س 178,696"
+                onmouseenter="showDonutTip('ar-donut1-tip',this)" onmouseleave="hideDonutTip('ar-donut1-tip')" style="cursor:pointer;transition:opacity 0.2s;" onmouseover="this.style.opacity=0.8" onmouseout="this.style.opacity=1"/>
+              <text x="114" y="69" font-size="10" fill="#009189" font-weight="600" text-anchor="end" font-family="Swissra,sans-serif">حقوق الملكية: 90.6%</text>
+              <text x="315" y="131" font-size="10" fill="#343741" font-weight="600" text-anchor="start" font-family="Swissra,sans-serif">الالتزامات: 9.4%</text>
+            </svg>
+            <div id="ar-donut1-tip" style="position:absolute;background:#fff;color:#1a1a1a;font-size:clamp(12px,0.9vw,15px);font-weight:700;padding:12px 20px;border:1px solid #e5e5e5;border-radius:4px;pointer-events:none;white-space:nowrap;opacity:0;transition:opacity 0.15s;z-index:10;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Swissra',sans-serif;"></div>
           </div>
         </div>
 
         <!-- الإيرادات حسب المنتج -->
         <div>
-          <p style="font-size:clamp(12px,0.9vw,14px); font-weight:700; color:#1a1a1a; margin-bottom:20px;">الإيرادات حسب المنتج (2025)</p>
-          <div style="display:flex; align-items:center; justify-content:center; gap:16px;">
-            <span style="font-size:clamp(10px,0.78vw,12px); color:#009189; font-weight:600; white-space:nowrap;">الأسمنت الرمادي: 79.4%</span>
-            <div style="width:160px; height:160px; flex-shrink:0;">
-              <img src="assets/Group (7).svg" alt="الإيرادات حسب المنتج" style="width:100%; height:100%; display:block;" />
-            </div>
-            <span style="font-size:clamp(10px,0.78vw,12px); color:#555; font-weight:500; white-space:nowrap;">الأسمنت الأبيض: 20.6%</span>
+          <p style="font-size:clamp(12px,0.9vw,14px); font-weight:700; color:#1a1a1a; margin-bottom:16px;">الإيرادات حسب المنتج (2025)</p>
+          <div style="position:relative;">
+            <svg viewBox="0 0 429 200" style="width:100%; height:auto; display:block; overflow:visible;" direction="ltr">
+              <path fill="#009189" stroke="#fff" stroke-width="2"
+                d="M 299.5,100A 85,85,0,1,0,237.70091451897267,181.7723520848173L 229.5123564534529,152.9115219372347A 55,55,0,1,1,269.5,100 Z"
+                data-name="الأسمنت الرمادي" data-val="ر.س 625,380"
+                onmouseenter="showDonutTip('ar-donut2-tip',this)" onmouseleave="hideDonutTip('ar-donut2-tip')" style="cursor:pointer;transition:opacity 0.2s;" onmouseover="this.style.opacity=0.8" onmouseout="this.style.opacity=1"/>
+              <path fill="#F1D3D5" stroke="#fff" stroke-width="2"
+                d="M 237.70091451897267,181.7723520848173A 85,85,0,0,0,299.5,99.99999999999994L 269.5,99.99999999999997A 55,55,0,0,1,229.5123564534529,152.9115219372347 Z"
+                data-name="الأسمنت الأبيض" data-val="ر.س 162,246"
+                onmouseenter="showDonutTip('ar-donut2-tip',this)" onmouseleave="hideDonutTip('ar-donut2-tip')" style="cursor:pointer;transition:opacity 0.2s;" onmouseover="this.style.opacity=0.8" onmouseout="this.style.opacity=1"/>
+              <text x="130.7" y="36.7" font-size="10" fill="#009189" font-weight="600" text-anchor="end" font-family="Swissra,sans-serif">الأسمنت الرمادي: 79.4%</text>
+              <text x="298.3" y="163.3" font-size="10" fill="#F1D3D5" font-weight="600" text-anchor="start" font-family="Swissra,sans-serif">الأسمنت الأبيض: 20.6%</text>
+            </svg>
+            <div id="ar-donut2-tip" style="position:absolute;background:#fff;color:#1a1a1a;font-size:clamp(12px,0.9vw,15px);font-weight:700;padding:12px 20px;border:1px solid #e5e5e5;border-radius:4px;pointer-events:none;white-space:nowrap;opacity:0;transition:opacity 0.15s;z-index:10;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Swissra',sans-serif;"></div>
           </div>
         </div>
 
         <!-- الإيرادات حسب الجغرافيا -->
         <div>
-          <p style="font-size:clamp(12px,0.9vw,14px); font-weight:700; color:#1a1a1a; margin-bottom:20px;">الإيرادات حسب الجغرافيا (2025)</p>
-          <div style="display:flex; align-items:center; justify-content:center; gap:16px;">
-            <span style="font-size:clamp(10px,0.78vw,12px); color:#009189; font-weight:600; white-space:nowrap;">المملكة العربية السعودية: 99.7%</span>
-            <div style="width:160px; height:160px; flex-shrink:0;">
-              <img src="assets/Group (8).svg" alt="الإيرادات حسب الجغرافيا" style="width:100%; height:100%; display:block;" />
-            </div>
-            <span style="font-size:clamp(10px,0.78vw,12px); color:#555; font-weight:500; white-space:nowrap;">الأسواق التصديرية: 0.3%</span>
+          <p style="font-size:clamp(12px,0.9vw,14px); font-weight:700; color:#1a1a1a; margin-bottom:16px;">الإيرادات حسب الجغرافيا (2025)</p>
+          <div style="position:relative;">
+            <svg viewBox="0 0 429 200" style="width:100%; height:auto; display:block; overflow:visible;" direction="ltr">
+              <path fill="#009189" stroke="#fff" stroke-width="2"
+                d="M 299.5,100A 85,85,0,1,0,299.4848999523688,101.6021173758097L 269.49022938094447,101.03666418434744A 55,55,0,1,1,269.5,100 Z"
+                data-name="المملكة العربية السعودية" data-val="ر.س 784,881"
+                onmouseenter="showDonutTip('ar-donut3-tip',this)" onmouseleave="hideDonutTip('ar-donut3-tip')" style="cursor:pointer;transition:opacity 0.2s;" onmouseover="this.style.opacity=0.8" onmouseout="this.style.opacity=1"/>
+              <path fill="#343741" stroke="#fff" stroke-width="2"
+                d="M 299.4848999523688,101.6021173758097A 85,85,0,0,0,299.5,100.00000000000001L 269.5,100.00000000000001A 55,55,0,0,1,269.49022938094447,101.03666418434744 Z"
+                data-name="الأسواق التصديرية" data-val="ر.س 2,745"
+                onmouseenter="showDonutTip('ar-donut3-tip',this)" onmouseleave="hideDonutTip('ar-donut3-tip')" style="cursor:pointer;transition:opacity 0.2s;" onmouseover="this.style.opacity=0.8" onmouseout="this.style.opacity=1"/>
+              <text x="109.5" y="99" font-size="10" fill="#009189" font-weight="600" text-anchor="end" font-family="Swissra,sans-serif">المملكة العربية السعودية: 99.7%</text>
+              <text x="319.5" y="101" font-size="10" fill="#343741" font-weight="600" text-anchor="start" font-family="Swissra,sans-serif">الأسواق التصديرية: 0.3%</text>
+            </svg>
+            <div id="ar-donut3-tip" style="position:absolute;background:#fff;color:#1a1a1a;font-size:clamp(12px,0.9vw,15px);font-weight:700;padding:12px 20px;border:1px solid #e5e5e5;border-radius:4px;pointer-events:none;white-space:nowrap;opacity:0;transition:opacity 0.15s;z-index:10;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Swissra',sans-serif;"></div>
           </div>
         </div>
 
       </div>
-    </div>
-  </section>
+
+      <script>
+      if(typeof showDonutTip === 'undefined') {
+        function showDonutTip(tipId, el) {
+          var tip = document.getElementById(tipId);
+          if(!tip) return;
+          tip.textContent = el.dataset.name + ' : ' + el.dataset.val;
+          tip.style.opacity = '1';
+        }
+        function hideDonutTip(tipId) {
+          var tip = document.getElementById(tipId);
+          if(tip) tip.style.opacity = '0';
+        }
+      }
+      </script>
 
   <!-- سكشن 7 — الإيرادات حسب الجغرافيا (جدول) -->
   <section class="ov-section" style="padding-top:0; background:#fff;">

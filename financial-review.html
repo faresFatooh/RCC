@@ -3,7 +3,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#ffffff" />
   <title>Financial Review — Riyadh Cement Annual Report 2025</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -199,12 +200,13 @@
         .fc-wrap:hover .fc-line { opacity:0.3; }
         .fc-wrap:hover .fc-line-hovered { opacity:1; }
         .fc-tooltip {
-          position:absolute; background:#1a1a1a; color:#fff;
-          font-size:11px; padding:8px 12px; border-radius:6px;
+          position:absolute; background:#fff; color:#1a1a1a;
+          font-size:clamp(11px,0.85vw,14px); padding:16px 20px;
+          border:1px solid #e0e0e0; border-radius:4px;
           pointer-events:none; white-space:nowrap;
           opacity:0; transition:opacity 0.15s;
-          transform:translate(-50%,-100%); margin-top:-10px;
-          line-height:1.7; z-index:10;
+          line-height:2; z-index:10;
+          font-family:'Montserrat',sans-serif;
         }
         .fc-tooltip.show { opacity:1; }
         .fc-legend { display:flex; gap:20px; flex-wrap:wrap; margin-top:14px; justify-content:center; }
@@ -322,32 +324,76 @@
         var svg  = document.getElementById('lineChart1');
         var tip  = document.getElementById('lc1-tip');
         if(!wrap||!svg||!tip) return;
+
+        // IntersectionObserver → animate
         var obs = new IntersectionObserver(function(entries){
           entries.forEach(function(e){
             if(e.isIntersecting){ wrap.classList.add('visible'); svg.classList.add('animated'); obs.unobserve(wrap); }
           });
         },{threshold:0.2});
         obs.observe(wrap);
-        svg.querySelectorAll('.fc-dot').forEach(function(dot){
-          dot.addEventListener('mouseenter', function(){
-            var svgRect  = svg.getBoundingClientRect();
-            var wrapRect = wrap.getBoundingClientRect();
-            var cx = parseFloat(this.getAttribute('cx'));
-            var cy = parseFloat(this.getAttribute('cy'));
-            var px = cx*(svgRect.width/1352)  + (svgRect.left-wrapRect.left);
-            var py = cy*(svgRect.height/320) + (svgRect.top-wrapRect.top);
-            tip.innerHTML = '<strong>'+this.dataset.year+'</strong><br>'+this.dataset.label+': '+this.dataset.val;
-            tip.style.left = px+'px'; tip.style.top = py+'px';
+
+        // Column hover data — 5 years
+        var cols = [
+          { x:65,     year:'2021', rev:'671k', gp:'267k', op:'233k', np:'214k' },
+          { x:385.5,  year:'2022', rev:'598k', gp:'232k', op:'202k', np:'190k' },
+          { x:706,    year:'2023', rev:'643k', gp:'237k', op:'201k', np:'189k' },
+          { x:1026.5, year:'2024', rev:'789k', gp:'329k', op:'293k', np:'310k' },
+          { x:1347,   year:'2025', rev:'788k', gp:'258k', op:'216k', np:'208k' }
+        ];
+
+        // Create vertical cursor line
+        var cursor = document.createElementNS('http://www.w3.org/2000/svg','line');
+        cursor.setAttribute('y1','5'); cursor.setAttribute('y2','261');
+        cursor.setAttribute('stroke','#ccc'); cursor.setAttribute('stroke-width','1');
+        cursor.setAttribute('pointer-events','none');
+        cursor.style.display = 'none';
+        svg.appendChild(cursor);
+
+        // Create hover zones (invisible rects over each column)
+        var vbW = 1352, vbH = 320;
+        var colW = 320.5; // approx spacing between columns
+        cols.forEach(function(col, i){
+          var zoneX = col.x - colW/2;
+          if(i === 0) zoneX = 5;
+          var zoneW = (i === cols.length-1) ? (1347 - zoneX) : colW;
+
+          var zone = document.createElementNS('http://www.w3.org/2000/svg','rect');
+          zone.setAttribute('x', zoneX);
+          zone.setAttribute('y', '0');
+          zone.setAttribute('width', zoneW);
+          zone.setAttribute('height', '280');
+          zone.setAttribute('fill', 'transparent');
+          zone.style.cursor = 'crosshair';
+
+          zone.addEventListener('mouseenter', function(){
+            // show cursor line
+            cursor.setAttribute('x1', col.x); cursor.setAttribute('x2', col.x);
+            cursor.style.display = '';
+            tip.innerHTML =
+              '<strong style="font-size:1.1em;color:#1a1a1a;">'+col.year+'</strong><br><br>'+
+              '<span style="color:#009189;">Revenue : SAR '+col.rev+'</span><br>'+
+              '<span style="color:#20419A;">Gross Profit : SAR '+col.gp+'</span><br>'+
+              '<span style="color:#00AE81;">Operating Profit : SAR '+col.op+'</span><br>'+
+              '<span style="color:#EF373E;">Net Profit : SAR '+col.np+'</span>';
             tip.classList.add('show');
-            var lid = this.dataset.line;
-            svg.querySelectorAll('.fc-line').forEach(function(l){ l.classList.remove('fc-line-hovered'); });
-            if(lid){ var el=document.getElementById(lid); if(el) el.classList.add('fc-line-hovered'); }
           });
-          dot.addEventListener('mouseleave', function(){
+          zone.addEventListener('mousemove', function(ev){
+            var wrapRect = wrap.getBoundingClientRect();
+            var px = ev.clientX - wrapRect.left;
+            var py = ev.clientY - wrapRect.top;
+            tip.style.left = (px - tip.offsetWidth - 16) + 'px';
+            tip.style.top  = (py - tip.offsetHeight/2) + 'px';
+            tip.style.transform = 'none';
+          });
+          zone.addEventListener('mouseleave', function(){
+            cursor.style.display = 'none';
             tip.classList.remove('show');
-            svg.querySelectorAll('.fc-line').forEach(function(l){ l.classList.remove('fc-line-hovered'); });
           });
+          svg.appendChild(zone);
         });
+
+        // Legend click → highlight line
         wrap.querySelectorAll('.fc-legend-item').forEach(function(item){
           item.addEventListener('click', function(){
             var lid = this.dataset.line;
@@ -569,26 +615,63 @@
           });
         },{threshold:0.2});
         obs.observe(wrap);
-        svg.querySelectorAll('.fc-dot').forEach(function(dot){
-          dot.addEventListener('mouseenter', function(){
-            var svgRect  = svg.getBoundingClientRect();
-            var wrapRect = wrap.getBoundingClientRect();
-            var cx = parseFloat(this.getAttribute('cx'));
-            var cy = parseFloat(this.getAttribute('cy'));
-            var px = cx*(svgRect.width/1352)  + (svgRect.left-wrapRect.left);
-            var py = cy*(svgRect.height/280) + (svgRect.top-wrapRect.top);
-            tip.innerHTML = '<strong>'+this.dataset.year+'</strong><br>'+this.dataset.label+': '+this.dataset.val;
-            tip.style.left = px+'px'; tip.style.top = py+'px';
+
+        // Column hover data — 5 years
+        var cols3 = [
+          { x:65,     year:'2021', gm:'39.7%', nm:'31.8%' },
+          { x:385.5,  year:'2022', gm:'38.7%', nm:'31.7%' },
+          { x:706,    year:'2023', gm:'36.8%', nm:'29.3%' },
+          { x:1026.5, year:'2024', gm:'41.6%', nm:'39.3%' },
+          { x:1347,   year:'2025', gm:'32.7%', nm:'26.4%' }
+        ];
+
+        // Vertical cursor line
+        var cursor3 = document.createElementNS('http://www.w3.org/2000/svg','line');
+        cursor3.setAttribute('y1','5'); cursor3.setAttribute('y2','221');
+        cursor3.setAttribute('stroke','#ccc'); cursor3.setAttribute('stroke-width','1');
+        cursor3.setAttribute('pointer-events','none');
+        cursor3.style.display = 'none';
+        svg.appendChild(cursor3);
+
+        var colW3 = 320.5;
+        cols3.forEach(function(col, i){
+          var zoneX = col.x - colW3/2;
+          if(i === 0) zoneX = 5;
+          var zoneW = (i === cols3.length-1) ? (1347 - zoneX) : colW3;
+
+          var zone = document.createElementNS('http://www.w3.org/2000/svg','rect');
+          zone.setAttribute('x', zoneX);
+          zone.setAttribute('y', '0');
+          zone.setAttribute('width', zoneW);
+          zone.setAttribute('height', '260');
+          zone.setAttribute('fill', 'transparent');
+          zone.style.cursor = 'crosshair';
+
+          zone.addEventListener('mouseenter', function(){
+            cursor3.setAttribute('x1', col.x); cursor3.setAttribute('x2', col.x);
+            cursor3.style.display = '';
+            tip.innerHTML =
+              '<strong style="font-size:1.1em;color:#1a1a1a;">'+col.year+'</strong><br><br>'+
+              '<span style="color:#009189;">Gross margin : '+col.gm+'</span><br>'+
+              '<span style="color:#20419A;">Net Profit Margin : '+col.nm+'</span>';
             tip.classList.add('show');
-            var lid = this.dataset.line;
-            svg.querySelectorAll('.fc-line').forEach(function(l){ l.classList.remove('fc-line-hovered'); });
-            if(lid){ var el=document.getElementById(lid); if(el) el.classList.add('fc-line-hovered'); }
           });
-          dot.addEventListener('mouseleave', function(){
+          zone.addEventListener('mousemove', function(ev){
+            var wrapRect = wrap.getBoundingClientRect();
+            var px = ev.clientX - wrapRect.left;
+            var py = ev.clientY - wrapRect.top;
+            tip.style.left = (px - tip.offsetWidth - 16) + 'px';
+            tip.style.top  = (py - tip.offsetHeight/2) + 'px';
+            tip.style.transform = 'none';
+          });
+          zone.addEventListener('mouseleave', function(){
+            cursor3.style.display = 'none';
             tip.classList.remove('show');
-            svg.querySelectorAll('.fc-line').forEach(function(l){ l.classList.remove('fc-line-hovered'); });
           });
+          svg.appendChild(zone);
         });
+
+        // Legend click → highlight line
         wrap.querySelectorAll('.fc-legend-item').forEach(function(item){
           item.addEventListener('click', function(){
             var lid = this.dataset.line;
@@ -643,37 +726,78 @@
 
         <!-- Capital Structure -->
         <div>
-          <p style="font-size:clamp(12px,0.9vw,14px); font-weight:700; color:#1a1a1a; margin-bottom:20px;">Capital Structure (2025)</p>
-          <div style="display:flex; align-items:center; justify-content:center; gap:16px;">
-            <span style="font-size:clamp(10px,0.78vw,12px); color:#009189; font-weight:600; white-space:nowrap;">Equity: 90.6%</span>
-            <div style="width:160px; height:160px; flex-shrink:0;">
-              <img src="assets/Group (6).svg" alt="Capital Structure" style="width:100%; height:100%; display:block;" />
-            </div>
-            <span style="font-size:clamp(10px,0.78vw,12px); color:#555; font-weight:500; white-space:nowrap;">Liabilities: 9.4%</span>
+          <p style="font-size:clamp(12px,0.9vw,14px); font-weight:700; color:#1a1a1a; margin-bottom:16px;">Capital Structure (2025)</p>
+          <div class="donut-wrap" id="donut1-wrap" style="position:relative;">
+            <svg viewBox="0 0 429 200" style="width:100%; height:auto; display:block; overflow:visible;">
+              <path class="donut-sector" fill="#009189" stroke="#fff" stroke-width="2"
+                d="M 299.5,100A 85,85,0,1,0,285.03966130745476,147.42526945236654L 260.1433102577648,130.68693905741364A 55,55,0,1,1,269.5,100 Z"
+                data-name="Equity" data-val="SAR 1,718,191"
+                onmouseenter="showDonutTip('donut1-tip',this)" onmouseleave="hideDonutTip('donut1-tip')" style="cursor:pointer;transition:opacity 0.2s;" onmouseover="this.style.opacity=0.8" onmouseout="this.style.opacity=1"/>
+              <path class="donut-sector" fill="#343741" stroke="#fff" stroke-width="2"
+                d="M 285.03966130745476,147.42526945236654A 85,85,0,0,0,299.5,100.00000000000001L 269.5,100.00000000000001A 55,55,0,0,1,260.1433102577648,130.68693905741364 Z"
+                data-name="Liabilities" data-val="SAR 178,696"
+                onmouseenter="showDonutTip('donut1-tip',this)" onmouseleave="hideDonutTip('donut1-tip')" style="cursor:pointer;transition:opacity 0.2s;" onmouseover="this.style.opacity=0.8" onmouseout="this.style.opacity=1"/>
+              <text x="114" y="69" font-size="10" fill="#009189" font-weight="600" text-anchor="end" font-family="Montserrat,sans-serif">Equity: 90.6%</text>
+              <text x="315" y="131" font-size="10" fill="#343741" font-weight="600" text-anchor="start" font-family="Montserrat,sans-serif">Liabilities: 9.4%</text>
+            </svg>
+            <div id="donut1-tip" style="position:absolute;background:#fff;color:#1a1a1a;font-size:clamp(12px,0.9vw,15px);font-weight:700;padding:12px 20px;border:1px solid #e5e5e5;border-radius:4px;pointer-events:none;white-space:nowrap;opacity:0;transition:opacity 0.15s;z-index:10;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Montserrat',sans-serif;"></div>
           </div>
         </div>
 
+        <script>
+        function showDonutTip(tipId, el) {
+          var tip = document.getElementById(tipId);
+          if(!tip) return;
+          tip.textContent = el.dataset.name + ' : ' + el.dataset.val;
+          tip.style.opacity = '1';
+        }
+        function hideDonutTip(tipId) {
+          var tip = document.getElementById(tipId);
+          if(tip) tip.style.opacity = '0';
+        }
+        </script>
+
         <!-- Revenue by Product -->
         <div>
-          <p style="font-size:clamp(12px,0.9vw,14px); font-weight:700; color:#1a1a1a; margin-bottom:20px;">Revenue by Product (2025)</p>
-          <div style="display:flex; align-items:center; justify-content:center; gap:16px;">
-            <span style="font-size:clamp(10px,0.78vw,12px); color:#009189; font-weight:600; white-space:nowrap;">Grey Cement: 79.4%</span>
-            <div style="width:160px; height:160px; flex-shrink:0;">
-              <img src="assets/Group (7).svg" alt="Revenue by Product" style="width:100%; height:100%; display:block;" />
-            </div>
-            <span style="font-size:clamp(10px,0.78vw,12px); color:#555; font-weight:500; white-space:nowrap;">White Cement: 20.6%</span>
+          <p style="font-size:clamp(12px,0.9vw,14px); font-weight:700; color:#1a1a1a; margin-bottom:16px;">Revenue by Product (2025)</p>
+          <div class="donut-wrap" id="donut2-wrap" style="position:relative;">
+            <svg viewBox="0 0 429 200" style="width:100%; height:auto; display:block; overflow:visible;">
+              <!-- Grey Cement 79.4% -->
+              <path fill="#009189" stroke="#fff" stroke-width="2"
+                d="M 299.5,100A 85,85,0,1,0,237.70091451897267,181.7723520848173L 229.5123564534529,152.9115219372347A 55,55,0,1,1,269.5,100 Z"
+                data-name="Grey Cement" data-val="SAR 625,380"
+                onmouseenter="showDonutTip('donut2-tip',this)" onmouseleave="hideDonutTip('donut2-tip')" style="cursor:pointer;transition:opacity 0.2s;" onmouseover="this.style.opacity=0.8" onmouseout="this.style.opacity=1"/>
+              <!-- White Cement 20.6% -->
+              <path fill="#F1D3D5" stroke="#fff" stroke-width="2"
+                d="M 237.70091451897267,181.7723520848173A 85,85,0,0,0,299.5,99.99999999999994L 269.5,99.99999999999997A 55,55,0,0,1,229.5123564534529,152.9115219372347 Z"
+                data-name="White Cement" data-val="SAR 162,246"
+                onmouseenter="showDonutTip('donut2-tip',this)" onmouseleave="hideDonutTip('donut2-tip')" style="cursor:pointer;transition:opacity 0.2s;" onmouseover="this.style.opacity=0.8" onmouseout="this.style.opacity=1"/>
+              <text x="130.7" y="36.7" font-size="10" fill="#009189" font-weight="600" text-anchor="end" font-family="Montserrat,sans-serif">Grey Cement: 79.4%</text>
+              <text x="298.3" y="163.3" font-size="10" fill="#F1D3D5" font-weight="600" text-anchor="start" font-family="Montserrat,sans-serif">White Cement: 20.6%</text>
+            </svg>
+            <div id="donut2-tip" style="position:absolute;background:#fff;color:#1a1a1a;font-size:clamp(12px,0.9vw,15px);font-weight:700;padding:12px 20px;border:1px solid #e5e5e5;border-radius:4px;pointer-events:none;white-space:nowrap;opacity:0;transition:opacity 0.15s;z-index:10;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Montserrat',sans-serif;"></div>
           </div>
         </div>
 
         <!-- Revenue by Geography -->
         <div>
-          <p style="font-size:clamp(12px,0.9vw,14px); font-weight:700; color:#1a1a1a; margin-bottom:20px;">Revenue by Geography (2025)</p>
-          <div style="display:flex; align-items:center; justify-content:center; gap:16px;">
-            <span style="font-size:clamp(10px,0.78vw,12px); color:#009189; font-weight:600; white-space:nowrap;">Saudi Arabia: 99.7%</span>
-            <div style="width:160px; height:160px; flex-shrink:0;">
-              <img src="assets/Group (8).svg" alt="Revenue by Geography" style="width:100%; height:100%; display:block;" />
-            </div>
-            <span style="font-size:clamp(10px,0.78vw,12px); color:#555; font-weight:500; white-space:nowrap;">Export markets: 0.3%</span>
+          <p style="font-size:clamp(12px,0.9vw,14px); font-weight:700; color:#1a1a1a; margin-bottom:16px;">Revenue by Geography (2025)</p>
+          <div class="donut-wrap" id="donut3-wrap" style="position:relative;">
+            <svg viewBox="0 0 429 200" style="width:100%; height:auto; display:block; overflow:visible;">
+              <!-- Saudi Arabia 99.7% -->
+              <path fill="#009189" stroke="#fff" stroke-width="2"
+                d="M 299.5,100A 85,85,0,1,0,299.4848999523688,101.6021173758097L 269.49022938094447,101.03666418434744A 55,55,0,1,1,269.5,100 Z"
+                data-name="Saudi Arabia" data-val="SAR 784,881"
+                onmouseenter="showDonutTip('donut3-tip',this)" onmouseleave="hideDonutTip('donut3-tip')" style="cursor:pointer;transition:opacity 0.2s;" onmouseover="this.style.opacity=0.8" onmouseout="this.style.opacity=1"/>
+              <!-- Export markets 0.3% -->
+              <path fill="#343741" stroke="#fff" stroke-width="2"
+                d="M 299.4848999523688,101.6021173758097A 85,85,0,0,0,299.5,100.00000000000001L 269.5,100.00000000000001A 55,55,0,0,1,269.49022938094447,101.03666418434744 Z"
+                data-name="Export markets" data-val="SAR 2,745"
+                onmouseenter="showDonutTip('donut3-tip',this)" onmouseleave="hideDonutTip('donut3-tip')" style="cursor:pointer;transition:opacity 0.2s;" onmouseover="this.style.opacity=0.8" onmouseout="this.style.opacity=1"/>
+              <text x="109.5" y="99" font-size="10" fill="#009189" font-weight="600" text-anchor="end" font-family="Montserrat,sans-serif">Saudi Arabia: 99.7%</text>
+              <text x="319.5" y="101" font-size="10" fill="#343741" font-weight="600" text-anchor="start" font-family="Montserrat,sans-serif">Export markets: 0.3%</text>
+            </svg>
+            <div id="donut3-tip" style="position:absolute;background:#fff;color:#1a1a1a;font-size:clamp(12px,0.9vw,15px);font-weight:700;padding:12px 20px;border:1px solid #e5e5e5;border-radius:4px;pointer-events:none;white-space:nowrap;opacity:0;transition:opacity 0.15s;z-index:10;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Montserrat',sans-serif;"></div>
           </div>
         </div>
 

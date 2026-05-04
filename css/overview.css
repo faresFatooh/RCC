@@ -994,7 +994,11 @@
 @media (max-width: 860px) {
   .lead-body { grid-template-columns: 1fr; }
   .lead-photo-col { position: static; flex-direction: row; text-align: left; align-items: center; }
-  .lead-photo-wrap { width: 100px; height: 120px; flex-shrink: 0; }
+  .lead-photo-wrap {
+    width: 100px;
+    height: 200px;
+    flex-shrink: 0;
+  }
 }
 
 /* ── Strategic Review — Vision 2030 Pillars ── */
@@ -1146,3 +1150,1126 @@
 }
 
 /* ── Two business cards ── */
+
+/* =====================
+   OVERVIEW — FULL MOBILE RESPONSIVE
+===================== */
+
+/* ── Tablet (≤1024px) ── */
+@media (max-width: 1024px) {
+  .ov-banner       { padding: calc(var(--nav-h) + 24px) 40px 60px; }
+  .ov-subnav-inner { padding: 0 40px; }
+  .ov-section      { padding: 36px 40px; }
+  .ov-products-block { padding: 20px 24px; }
+  .ov-lob-wrap     { padding: 20px 24px; }
+  .ov-card-beige   { padding: 22px 24px; }
+}
+
+/* ── Mobile nav breakpoint (≤860px) ── */
+@media (max-width: 860px) {
+  /* Banner */
+  .ov-banner       { padding: calc(var(--nav-h) + 20px) 20px 48px; }
+  .ov-banner-inner { flex-direction: column; gap: 16px; }
+  .ov-title        { font-size: clamp(26px, 7vw, 38px); margin-bottom: 14px; }
+  .ov-tags         { gap: 6px; }
+  .ov-tags a       { font-size: 10px; padding: 4px 10px; }
+  .ov-more-btn     { font-size: 11px; padding: 6px 14px; }
+
+  /* Sub-nav */
+  .ov-subnav-inner { padding: 0 16px; gap: 0; }
+  .ov-tab          { padding: 11px 12px; font-size: 11px; }
+
+  /* Sections */
+  .ov-section      { padding: 28px 20px; }
+  .ov-card-beige   { padding: 18px 20px; }
+  .ov-products-block { padding: 18px 20px; }
+  .ov-lob-wrap     { padding: 16px 18px; }
+  .ov-two-cards    { grid-template-columns: 1fr; gap: 14px; }
+  .ov-biz-card     { padding: 18px 20px; }
+
+  /* KPI grid */
+  .ov-kpi-grid     { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+  .ov-kpi-card     { padding: 14px 16px; }
+  .ov-kpi-val      { font-size: clamp(14px, 4vw, 18px); }
+
+  /* Sustainability */
+  .ov-sustain-grid { grid-template-columns: repeat(2, 1fr); gap: 8px; }
+  .ov-sustain-tag  { padding: 10px 12px 14px; }
+
+  /* Timeline */
+  .ov-timeline-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+
+  /* Where we operate */
+  .ov-operate-grid { grid-template-columns: 1fr; gap: 20px; }
+
+  /* History */
+  .ov-history-list::before {
+    left: calc(52px + 14px + 9px);
+  }
+  .ov-hist-year { width: 52px; font-size: 11px; }
+  .ov-hist-box  { padding: 10px 14px; }
+  .ov-hist-text { font-size: 11.5px; }
+
+  /* Stakeholder */
+  .ov-stake-grid { grid-template-columns: 1fr; gap: 12px; }
+
+  /* Investment */
+  .ov-invest-grid { grid-template-columns: repeat(2, 1fr); gap: 14px; }
+  .ov-invest-card { padding: 18px 16px; }
+}
+
+/* ── Small mobile (≤520px) ── */
+@media (max-width: 520px) {
+  /* Banner */
+  .ov-banner       { padding: calc(var(--nav-h) + 16px) 16px 40px; }
+  .ov-title        { font-size: 26px; }
+  .ov-tags a       { font-size: 9.5px; padding: 3px 9px; }
+
+  /* Sub-nav */
+  .ov-subnav-inner { padding: 0 12px; }
+  .ov-tab          { padding: 10px 10px; font-size: 10.5px; }
+
+  /* Sections */
+  .ov-section      { padding: 24px 16px; }
+  .ov-card-beige   { padding: 16px; }
+  .ov-products-block { padding: 16px; }
+  .ov-lob-wrap     { padding: 14px 16px; }
+
+  /* KPI */
+  .ov-kpi-grid     { grid-template-columns: 1fr 1fr; gap: 8px; }
+  .ov-kpi-card     { padding: 12px 14px; }
+
+  /* Sustainability */
+  .ov-sustain-grid { grid-template-columns: 1fr 1fr; gap: 8px; }
+
+  /* Timeline */
+  .ov-timeline-grid { grid-template-columns: 1fr; gap: 8px; }
+
+  /* History — compact */
+  .ov-hist-row     { gap: 12px; }
+  .ov-history-list::before { left: calc(44px + 12px + 9px); }
+  .ov-hist-year    { width: 44px; font-size: 10.5px; }
+  .ov-hist-dot     { width: 14px; height: 14px; }
+  .ov-hist-box     { padding: 8px 12px; border-radius: 8px; }
+
+  /* Investment */
+  .ov-invest-grid  { grid-template-columns: 1fr; gap: 10px; }
+
+  /* Section title */
+  .ov-section-title h2 { font-size: 18px; }
+  .ov-section-num      { width: 24px; height: 24px; font-size: 11px; }
+}
+
+/* ── RTL (Arabic) specific fixes ── */
+[dir="rtl"] .ov-list li {
+  padding-left: 0;
+  padding-right: 22px;
+}
+[dir="rtl"] .ov-list li::before {
+  left: auto;
+  right: 0;
+}
+[dir="rtl"] .ov-sub-title {
+  flex-direction: row-reverse;
+}
+[dir="rtl"] .ov-history-list::before {
+  left: auto;
+  right: calc(72px + 20px + 9px);
+}
+[dir="rtl"] .ov-hist-row {
+  flex-direction: row-reverse;
+}
+[dir="rtl"] .ov-hist-year {
+  text-align: left;
+}
+[dir="rtl"] .ov-event {
+  flex-direction: row-reverse;
+}
+[dir="rtl"] .ov-stake-title {
+  border-left: none;
+  border-right: 3px solid #009189;
+  padding-left: 0;
+  padding-right: 12px;
+}
+[dir="rtl"] .ov-awards-list li {
+  flex-direction: row-reverse;
+}
+[dir="rtl"] .ov-section-title {
+  flex-direction: row-reverse;
+}
+[dir="rtl"] .ov-banner-inner {
+  flex-direction: row-reverse;
+}
+[dir="rtl"] .ov-rev-label-row {
+  flex-direction: row-reverse;
+}
+[dir="rtl"] .ov-map-label {
+  flex-direction: row-reverse;
+}
+
+/* RTL mobile */
+@media (max-width: 860px) {
+  [dir="rtl"] .ov-banner-inner { flex-direction: column; }
+  [dir="rtl"] .ov-history-list::before {
+    right: calc(52px + 14px + 9px);
+    left: auto;
+  }
+}
+@media (max-width: 520px) {
+  [dir="rtl"] .ov-history-list::before {
+    right: calc(44px + 12px + 9px);
+    left: auto;
+  }
+}
+
+/* ── viewport meta fix — prevent horizontal scroll ── */
+.page-overview { overflow-x: hidden; }
+
+/* =====================
+   LEADERSHIP — MOBILE RESPONSIVE
+===================== */
+
+/* ── Tablet (≤1024px) ── */
+@media (max-width: 1024px) {
+  .lead-body {
+    grid-template-columns: 220px 1fr;
+    gap: 28px;
+  }
+  .lead-photo-wrap {
+    width: 200px;
+    height: 200px;
+  }
+  .lead-highlight-card {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+
+/* ── Mobile (≤860px) ── */
+@media (max-width: 860px) {
+  .lead-body {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  /* Photo col — horizontal layout on mobile */
+  .lead-photo-col {
+    position: static;
+    flex-direction: row;
+    align-items: center;
+    text-align: right;
+    gap: 16px;
+  }
+
+  .lead-photo-wrap {
+    width: 100px;
+    height: 200px;
+    flex-shrink: 0;
+    border-radius: 8px;
+  }
+
+  .lead-info-box {
+    flex: 1;
+    text-align: right;
+    border-radius: 8px;
+    padding: 12px 14px;
+  }
+
+  .lead-name { font-size: 13px; }
+  .lead-role { font-size: 11px; }
+
+  /* Text col */
+  .lead-text-col { gap: 12px; }
+
+  .lead-topic-card {
+    padding: 16px 18px;
+    border-radius: 6px;
+  }
+
+  .lead-topic-card h4 {
+    font-size: 13px;
+    margin-bottom: 8px;
+  }
+
+  .lead-topic-card p {
+    font-size: 12.5px;
+    line-height: 1.75;
+  }
+
+  /* Highlight card — reset negative margin */
+  .lead-highlight-card {
+    width: 100%;
+    margin-left: 0;
+    margin-right: 0;
+    margin-top: 12px;
+    padding: 18px 18px;
+  }
+
+  /* Read more button */
+  .btn-read-more {
+    font-size: 12px;
+    padding: 9px 18px;
+  }
+}
+
+/* ── Small mobile (≤520px) ── */
+@media (max-width: 520px) {
+  .lead-photo-col {
+    flex-direction: column;
+    align-items: flex-start;
+    text-align: left;
+  }
+
+  .lead-photo-wrap {
+    width: 100%;
+    height: 360px;
+  }
+
+  .lead-photo-wrap img {
+    object-position: top center;
+  }
+
+  .lead-info-box {
+    width: 100%;
+    text-align: center;
+  }
+
+  .lead-topic-card { padding: 14px 16px; }
+  .lead-topic-card h4 { font-size: 12.5px; }
+  .lead-topic-card p  { font-size: 12px; }
+}
+
+/* ── RTL Leadership fixes ── */
+[dir="rtl"] .lead-photo-col {
+  text-align: left;
+}
+
+[dir="rtl"] .lead-info-box {
+  text-align: right;
+}
+
+[dir="rtl"] .lead-topic-card h4 {
+  border-left: none;
+  border-right: 3px solid #009189;
+  padding-left: 0;
+  padding-right: 12px;
+}
+
+[dir="rtl"] .lead-highlight-card {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+[dir="rtl"] .lead-highlight-card h4 {
+  border-right: none;
+  padding-right: 0;
+}
+
+/* RTL read more button — align left */
+[dir="rtl"] .lead-text-col > div[style*="justify-content:flex-end"] {
+  justify-content: flex-start !important;
+}
+
+@media (max-width: 860px) {
+  [dir="rtl"] .lead-photo-col {
+    flex-direction: row-reverse;
+    text-align: right;
+  }
+
+  [dir="rtl"] .lead-info-box {
+    text-align: right;
+  }
+}
+
+@media (max-width: 520px) {
+  [dir="rtl"] .lead-photo-col {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+
+  [dir="rtl"] .lead-info-box {
+    text-align: right;
+  }
+}
+
+/* =====================
+   STRATEGIC REVIEW — MOBILE RESPONSIVE
+===================== */
+
+/* Value created grid — inline style override */
+.ov-card-beige [style*="grid-template-columns:repeat(4"],
+.ov-card-beige [style*="grid-template-columns: repeat(4"] {
+  display: grid;
+}
+
+/* Strategic link grid — inline style override */
+.sr-intro-box [style*="grid-template-columns:repeat(5"],
+.sr-intro-box [style*="grid-template-columns: repeat(5"] {
+  display: grid;
+}
+
+/* ── Tablet (≤1024px) ── */
+@media (max-width: 1024px) {
+  /* Value created: 4→2 cols */
+  .ov-card-beige [style*="grid-template-columns:repeat(4"],
+  .ov-card-beige [style*="grid-template-columns: repeat(4"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  /* Strategic link: 5→3 cols */
+  .sr-intro-box [style*="grid-template-columns:repeat(5"],
+  .sr-intro-box [style*="grid-template-columns: repeat(5"] {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+
+  /* Vision pillars: 3→2 cols */
+  .sr-pillar-body {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .sr-pillar-body > div:last-child {
+    grid-column: 1 / -1;
+    border-right: none;
+    border-bottom: none;
+  }
+}
+
+/* ── Mobile (≤860px) ── */
+@media (max-width: 860px) {
+  /* Value created: 4→1 col */
+  .ov-card-beige [style*="grid-template-columns:repeat(4"],
+  .ov-card-beige [style*="grid-template-columns: repeat(4"] {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 14px !important;
+  }
+
+  /* Strategic link: 5→2 cols */
+  .sr-intro-box [style*="grid-template-columns:repeat(5"],
+  .sr-intro-box [style*="grid-template-columns: repeat(5"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+  }
+
+  /* Vision pillars: 3→1 col */
+  .sr-pillar-body {
+    grid-template-columns: 1fr;
+  }
+  .sr-pillar-body > div {
+    border-right: none;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  .sr-pillar-body > div:last-child {
+    border-bottom: none;
+    grid-column: auto;
+  }
+
+  /* Pillar header */
+  .sr-pillar-header {
+    padding: 14px 18px;
+    gap: 12px;
+  }
+  .sr-pillar-header h4 { font-size: 13px; }
+  .sr-pillar-header p  { font-size: 11px; }
+  .sr-pillar-num {
+    width: 30px;
+    height: 30px;
+    font-size: 12px;
+    flex-shrink: 0;
+  }
+
+  /* KPI pillars: 1fr 2fr → 1 col */
+  .sr-kpi-body {
+    grid-template-columns: 1fr;
+  }
+  .sr-kpi-body > div {
+    border-right: none;
+    border-bottom: 1px solid #f0f0f0;
+    padding: 14px 18px;
+  }
+  .sr-kpi-body > div:last-child { border-bottom: none; }
+
+  .sr-kpi-header {
+    padding: 10px 18px;
+    font-size: 12.5px;
+  }
+  .sr-kpi-num {
+    width: 24px;
+    height: 24px;
+    font-size: 11px;
+  }
+
+  /* Intro box */
+  .sr-intro-box {
+    padding: 14px 16px;
+    font-size: 12px;
+  }
+
+  /* Biz cards h5 border — RTL */
+  [dir="rtl"] .ov-biz-card h5 {
+    border-left: none;
+    border-right: 3px solid #009189;
+    padding-left: 0;
+    padding-right: 10px;
+  }
+}
+
+/* ── Small mobile (≤520px) ── */
+@media (max-width: 520px) {
+  /* Value created: 2→1 col */
+  .ov-card-beige [style*="grid-template-columns:repeat(4"],
+  .ov-card-beige [style*="grid-template-columns: repeat(4"] {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  /* Strategic link: 2→1 col */
+  .sr-intro-box [style*="grid-template-columns:repeat(5"],
+  .sr-intro-box [style*="grid-template-columns: repeat(5"] {
+    grid-template-columns: 1fr !important;
+    gap: 8px !important;
+  }
+
+  .sr-pillar-body > div { padding: 14px 16px; }
+  .sr-kpi-body > div    { padding: 12px 16px; }
+}
+
+/* ── RTL Strategic Review fixes ── */
+[dir="rtl"] .sr-pillar-body > div {
+  border-right: none;
+  border-left: 1px solid #f0f0f0;
+}
+[dir="rtl"] .sr-pillar-body > div:last-child {
+  border-left: none;
+}
+[dir="rtl"] .sr-kpi-body > div {
+  border-right: none;
+  border-left: 1px solid #f0f0f0;
+}
+[dir="rtl"] .sr-kpi-body > div:last-child {
+  border-left: none;
+}
+[dir="rtl"] .sr-pillar-header {
+  flex-direction: row-reverse;
+}
+[dir="rtl"] .sr-kpi-header {
+  flex-direction: row-reverse;
+}
+[dir="rtl"] .ov-section-title {
+  flex-direction: row-reverse;
+}
+
+@media (max-width: 860px) {
+  [dir="rtl"] .sr-pillar-body > div {
+    border-left: none;
+    border-bottom: 1px solid #f0f0f0;
+  }
+  [dir="rtl"] .sr-kpi-body > div {
+    border-left: none;
+    border-bottom: 1px solid #f0f0f0;
+  }
+}
+
+/* =====================
+   OPERATING REVIEW — MOBILE RESPONSIVE
+===================== */
+
+/* ─── Utility: override inline grid styles ─── */
+
+/* 4-col KPI grids (Operating Highlights, Grey, White sections) */
+.ov-section [style*="grid-template-columns:repeat(4"],
+.ov-section [style*="grid-template-columns: repeat(4"] {
+  display: grid;
+}
+
+/* 5-col KPI grids (White Cement) */
+.ov-section [style*="grid-template-columns:repeat(5"],
+.ov-section [style*="grid-template-columns: repeat(5"] {
+  display: grid;
+}
+
+/* 3-col grids */
+.ov-section [style*="grid-template-columns:repeat(3"],
+.ov-section [style*="grid-template-columns: repeat(3"] {
+  display: grid;
+}
+
+/* 2-col grids (charts, tables) */
+.ov-section [style*="grid-template-columns:1fr 1fr"],
+.ov-section [style*="grid-template-columns: 1fr 1fr"] {
+  display: grid;
+}
+
+/* Chart wrap — prevent overflow */
+.chart-wrap, .chart-wrap-ar {
+  overflow: hidden;
+  max-width: 100%;
+}
+
+/* Tables — horizontal scroll on mobile */
+.ov-section table {
+  min-width: 400px;
+}
+.ov-section .table-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* ─── Tablet (≤1024px) ─── */
+@media (max-width: 1024px) {
+  /* 5-col → 3-col */
+  .ov-section [style*="grid-template-columns:repeat(5"],
+  .ov-section [style*="grid-template-columns: repeat(5"] {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+
+  /* 4-col → 2-col */
+  .ov-section [style*="grid-template-columns:repeat(4"],
+  .ov-section [style*="grid-template-columns: repeat(4"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
+/* ─── Mobile (≤860px) ─── */
+@media (max-width: 860px) {
+  /* 5-col → 2-col */
+  .ov-section [style*="grid-template-columns:repeat(5"],
+  .ov-section [style*="grid-template-columns: repeat(5"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+  }
+
+  /* 4-col → 2-col */
+  .ov-section [style*="grid-template-columns:repeat(4"],
+  .ov-section [style*="grid-template-columns: repeat(4"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+  }
+
+  /* 3-col → 1-col */
+  .ov-section [style*="grid-template-columns:repeat(3"],
+  .ov-section [style*="grid-template-columns: repeat(3"] {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+
+  /* 2-col charts/tables → 1-col */
+  .ov-section [style*="grid-template-columns:1fr 1fr"],
+  .ov-section [style*="grid-template-columns: 1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+
+  /* Tables — wrap in scroll container */
+  .ov-section table {
+    font-size: 11px;
+    min-width: 360px;
+  }
+  .ov-section div:has(> table) {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Beige performance cards */
+  .ov-section [style*="background:#F1D3B5"][style*="border-radius:12px"],
+  .ov-section [style*="background:#F1D3B5"][style*="border-radius: 12px"] {
+    padding: 18px 16px !important;
+  }
+
+  /* Numbered cards (01, 02, 03) */
+  .ov-section [style*="border-radius:10px"][style*="padding:22px 26px"],
+  .ov-section [style*="border-radius:10px"][style*="padding: 22px 26px"] {
+    padding: 16px 18px !important;
+  }
+
+  /* Section inner padding */
+  .ov-section-inner { padding: 0; }
+
+  /* Chart SVG — allow horizontal scroll if needed */
+  .chart-wrap svg,
+  .chart-wrap-ar svg {
+    min-width: 280px;
+  }
+}
+
+/* ─── Small mobile (≤520px) ─── */
+@media (max-width: 520px) {
+  /* 4-col → 1-col */
+  .ov-section [style*="grid-template-columns:repeat(4"],
+  .ov-section [style*="grid-template-columns: repeat(4"] {
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  /* 5-col → 1-col */
+  .ov-section [style*="grid-template-columns:repeat(5"],
+  .ov-section [style*="grid-template-columns: repeat(5"] {
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  /* Tables smaller font */
+  .ov-section table {
+    font-size: 10.5px;
+  }
+  .ov-section table th,
+  .ov-section table td {
+    padding: 6px 8px !important;
+  }
+}
+
+/* ─── RTL Operating Review fixes ─── */
+[dir="rtl"] .ov-section [style*="padding-left:14px"] {
+  padding-left: 0 !important;
+  padding-right: 14px;
+}
+[dir="rtl"] .ov-section li span[style*="position:absolute; left:0"] {
+  left: auto !important;
+  right: 0;
+}
+
+/* Chart tooltip RTL */
+[dir="rtl"] #grey-tip-ar,
+[dir="rtl"] #white-tip-ar {
+  text-align: right;
+}
+
+/* ─── ov-section padding override for operating review ─── */
+/* The ov-section already has padding:40px 100px from base CSS,
+   which is handled by the existing responsive rules in overview.css.
+   These rules target the inline-styled grids inside. */
+
+/* ─── Operating Review — Table scroll wrappers ─── */
+@media (max-width: 768px) {
+  /* Tables fill full width, no forced scroll */
+  .ov-section div > table {
+    width: 100%;
+    display: table;
+    overflow-x: visible;
+  }
+
+  /* Keep cell text wrapping */
+  .ov-section div > table td,
+  .ov-section div > table th {
+    white-space: normal;
+    word-break: break-word;
+  }
+
+  /* Chart containers — allow scroll */
+  .chart-wrap,
+  .chart-wrap-ar {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Legend flex wrap */
+  .chart-wrap > div[style*="display:flex"],
+  .chart-wrap-ar > div[style*="display:flex"] {
+    flex-wrap: wrap;
+    justify-content: center !important;
+    gap: 10px !important;
+  }
+
+  /* Numbered performance cards — reduce padding */
+  .ov-section [style*="padding:22px 26px"] {
+    padding: 14px 16px !important;
+  }
+  .ov-section [style*="padding:28px 32px"] {
+    padding: 18px 16px !important;
+  }
+
+  /* Fuel mix box */
+  .ov-section [style*="background:#F1D3B5"][style*="border-radius:8px"] {
+    padding: 12px 14px !important;
+  }
+}
+
+/* =====================
+   SUSTAINABILITY — MOBILE RESPONSIVE
+===================== */
+
+/* ─── Tablet (≤1024px) ─── */
+@media (max-width: 1024px) {
+  /* 5-col Human Capital → 3-col */
+  .ov-section [style*="grid-template-columns:repeat(5,1fr)"],
+  .ov-section [style*="grid-template-columns: repeat(5, 1fr)"] {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+
+  /* 3-col pillar cards → 2-col */
+  .ov-section [style*="grid-template-columns:repeat(3,1fr)"],
+  .ov-section [style*="grid-template-columns: repeat(3, 1fr)"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  /* Fixed 300px image col → auto */
+  .ov-section [style*="grid-template-columns:300px 1fr"],
+  .ov-section [style*="grid-template-columns: 300px 1fr"] {
+    grid-template-columns: 260px 1fr !important;
+  }
+}
+
+/* ─── Mobile (≤860px) ─── */
+@media (max-width: 860px) {
+  /* 5-col → 2-col */
+  .ov-section [style*="grid-template-columns:repeat(5,1fr)"],
+  .ov-section [style*="grid-template-columns: repeat(5, 1fr)"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+  }
+
+  /* 3-col → 1-col */
+  .ov-section [style*="grid-template-columns:repeat(3,1fr)"],
+  .ov-section [style*="grid-template-columns: repeat(3, 1fr)"] {
+    grid-template-columns: 1fr !important;
+    gap: 10px !important;
+  }
+
+  /* 2-col → 1-col */
+  .ov-section [style*="grid-template-columns:1fr 1fr"],
+  .ov-section [style*="grid-template-columns: 1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  /* Fixed 300px image col → full width stacked */
+  .ov-section [style*="grid-template-columns:300px 1fr"],
+  .ov-section [style*="grid-template-columns: 300px 1fr"] {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  /* Pillar card padding */
+  .ov-section [style*="padding:20px 22px"],
+  .ov-section [style*="padding: 20px 22px"] {
+    padding: 14px 16px !important;
+  }
+  .ov-section [style*="padding:22px 24px"],
+  .ov-section [style*="padding: 22px 24px"] {
+    padding: 14px 16px !important;
+  }
+  .ov-section [style*="padding:24px"],
+  .ov-section [style*="padding: 24px"] {
+    padding: 16px !important;
+  }
+
+  /* Pillar header */
+  .ov-section [style*="background:#009189"][style*="padding:12px 24px"],
+  .ov-section [style*="background:#009189"][style*="padding: 12px 24px"] {
+    padding: 10px 16px !important;
+  }
+
+  /* Nationality badges — wrap nicely */
+  .ov-section [style*="display:flex"][style*="flex-wrap:wrap"] {
+    gap: 6px !important;
+  }
+
+  /* KPI large numbers */
+  .ov-section [style*="font-size:clamp(22px,2.2vw,30px)"] {
+    font-size: clamp(20px, 5vw, 26px) !important;
+  }
+}
+
+/* ─── Small mobile (≤520px) ─── */
+@media (max-width: 520px) {
+  /* 5-col → 2-col (keep 2 for KPIs) */
+  .ov-section [style*="grid-template-columns:repeat(5,1fr)"],
+  .ov-section [style*="grid-template-columns: repeat(5, 1fr)"] {
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  /* 2-col → 1-col on very small */
+  .ov-section [style*="grid-template-columns:1fr 1fr"],
+  .ov-section [style*="grid-template-columns: 1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Reduce card padding further */
+  .ov-section [style*="padding:20px 22px"],
+  .ov-section [style*="padding:22px 24px"],
+  .ov-section [style*="padding:24px"] {
+    padding: 12px 14px !important;
+  }
+
+  /* Pillar header font */
+  .ov-section [style*="background:#009189"] span[style*="font-weight:700"] {
+    font-size: 12px !important;
+  }
+}
+
+/* ─── RTL Sustainability fixes ─── */
+[dir="rtl"] .ov-section [style*="padding-left:18px"] {
+  padding-left: 0 !important;
+  padding-right: 18px;
+}
+[dir="rtl"] .ov-section li span[style*="position:absolute;left:0"] {
+  left: auto !important;
+  right: 0;
+}
+[dir="rtl"] .ov-section li[style*="padding-left:18px"] {
+  padding-left: 0 !important;
+  padding-right: 18px;
+}
+
+/* =====================
+   GOVERNANCE — MOBILE RESPONSIVE
+===================== */
+
+/* ─── Board member cards ─── */
+.bod-item { overflow: hidden; }
+
+.bod-details-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 24px;
+}
+
+/* ─── Tablet (≤1024px) ─── */
+@media (max-width: 1024px) {
+  /* Executive grid: 3→2 */
+  .ov-section [style*="grid-template-columns:repeat(3,1fr)"],
+  .ov-section [style*="grid-template-columns: repeat(3, 1fr)"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  /* Board details: 3→2 */
+  .bod-details-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+  }
+}
+
+/* ─── Mobile (≤860px) ─── */
+@media (max-width: 860px) {
+  /* Committee grid: 2→1 */
+  .ov-section [style*="grid-template-columns:1fr 1fr"],
+  .ov-section [style*="grid-template-columns: 1fr 1fr"] {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  /* Executive grid: 3→1 */
+  .ov-section [style*="grid-template-columns:repeat(3,1fr)"],
+  .ov-section [style*="grid-template-columns: repeat(3, 1fr)"] {
+    grid-template-columns: 1fr !important;
+    gap: 12px !important;
+  }
+
+  /* Board details: 3→1 */
+  .bod-details-grid {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  /* Board card */
+  .bod-card {
+    padding: 14px 16px;
+    gap: 12px;
+  }
+  .bod-details {
+    padding: 16px;
+  }
+
+  /* Beige external members box */
+  .ov-section [style*="background:#F1D3B5"][style*="padding:28px 32px"],
+  .ov-section [style*="background:#F1D3B5"][style*="padding: 28px 32px"] {
+    padding: 16px !important;
+  }
+
+  /* Committee card padding */
+  .ov-section [style*="padding:20px 24px"][style*="display:flex"][style*="flex-direction:column"] {
+    padding: 14px 16px !important;
+  }
+
+  /* Executive cards */
+  .ov-section [style*="border-radius:12px"][style*="padding:24px"] {
+    padding: 16px !important;
+  }
+
+  /* Committee header */
+  .ov-section [style*="background:#009189"][style*="padding:12px 20px"],
+  .ov-section [style*="background:#343741"][style*="padding:12px 20px"] {
+    padding: 10px 14px !important;
+  }
+
+  /* Member list indent */
+  .ov-section p[style*="margin:0 0 0 16px"] {
+    margin-left: 12px !important;
+  }
+}
+
+/* ─── Small mobile (≤520px) ─── */
+@media (max-width: 520px) {
+  .bod-card { padding: 12px 14px; gap: 10px; }
+  .bod-photo { width: 44px !important; height: 44px !important; }
+  .bod-details { padding: 12px; }
+  .bod-details-grid { gap: 12px; }
+
+  /* Executive photo */
+  .ov-section img[style*="width:80px"] {
+    width: 64px !important;
+    height: 64px !important;
+  }
+
+  /* Reduce card padding */
+  .ov-section [style*="border-radius:12px"][style*="padding:24px"] {
+    padding: 14px !important;
+  }
+}
+
+/* ─── RTL Governance fixes ─── */
+[dir="rtl"] .bod-card {
+  flex-direction: row-reverse;
+}
+[dir="rtl"] .bod-chevron {
+  transform-origin: center;
+}
+[dir="rtl"] .bod-item.open .bod-chevron {
+  transform: rotate(180deg);
+}
+[dir="rtl"] .bod-details-col ul li {
+  padding-right: 12px;
+  padding-left: 0;
+}
+[dir="rtl"] .bod-details-col ul li::before {
+  right: 0;
+  left: auto;
+}
+[dir="rtl"] .ov-section p[style*="margin:0 0 0 16px"] {
+  margin-left: 0 !important;
+  margin-right: 16px;
+}
+
+@media (max-width: 860px) {
+  [dir="rtl"] .ov-section p[style*="margin:0 0 0 16px"] {
+    margin-left: 0 !important;
+    margin-right: 12px;
+  }
+}
+
+/* =====================
+   FINANCIAL REVIEW — MOBILE RESPONSIVE
+===================== */
+
+/* ─── SVG Charts — always scale with container ─── */
+.fc-wrap, .bc2-wrap {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  max-width: 100%;
+}
+.fc-svg {
+  min-width: 480px; /* allow scroll on very small screens */
+}
+
+/* ─── Donut charts — direction fix ─── */
+.donut-wrap svg { direction: ltr; }
+
+/* ─── Tablet (≤1024px) ─── */
+@media (max-width: 1024px) {
+  /* 4-col KPI → 2-col */
+  .ov-section [style*="grid-template-columns:repeat(4,1fr)"],
+  .ov-section [style*="grid-template-columns: repeat(4, 1fr)"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  /* 3-col donuts/ratios → 3-col (keep, they scale) */
+}
+
+/* ─── Mobile (≤860px) ─── */
+@media (max-width: 860px) {
+  /* 4-col → 2-col */
+  .ov-section [style*="grid-template-columns:repeat(4,1fr)"],
+  .ov-section [style*="grid-template-columns: repeat(4, 1fr)"] {
+    grid-template-columns: repeat(2, 1fr) !important;
+    gap: 10px !important;
+  }
+
+  /* 3-col donuts → 1-col (each donut full width) */
+  .ov-section [style*="grid-template-columns:repeat(3,1fr)"][style*="gap:24px"],
+  .ov-section [style*="grid-template-columns: repeat(3, 1fr)"][style*="gap: 24px"] {
+    grid-template-columns: 1fr !important;
+    gap: 20px !important;
+  }
+
+  /* 3-col ratio cards → 3-col (keep, they're small) */
+
+  /* Cash flow beige box padding */
+  .ov-section [style*="background:#F1D3B5"][style*="padding:24px 28px"],
+  .ov-section [style*="background:#F1D3B5"][style*="padding: 24px 28px"] {
+    padding: 16px !important;
+  }
+
+  /* KPI card padding */
+  .ov-section [style*="padding:18px 20px"] {
+    padding: 12px 14px !important;
+  }
+
+  /* Tables — horizontal scroll for wide tables */
+  .ov-section table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    width: 100%;
+  }
+  .ov-section table thead,
+  .ov-section table tbody,
+  .ov-section table tr {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+  }
+
+  /* 6-col tables — reduce cell padding */
+  .ov-section table th[style*="padding:12px 16px"],
+  .ov-section table td[style*="padding:10px 16px"],
+  .ov-section table td[style*="padding:11px 16px"] {
+    padding: 8px 10px !important;
+    font-size: 11px !important;
+  }
+
+  /* Chart legend wrap */
+  .fc-legend {
+    flex-wrap: wrap;
+    gap: 10px !important;
+    justify-content: center;
+  }
+}
+
+/* ─── Small mobile (≤520px) ─── */
+@media (max-width: 520px) {
+  /* 4-col → 2-col (keep 2 for KPIs) */
+  .ov-section [style*="grid-template-columns:repeat(4,1fr)"],
+  .ov-section [style*="grid-template-columns: repeat(4, 1fr)"] {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
+  }
+
+  /* 3-col ratio → 1-col */
+  .ov-section [style*="grid-template-columns:repeat(3,1fr)"][style*="gap:12px"],
+  .ov-section [style*="grid-template-columns: repeat(3, 1fr)"][style*="gap: 12px"] {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
+  }
+
+  /* KPI large numbers */
+  .ov-section [style*="font-size:clamp(20px,2vw,28px)"],
+  .ov-section [style*="font-size:clamp(22px,2.2vw,32px)"] {
+    font-size: clamp(16px, 5vw, 22px) !important;
+  }
+
+  /* Table cells even smaller */
+  .ov-section table th,
+  .ov-section table td {
+    padding: 6px 8px !important;
+    font-size: 10.5px !important;
+  }
+}
+
+/* ─── RTL Financial Review fixes ─── */
+[dir="rtl"] .fc-wrap,
+[dir="rtl"] .bc2-wrap {
+  direction: ltr; /* keep charts LTR */
+}
+[dir="rtl"] .fc-legend {
+  direction: rtl;
+}
+[dir="rtl"] .ov-section table {
+  direction: rtl;
+}

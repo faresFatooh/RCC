@@ -3,7 +3,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#ffffff" />
   <title>Governance — Riyadh Cement Annual Report 2025</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -152,6 +153,13 @@
           display:grid;
           grid-template-columns:1fr 1fr 1fr;
           gap:24px;
+        }
+        @media (max-width:1024px) {
+          .bod-details-grid { grid-template-columns:1fr 1fr; gap:16px; }
+        }
+        @media (max-width:768px) {
+          .bod-details-grid { grid-template-columns:1fr; gap:12px; }
+          .bod-details { padding:14px 16px; }
         }
         .bod-details-col h4 {
           font-size:clamp(10px,0.75vw,11px);

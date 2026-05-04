@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#ffffff" />
   <title>Strategic Review — Riyadh Cement Annual Report 2025</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -447,6 +448,326 @@
     </div>
   </footer>
   <script src="js/main.js"></script>
+
+  <!-- ═══════════════════════════════════════════
+       STRATEGIC REVIEW — PREMIUM SCROLL ANIMATIONS
+  ═══════════════════════════════════════════ -->
+  <script>
+  (function () {
+    'use strict';
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    /* ── Inject styles ── */
+    const style = document.createElement('style');
+    style.textContent = `
+      .sr-anim { will-change: transform, opacity; }
+
+      /* Base hidden states */
+      .sr-fade-up    { opacity:0; transform:translateY(38px); }
+      .sr-fade-left  { opacity:0; transform:translateX(-46px); }
+      .sr-fade-right { opacity:0; transform:translateX(46px); }
+      .sr-scale-in   { opacity:0; transform:scale(0.91) translateY(20px); }
+      .sr-blur-in    { opacity:0; filter:blur(10px); transform:translateY(14px); }
+      .sr-flip-up    { opacity:0; transform:perspective(700px) rotateX(9deg) translateY(24px); transform-origin:top center; }
+      .sr-slide-left { opacity:0; transform:translateX(-60px); }
+
+      /* Animated states */
+      .sr-fade-up.sr-in,
+      .sr-fade-left.sr-in,
+      .sr-fade-right.sr-in,
+      .sr-slide-left.sr-in {
+        opacity:1; transform:none;
+        transition: opacity .7s cubic-bezier(.16,1,.3,1),
+                    transform .7s cubic-bezier(.16,1,.3,1);
+      }
+      .sr-scale-in.sr-in {
+        opacity:1; transform:scale(1) translateY(0);
+        transition: opacity .65s cubic-bezier(.16,1,.3,1),
+                    transform .65s cubic-bezier(.16,1,.3,1);
+      }
+      .sr-blur-in.sr-in {
+        opacity:1; filter:blur(0); transform:translateY(0);
+        transition: opacity .85s cubic-bezier(.16,1,.3,1),
+                    filter .85s cubic-bezier(.16,1,.3,1),
+                    transform .85s cubic-bezier(.16,1,.3,1);
+      }
+      .sr-flip-up.sr-in {
+        opacity:1; transform:perspective(700px) rotateX(0deg) translateY(0);
+        transition: opacity .75s cubic-bezier(.16,1,.3,1),
+                    transform .75s cubic-bezier(.16,1,.3,1);
+      }
+
+      /* Stagger delays */
+      .sr-d1 { transition-delay:.05s !important; }
+      .sr-d2 { transition-delay:.12s !important; }
+      .sr-d3 { transition-delay:.19s !important; }
+      .sr-d4 { transition-delay:.26s !important; }
+      .sr-d5 { transition-delay:.33s !important; }
+      .sr-d6 { transition-delay:.40s !important; }
+      .sr-d7 { transition-delay:.47s !important; }
+
+      /* Banner */
+      .ov-section-label {
+        opacity:0;
+        transition: opacity .6s ease;
+      }
+      .ov-section-label.sr-in { opacity:1; }
+
+      .ov-tags a {
+        opacity:0; transform:translateY(8px) scale(.95);
+        transition: opacity .4s ease, transform .4s cubic-bezier(.16,1,.3,1);
+      }
+      .ov-tags.sr-tags-in a { opacity:1; transform:none; }
+
+      /* Divider draw */
+      .ov-divider {
+        transform-origin: left;
+        transform: scaleX(0);
+        transition: transform .9s cubic-bezier(.16,1,.3,1) .15s;
+      }
+      .ov-divider.sr-in { transform: scaleX(1); }
+
+      /* Section num badge */
+      .ov-section-num {
+        opacity:0; transform:scale(0.5) rotate(-15deg);
+        transition: opacity .5s cubic-bezier(.16,1,.3,1),
+                    transform .5s cubic-bezier(.34,1.56,.64,1);
+      }
+      .ov-section-num.sr-in { opacity:1; transform:scale(1) rotate(0deg); }
+
+      /* Section h2 */
+      .ov-section-title h2 {
+        opacity:0; transform:translateX(14px);
+        transition: opacity .65s cubic-bezier(.16,1,.3,1) .1s,
+                    transform .65s cubic-bezier(.16,1,.3,1) .1s;
+      }
+      .ov-section-title h2.sr-in { opacity:1; transform:none; }
+
+      /* Hero */
+      .ov-hero-wrap { overflow:hidden; }
+      .ov-frame {
+        transform:scale(1.06);
+        transition: transform 1.3s cubic-bezier(.16,1,.3,1);
+      }
+      .ov-hero-wrap.sr-in .ov-frame { transform:scale(1); }
+      .ov-helmet {
+        opacity:0; transform:translateY(28px) scale(.95);
+        transition: opacity .9s cubic-bezier(.16,1,.3,1) .3s,
+                    transform .9s cubic-bezier(.16,1,.3,1) .3s;
+      }
+      .ov-hero-wrap.sr-in .ov-helmet { opacity:1; transform:translateY(-42%) translateX(-50%) scale(1); }
+
+      /* Business model biz cards hover */
+      .ov-biz-card {
+        transition: transform .3s cubic-bezier(.16,1,.3,1),
+                    box-shadow .3s ease,
+                    border-color .3s;
+      }
+      .ov-biz-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 14px 36px rgba(0,145,137,.12);
+        border-color: #009189 !important;
+      }
+
+      /* Value created card items — stagger */
+      .ov-card-beige > div > div {
+        opacity:0; transform:translateY(16px);
+        transition: opacity .5s ease, transform .5s cubic-bezier(.16,1,.3,1);
+      }
+      .ov-card-beige.sr-in > div > div { opacity:1; transform:none; }
+
+      /* Vision pillars — slide in from left with left-border grow */
+      .sr-vision-pillar {
+        opacity:0; transform:translateX(-30px);
+        border-left: 3px solid transparent;
+        transition: opacity .7s cubic-bezier(.16,1,.3,1),
+                    transform .7s cubic-bezier(.16,1,.3,1),
+                    border-color .5s ease .4s;
+      }
+      .sr-vision-pillar.sr-in {
+        opacity:1; transform:none;
+        border-color: #009189;
+      }
+
+      /* Pillar header number badge pop */
+      .sr-pillar-num {
+        transition: transform .5s cubic-bezier(.34,1.56,.64,1) .2s,
+                    background .3s;
+      }
+      .sr-vision-pillar:hover .sr-pillar-num {
+        transform: scale(1.15) rotate(5deg);
+      }
+
+      /* Pillar body cells */
+      .sr-pillar-body > div {
+        opacity:0; transform:translateY(18px);
+        transition: opacity .55s cubic-bezier(.16,1,.3,1),
+                    transform .55s cubic-bezier(.16,1,.3,1);
+      }
+      .sr-vision-pillar.sr-in .sr-pillar-body > div { opacity:1; transform:none; }
+      .sr-vision-pillar.sr-in .sr-pillar-body > div:nth-child(1) { transition-delay:.15s; }
+      .sr-vision-pillar.sr-in .sr-pillar-body > div:nth-child(2) { transition-delay:.25s; }
+      .sr-vision-pillar.sr-in .sr-pillar-body > div:nth-child(3) { transition-delay:.35s; }
+
+      /* KPI pillars */
+      .sr-kpi-pillar {
+        opacity:0; transform:translateY(28px);
+        transition: opacity .65s cubic-bezier(.16,1,.3,1),
+                    transform .65s cubic-bezier(.16,1,.3,1);
+      }
+      .sr-kpi-pillar.sr-in { opacity:1; transform:none; }
+
+      /* KPI header number */
+      .sr-kpi-num {
+        transition: transform .4s cubic-bezier(.34,1.56,.64,1) .1s;
+      }
+      .sr-kpi-pillar:hover .sr-kpi-num { transform: scale(1.2); }
+
+      /* KPI body cells */
+      .sr-kpi-body > div {
+        opacity:0; transform:translateX(-16px);
+        transition: opacity .5s cubic-bezier(.16,1,.3,1),
+                    transform .5s cubic-bezier(.16,1,.3,1);
+      }
+      .sr-kpi-pillar.sr-in .sr-kpi-body > div { opacity:1; transform:none; }
+      .sr-kpi-pillar.sr-in .sr-kpi-body > div:nth-child(1) { transition-delay:.1s; }
+      .sr-kpi-pillar.sr-in .sr-kpi-body > div:nth-child(2) { transition-delay:.2s; }
+
+      /* Intro box */
+      .sr-intro-box {
+        opacity:0; transform:translateY(20px);
+        transition: opacity .7s cubic-bezier(.16,1,.3,1),
+                    transform .7s cubic-bezier(.16,1,.3,1);
+      }
+      .sr-intro-box.sr-in { opacity:1; transform:none; }
+
+      /* Strategic link cards */
+      .sr-link-card {
+        opacity:0; transform:translateY(22px) scale(.96);
+        transition: opacity .55s cubic-bezier(.16,1,.3,1),
+                    transform .55s cubic-bezier(.16,1,.3,1),
+                    box-shadow .3s ease;
+      }
+      .sr-link-card.sr-in { opacity:1; transform:scale(1) translateY(0); }
+      .sr-link-card:hover {
+        transform: translateY(-4px) scale(1.02) !important;
+        box-shadow: 0 10px 28px rgba(0,145,137,.14);
+      }
+
+      /* Sub-title bar grow */
+      .ov-sub-bar {
+        transform-origin: top;
+        transform: scaleY(0);
+        transition: transform .5s cubic-bezier(.16,1,.3,1) .1s;
+      }
+      .ov-sub-title.sr-in .ov-sub-bar { transform: scaleY(1); }
+    `;
+    document.head.appendChild(style);
+
+    const q  = s => document.querySelector(s);
+    const qa = s => [...document.querySelectorAll(s)];
+    const add = (el, ...cls) => el && el.classList.add(...cls);
+
+    /* ── IntersectionObserver ── */
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+
+        /* Tags stagger */
+        if (el.classList.contains('ov-tags')) {
+          el.classList.add('sr-tags-in');
+          qa('.ov-tags a').forEach((a, i) => { a.style.transitionDelay = `${i * 0.08}s`; });
+          io.unobserve(el); return;
+        }
+
+        /* Value created card — stagger children */
+        if (el.classList.contains('ov-card-beige')) {
+          el.classList.add('sr-in');
+          const children = el.querySelectorAll(':scope > div > div');
+          children.forEach((c, i) => { c.style.transitionDelay = `${i * 0.07 + 0.1}s`; });
+          io.unobserve(el); return;
+        }
+
+        /* Strategic link cards — stagger */
+        if (el.classList.contains('sr-link-cards-wrap')) {
+          el.querySelectorAll('.sr-link-card').forEach((c, i) => {
+            c.style.transitionDelay = `${i * 0.07}s`;
+            c.classList.add('sr-in');
+          });
+          io.unobserve(el); return;
+        }
+
+        el.classList.add('sr-in');
+        io.unobserve(el);
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+
+    /* ── Assign classes ── */
+    function init () {
+      /* Banner */
+      add(q('.ov-section-label'), 'sr-anim');
+      add(q('.ov-title'),         'sr-anim', 'sr-blur-in');
+      add(q('.ov-tags'),          'sr-anim');
+      add(q('.ov-more-btn'),      'sr-anim', 'sr-fade-right');
+
+      /* Hero */
+      add(q('.ov-hero-wrap'), 'sr-anim');
+
+      /* Section titles */
+      qa('.ov-section-num').forEach(el => add(el, 'sr-anim'));
+      qa('.ov-section-title h2').forEach(el => add(el, 'sr-anim'));
+      qa('.ov-divider').forEach(el => add(el, 'sr-anim'));
+
+      /* Business model */
+      add(q('.ov-body-text'), 'sr-anim', 'sr-fade-up');
+      qa('.ov-biz-card').forEach((el, i) => {
+        add(el, 'sr-anim', 'sr-scale-in', `sr-d${(i % 4) + 1}`);
+      });
+      qa('.ov-sub-title').forEach(el => add(el, 'sr-anim', 'sr-fade-left'));
+
+      /* Value created card */
+      add(q('.ov-card-beige'), 'sr-anim');
+
+      /* Vision pillars */
+      qa('.sr-vision-pillar').forEach((el, i) => {
+        add(el, 'sr-anim');
+        el.style.transitionDelay = `${i * 0.05}s`;
+      });
+
+      /* KPI pillars */
+      qa('.sr-kpi-pillar').forEach((el, i) => {
+        add(el, 'sr-anim');
+        el.style.transitionDelay = `${i * 0.06}s`;
+      });
+
+      /* Intro boxes */
+      qa('.sr-intro-box').forEach(el => add(el, 'sr-anim'));
+
+      /* Strategic link cards — wrap them */
+      const linkGrid = q('.sr-intro-box [style*="grid-template-columns:repeat(5"]') ||
+                       q('.sr-intro-box div[style*="display:grid"]');
+      if (linkGrid) {
+        linkGrid.classList.add('sr-link-cards-wrap');
+        linkGrid.querySelectorAll('div[style*="background:#fff"]').forEach(el => {
+          el.classList.add('sr-link-card');
+        });
+      }
+
+      /* Observe */
+      qa('.sr-anim, .ov-tags, .ov-card-beige, .sr-vision-pillar, .sr-kpi-pillar,\
+         .sr-intro-box, .sr-link-cards-wrap, .ov-section-num, .ov-section-title h2,\
+         .ov-divider, .ov-section-label').forEach(el => io.observe(el));
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+
+  })();
+  </script>
 </body>
 </html>
 

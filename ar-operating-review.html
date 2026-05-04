@@ -2,7 +2,8 @@
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#ffffff" />
   <title>المراجعة التشغيلية — التقرير السنوي لأسمنت الرياض 2025</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -454,7 +455,7 @@
 
 
   <!-- سكشن 5 — الأداء الإنتاجي والمبيعات -->
-  <section class="ov-section" id="op-performance" style="background:#fafafa;">
+  <section class="ov-section" id="op-performance" style="background:#fff;">
     <div class="ov-section-inner">
       <div class="ov-section-title" style="margin-top:20px;">
         <span class="ov-section-num">5</span>
@@ -483,96 +484,267 @@
 
       <p style="font-size:clamp(10px,0.75vw,12px); font-weight:700; letter-spacing:0.1em; color:#1a1a1a; margin-bottom:16px;">الرسم البياني الخطي (2020–2025)</p>
 
+      <style>
+        .chart-wrap-ar { opacity:0; transform:translateY(20px); transition:opacity 0.6s ease,transform 0.6s ease; }
+        .chart-wrap-ar.chart-visible { opacity:1; transform:translateY(0); }
+        #chartGreyAr { position:relative; }
+        #grey-tip-ar {
+          position:absolute; background:#ffffff; color:#1a1a1a;
+          font-size:clamp(11px,0.85vw,14px); padding:16px 20px;
+          border:1px solid #e0e0e0; border-radius:4px;
+          pointer-events:none; white-space:nowrap;
+          opacity:0; transition:opacity 0.15s;
+          line-height:2; z-index:10;
+          font-family:'Tajawal',sans-serif;
+          box-shadow:0 2px 8px rgba(0,0,0,0.08);
+        }
+        #grey-tip-ar.show { opacity:1; }
+      </style>
+
       <div style="display:grid; grid-template-columns:1fr 1fr; gap:32px; margin-bottom:32px;">
-        <div>
+        <div class="chart-wrap-ar" id="chartGreyAr">
           <p style="font-size:clamp(11px,0.82vw,13px); font-weight:600; color:#1a1a1a; margin-bottom:12px;">قطاع الأسمنت الرمادي</p>
-          <div style="overflow:hidden; direction:ltr;"><svg width="100%" viewBox="-30 -10 720 280" style="display:block;" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;">
-              <path d="M32 199.95H622" stroke="#F0F0F0" stroke-dasharray="3 3"/>
-              <path d="M32 150.95H622" stroke="#F0F0F0" stroke-dasharray="3 3"/>
-              <path d="M32 101.95H622" stroke="#F0F0F0" stroke-dasharray="3 3"/>
-              <path d="M32 52.9502H622" stroke="#F0F0F0" stroke-dasharray="3 3"/>
-              <path d="M32 3.9502H622" stroke="#F0F0F0" stroke-dasharray="3 3"/>
-              <path d="M32 3.9502V199.95" stroke="#F0F0F0" stroke-dasharray="3 3"/>
-              <path d="M150 3.9502V199.95" stroke="#F0F0F0" stroke-dasharray="3 3"/>
-              <path d="M268 3.9502V199.95" stroke="#F0F0F0" stroke-dasharray="3 3"/>
-              <path d="M386 3.9502V199.95" stroke="#F0F0F0" stroke-dasharray="3 3"/>
-              <path d="M504 3.9502V199.95" stroke="#F0F0F0" stroke-dasharray="3 3"/>
-              <path d="M622 3.9502V199.95" stroke="#F0F0F0" stroke-dasharray="3 3"/>
-              <path d="M32 199.95H622" stroke="#666666"/>
-              <path d="M622 3.9502V199.95" stroke="#666666"/>
-              <path d="M622 205.95V199.95" stroke="#666666"/><path d="M504 205.95V199.95" stroke="#666666"/><path d="M386 205.95V199.95" stroke="#666666"/><path d="M268 205.95V199.95" stroke="#666666"/><path d="M150 205.95V199.95" stroke="#666666"/><path d="M32 205.95V199.95"  stroke="#666666"/>
-              <path d="M628 199.95H622" stroke="#666666"/><path d="M628 150.95H622" stroke="#666666"/><path d="M628 101.95H622" stroke="#666666"/><path d="M628 52.9502H622" stroke="#666666"/><path d="M628 3.9502H622" stroke="#666666"/>
-              <text x="636" y="8"   text-anchor="start" font-size="10" fill="#666" font-family="Tajawal,sans-serif">3.8M</text>
-              <text x="636" y="57"  text-anchor="start" font-size="10" fill="#666" font-family="Tajawal,sans-serif">2.9M</text>
-              <text x="636" y="106" text-anchor="start" font-size="10" fill="#666" font-family="Tajawal,sans-serif">1.9M</text>
-              <text x="636" y="155" text-anchor="start" font-size="10" fill="#666" font-family="Tajawal,sans-serif">0.9M</text>
-              <text x="636" y="203" text-anchor="start" font-size="10" fill="#666" font-family="Tajawal,sans-serif">0.0M</text>
-              <text x="622" y="216" text-anchor="middle" font-size="10" fill="#666" font-family="Tajawal,sans-serif">2020</text>
-              <text x="504" y="216" text-anchor="middle" font-size="10" fill="#666" font-family="Tajawal,sans-serif">2021</text>
-              <text x="386" y="216" text-anchor="middle" font-size="10" fill="#666" font-family="Tajawal,sans-serif">2022</text>
-              <text x="268" y="216" text-anchor="middle" font-size="10" fill="#666" font-family="Tajawal,sans-serif">2023</text>
-              <text x="150" y="216" text-anchor="middle" font-size="10" fill="#666" font-family="Tajawal,sans-serif">2024</text>
-              <text x="32"  y="216" text-anchor="middle" font-size="10" fill="#666" font-family="Tajawal,sans-serif">2025</text>
-              <path d="M622 68C582.667 43 543.333 18 504 18C464.667 18 425.333 50 386 58C346.667 66 307.333 36 268 36C228.667 36 189.333 24 150 24C110.667 24 71.333 20 32 20" stroke="#343741" stroke-width="2" fill="none"/>
-              <path d="M622 68C582.667 43 543.333 18 504 18C464.667 18 425.333 50 386 58C346.667 66 307.333 36 268 36C228.667 36 189.333 24 150 24C110.667 24 71.333 20 32 20" stroke="#009189" stroke-width="2" stroke-dasharray="2 3" stroke-dashoffset="-3" fill="none"/>
-              <circle cx="622" cy="68" r="4" fill="white" stroke="#009189" stroke-width="1.5"/>
-              <circle cx="622" cy="68" r="4" fill="none"  stroke="#343741" stroke-width="1.5" stroke-dasharray="4 2"/>
-              <circle cx="504" cy="18" r="4" fill="white" stroke="#009189" stroke-width="1.5"/>
-              <circle cx="504" cy="18" r="4" fill="none"  stroke="#343741" stroke-width="1.5" stroke-dasharray="4 2"/>
-              <circle cx="386" cy="58" r="4" fill="white" stroke="#009189" stroke-width="1.5"/>
-              <circle cx="386" cy="58" r="4" fill="none"  stroke="#343741" stroke-width="1.5" stroke-dasharray="4 2"/>
-              <circle cx="268" cy="36" r="4" fill="white" stroke="#009189" stroke-width="1.5"/>
-              <circle cx="268" cy="36" r="4" fill="none"  stroke="#343741" stroke-width="1.5" stroke-dasharray="4 2"/>
-              <circle cx="150" cy="24" r="4" fill="white" stroke="#009189" stroke-width="1.5"/>
-              <circle cx="150" cy="24" r="4" fill="none"  stroke="#343741" stroke-width="1.5" stroke-dasharray="4 2"/>
-              <circle cx="32"  cy="20" r="4" fill="white" stroke="#009189" stroke-width="1.5"/>
-              <circle cx="32"  cy="20" r="4" fill="none"  stroke="#343741" stroke-width="1.5" stroke-dasharray="4 2"/>
+          <div style="position:relative; direction:ltr;">
+            <svg class="fc-svg" viewBox="-10 0 680 260" xmlns="http://www.w3.org/2000/svg" id="greyChartAr" style="width:100%;height:auto;display:block;overflow:visible;">
+              <defs><clipPath id="grey-clip-ar"><rect x="65" y="5" width="590" height="196"/></clipPath></defs>
+              <line x1="65" y1="201" x2="655" y2="201" stroke="#f0f0f0" stroke-dasharray="3 3"/>
+              <line x1="65" y1="152" x2="655" y2="152" stroke="#f0f0f0" stroke-dasharray="3 3"/>
+              <line x1="65" y1="103" x2="655" y2="103" stroke="#f0f0f0" stroke-dasharray="3 3"/>
+              <line x1="65" y1="54"  x2="655" y2="54"  stroke="#f0f0f0" stroke-dasharray="3 3"/>
+              <line x1="65" y1="5"   x2="655" y2="5"   stroke="#f0f0f0" stroke-dasharray="3 3"/>
+              <line x1="65"  y1="5" x2="65"  y2="201" stroke="#f0f0f0" stroke-dasharray="3 3"/>
+              <line x1="183" y1="5" x2="183" y2="201" stroke="#f0f0f0" stroke-dasharray="3 3"/>
+              <line x1="301" y1="5" x2="301" y2="201" stroke="#f0f0f0" stroke-dasharray="3 3"/>
+              <line x1="419" y1="5" x2="419" y2="201" stroke="#f0f0f0" stroke-dasharray="3 3"/>
+              <line x1="537" y1="5" x2="537" y2="201" stroke="#f0f0f0" stroke-dasharray="3 3"/>
+              <line x1="655" y1="5" x2="655" y2="201" stroke="#f0f0f0" stroke-dasharray="3 3"/>
+              <line x1="65" y1="201" x2="655" y2="201" stroke="#666" fill="none"/>
+              <line x1="65" y1="5"   x2="65"  y2="201" stroke="#666" fill="none"/>
+              <line x1="59" y1="201" x2="65" y2="201" stroke="#666"/><text x="57" y="201" text-anchor="end" fill="#666" font-size="10" dy="0.355em" font-family="Tajawal,sans-serif">0.0M</text>
+              <line x1="59" y1="152" x2="65" y2="152" stroke="#666"/><text x="57" y="152" text-anchor="end" fill="#666" font-size="10" dy="0.355em" font-family="Tajawal,sans-serif">0.9M</text>
+              <line x1="59" y1="103" x2="65" y2="103" stroke="#666"/><text x="57" y="103" text-anchor="end" fill="#666" font-size="10" dy="0.355em" font-family="Tajawal,sans-serif">1.9M</text>
+              <line x1="59" y1="54"  x2="65" y2="54"  stroke="#666"/><text x="57" y="54"  text-anchor="end" fill="#666" font-size="10" dy="0.355em" font-family="Tajawal,sans-serif">2.9M</text>
+              <line x1="59" y1="5"   x2="65" y2="5"   stroke="#666"/><text x="57" y="7.5" text-anchor="end" fill="#666" font-size="10" dy="0.355em" font-family="Tajawal,sans-serif">3.8M</text>
+              <line x1="65"  y1="201" x2="65"  y2="207" stroke="#666"/><text x="65"  y="209" text-anchor="middle" fill="#666" font-size="11" dy="0.71em" font-family="Tajawal,sans-serif">2020</text>
+              <line x1="183" y1="201" x2="183" y2="207" stroke="#666"/><text x="183" y="209" text-anchor="middle" fill="#666" font-size="11" dy="0.71em" font-family="Tajawal,sans-serif">2021</text>
+              <line x1="301" y1="201" x2="301" y2="207" stroke="#666"/><text x="301" y="209" text-anchor="middle" fill="#666" font-size="11" dy="0.71em" font-family="Tajawal,sans-serif">2022</text>
+              <line x1="419" y1="201" x2="419" y2="207" stroke="#666"/><text x="419" y="209" text-anchor="middle" fill="#666" font-size="11" dy="0.71em" font-family="Tajawal,sans-serif">2023</text>
+              <line x1="537" y1="201" x2="537" y2="207" stroke="#666"/><text x="537" y="209" text-anchor="middle" fill="#666" font-size="11" dy="0.71em" font-family="Tajawal,sans-serif">2024</text>
+              <line x1="655" y1="201" x2="655" y2="207" stroke="#666"/><text x="647" y="209" text-anchor="middle" fill="#666" font-size="11" dy="0.71em" font-family="Tajawal,sans-serif">2025</text>
+              <g clip-path="url(#grey-clip-ar)">
+                <path fill="none" stroke="#009189" stroke-width="2"
+                  d="M65,71.154C104.333,45.258,143.667,19.363,183,19.363C222.333,19.363,261.667,47.999,301,47.999C340.333,47.999,379.667,31.864,419,31.686C458.333,31.509,497.667,31.598,537,31.42C576.333,31.242,615.667,25.914,655,20.586"/>
+                <path fill="none" stroke="#343741" stroke-width="2" stroke-dasharray="4 2"
+                  d="M65,29.147C104.333,29.595,143.667,30.044,183,31.838C222.333,33.631,261.667,106.598,301,106.598C340.333,106.598,379.667,40.011,419,40.011C458.333,40.011,497.667,65.624,537,65.624C576.333,65.624,615.667,37.233,655,8.842"/>
+              </g>
+              <circle cx="65"  cy="71.154" r="4" fill="#fff" stroke="#009189" stroke-width="2"/>
+              <circle cx="183" cy="19.363" r="4" fill="#fff" stroke="#009189" stroke-width="2"/>
+              <circle cx="301" cy="47.999" r="4" fill="#fff" stroke="#009189" stroke-width="2"/>
+              <circle cx="419" cy="31.686" r="4" fill="#fff" stroke="#009189" stroke-width="2"/>
+              <circle cx="537" cy="31.42"  r="4" fill="#fff" stroke="#009189" stroke-width="2"/>
+              <circle cx="655" cy="20.586" r="4" fill="#fff" stroke="#009189" stroke-width="2"/>
+              <circle cx="65"  cy="29.147"  r="4" fill="#fff" stroke="#343741" stroke-width="2"/>
+              <circle cx="183" cy="31.838"  r="4" fill="#fff" stroke="#343741" stroke-width="2"/>
+              <circle cx="301" cy="106.598" r="4" fill="#fff" stroke="#343741" stroke-width="2"/>
+              <circle cx="419" cy="40.011"  r="4" fill="#fff" stroke="#343741" stroke-width="2"/>
+              <circle cx="537" cy="65.624"  r="4" fill="#fff" stroke="#343741" stroke-width="2"/>
+              <circle cx="655" cy="8.842"   r="4" fill="#fff" stroke="#343741" stroke-width="2"/>
             </svg>
+            <div id="grey-tip-ar"></div>
           </div>
-          <div style="display:flex; gap:16px; margin-top:10px; justify-content:flex-end;">
-            <div style="display:flex; align-items:center; gap:5px;"><span style="font-size:10px; color:#555;">إنتاج الكلنكر الرمادي</span><div style="width:16px; height:2px; background:#343741;"></div></div>
-            <div style="display:flex; align-items:center; gap:5px;"><span style="font-size:10px; color:#555;">مبيعات الأسمنت الرمادي</span><div style="width:16px; height:2px; background:#009189;"></div></div>
+          <div style="display:flex; gap:20px; margin-top:12px; justify-content:center;">
+            <div style="display:flex; align-items:center; gap:6px;">
+              <img src="assets/Surface (5).svg" alt="إنتاج الكلنكر الرمادي" style="height:18px; width:auto;" />
+              <span style="font-size:clamp(10px,0.75vw,11.5px); color:#343741; font-weight:600;">إنتاج الكلنكر الرمادي</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:6px;">
+              <img src="assets/Surface (6).svg" alt="مبيعات الأسمنت الرمادي" style="height:18px; width:auto;" />
+              <span style="font-size:clamp(10px,0.75vw,11.5px); color:#009189; font-weight:600;">مبيعات الأسمنت الرمادي</span>
+            </div>
           </div>
+          <script>
+          (function(){
+            var wrap = document.getElementById('chartGreyAr');
+            var svg  = document.getElementById('greyChartAr');
+            var tip  = document.getElementById('grey-tip-ar');
+            if(!wrap||!svg||!tip) return;
+            var cols = [
+              { x:65,  year:'2020', sales:'2,517,429', clinker:'3,331,847' },
+              { x:183, year:'2021', sales:'3,246,048', clinker:'3,358,218' },
+              { x:301, year:'2022', sales:'2,986,000', clinker:'2,468,000' },
+              { x:419, year:'2023', sales:'3,131,000', clinker:'3,218,000' },
+              { x:537, year:'2024', sales:'3,136,000', clinker:'2,980,000' },
+              { x:655, year:'2025', sales:'3,497,830', clinker:'3,700,000' }
+            ];
+            var cursor = document.createElementNS('http://www.w3.org/2000/svg','line');
+            cursor.setAttribute('y1','5'); cursor.setAttribute('y2','201');
+            cursor.setAttribute('stroke','#ccc'); cursor.setAttribute('stroke-width','1');
+            cursor.setAttribute('pointer-events','none');
+            cursor.style.display = 'none';
+            svg.appendChild(cursor);
+            var colW = 118;
+            cols.forEach(function(col, i){
+              var zoneX = col.x - colW/2;
+              if(i === 0) zoneX = 5;
+              var zoneW = (i === cols.length-1) ? (655 - zoneX) : colW;
+              var zone = document.createElementNS('http://www.w3.org/2000/svg','rect');
+              zone.setAttribute('x', zoneX); zone.setAttribute('y', '0');
+              zone.setAttribute('width', zoneW); zone.setAttribute('height', '220');
+              zone.setAttribute('fill', 'transparent'); zone.style.cursor = 'crosshair';
+              zone.addEventListener('mouseenter', function(){
+                cursor.setAttribute('x1', col.x); cursor.setAttribute('x2', col.x);
+                cursor.style.display = '';
+                tip.innerHTML = '<strong style="font-size:1.1em;color:#1a1a1a;">'+col.year+'</strong><br><br>'+
+                  '<span style="color:#009189;">مبيعات الأسمنت الرمادي : '+col.sales+'</span><br>'+
+                  '<span style="color:#343741;">إنتاج الكلنكر الرمادي : '+col.clinker+'</span>';
+                tip.classList.add('show');
+              });
+              zone.addEventListener('mousemove', function(ev){
+                var r = wrap.getBoundingClientRect();
+                var px = ev.clientX - r.left, py = ev.clientY - r.top;
+                var tw = tip.offsetWidth, th = tip.offsetHeight;
+                var left = (px + 16 + tw < r.width) ? (px + 16) : (px - tw - 16);
+                var top = py - th/2;
+                if(top < 0) top = 4;
+                if(top + th > r.height) top = r.height - th - 4;
+                tip.style.left = left+'px'; tip.style.top = top+'px'; tip.style.transform = 'none';
+              });
+              zone.addEventListener('mouseleave', function(){ cursor.style.display='none'; tip.classList.remove('show'); });
+              svg.appendChild(zone);
+            });
+            var obs = new IntersectionObserver(function(entries){ entries.forEach(function(e){ if(e.isIntersecting){ wrap.classList.add('chart-visible'); obs.unobserve(wrap); } }); }, {threshold:0.2});
+            obs.observe(wrap);
+          })();
+          </script>
         </div>
-        <div>
+        <div class="chart-wrap-ar" id="chartWhiteAr" style="transition-delay:0.15s;">
           <p style="font-size:clamp(11px,0.82vw,13px); font-weight:600; color:#1a1a1a; margin-bottom:12px;">قطاع الأسمنت الأبيض</p>
-          <div style="overflow:hidden; direction:ltr;"><svg width="100%" viewBox="-30 -10 720 280" fill="none" xmlns="http://www.w3.org/2000/svg" style="display:block;">
-              <path d="M65 201H655" stroke="#F0F0F0" stroke-dasharray="3 3"/><path d="M65 152H655" stroke="#F0F0F0" stroke-dasharray="3 3"/><path d="M65 103H655" stroke="#F0F0F0" stroke-dasharray="3 3"/><path d="M65 54H655" stroke="#F0F0F0" stroke-dasharray="3 3"/><path d="M65 5H655" stroke="#F0F0F0" stroke-dasharray="3 3"/>
-              <path d="M65 5V201" stroke="#F0F0F0" stroke-dasharray="3 3"/><path d="M183 5V201" stroke="#F0F0F0" stroke-dasharray="3 3"/><path d="M301 5V201" stroke="#F0F0F0" stroke-dasharray="3 3"/><path d="M419 5V201" stroke="#F0F0F0" stroke-dasharray="3 3"/><path d="M537 5V201" stroke="#F0F0F0" stroke-dasharray="3 3"/><path d="M655 5V201" stroke="#F0F0F0" stroke-dasharray="3 3"/>
-              <path d="M65 201H655" stroke="#666666"/><path d="M655 5V201" stroke="#666666"/>
-              <path d="M655 207V201" stroke="#666666"/><path d="M537 207V201" stroke="#666666"/><path d="M419 207V201" stroke="#666666"/><path d="M301 207V201" stroke="#666666"/><path d="M183 207V201" stroke="#666666"/><path d="M65 207V201"  stroke="#666666"/>
-              <path d="M661 201H655" stroke="#666666"/><path d="M661 152H655" stroke="#666666"/><path d="M661 103H655" stroke="#666666"/><path d="M661 54H655"  stroke="#666666"/><path d="M661 5H655"   stroke="#666666"/>
-              <text x="669" y="205" text-anchor="start" font-size="10" fill="#666" font-family="Tajawal,sans-serif">0k</text>
-              <text x="669" y="156" text-anchor="start" font-size="10" fill="#666" font-family="Tajawal,sans-serif">150k</text>
-              <text x="669" y="107" text-anchor="start" font-size="10" fill="#666" font-family="Tajawal,sans-serif">300k</text>
-              <text x="669" y="58"  text-anchor="start" font-size="10" fill="#666" font-family="Tajawal,sans-serif">450k</text>
-              <text x="669" y="9"   text-anchor="start" font-size="10" fill="#666" font-family="Tajawal,sans-serif">600k</text>
-              <text x="655" y="220" text-anchor="middle" font-size="10" fill="#666" font-family="Tajawal,sans-serif">2020</text>
-              <text x="537" y="220" text-anchor="middle" font-size="10" fill="#666" font-family="Tajawal,sans-serif">2021</text>
-              <text x="419" y="220" text-anchor="middle" font-size="10" fill="#666" font-family="Tajawal,sans-serif">2022</text>
-              <text x="301" y="220" text-anchor="middle" font-size="10" fill="#666" font-family="Tajawal,sans-serif">2023</text>
-              <text x="183" y="220" text-anchor="middle" font-size="10" fill="#666" font-family="Tajawal,sans-serif">2024</text>
-              <text x="65"  y="220" text-anchor="middle" font-size="10" fill="#666" font-family="Tajawal,sans-serif">2025</text>
-              <path d="M655 96.0611C615.667 91.0101 576.333 85.9601 537 81.5671C497.667 77.1741 458.333 74.1631 419 69.7031C379.667 65.2441 340.333 54.8101 301 54.8101C261.667 54.8101 222.333 69.6191 183 70.7791C143.667 71.9381 104.333 72.2281 65 72.5181" stroke="#EF373E" stroke-width="2" fill="none"/>
-              <path d="M655 96.0611C615.667 91.0101 576.333 85.9601 537 81.5671C497.667 77.1741 458.333 74.1631 419 69.7031C379.667 65.2441 340.333 54.8101 301 54.8101C261.667 54.8101 222.333 69.6191 183 70.7791C143.667 71.9381 104.333 72.2281 65 72.5181" stroke="#20419A" stroke-width="2" stroke-dasharray="4 2" fill="none"/>
-              <circle cx="655" cy="96.06" r="4" fill="white" stroke="#EF373E" stroke-width="1.5"/>
-              <circle cx="655" cy="96.06" r="4" fill="none"  stroke="#20419A" stroke-width="1.5" stroke-dasharray="4 2"/>
-              <circle cx="537" cy="81.57" r="4" fill="white" stroke="#EF373E" stroke-width="1.5"/>
-              <circle cx="537" cy="81.57" r="4" fill="none"  stroke="#20419A" stroke-width="1.5" stroke-dasharray="4 2"/>
-              <circle cx="419" cy="69.70" r="4" fill="white" stroke="#EF373E" stroke-width="1.5"/>
-              <circle cx="419" cy="69.70" r="4" fill="none"  stroke="#20419A" stroke-width="1.5" stroke-dasharray="4 2"/>
-              <circle cx="301" cy="54.81" r="4" fill="white" stroke="#EF373E" stroke-width="1.5"/>
-              <circle cx="301" cy="54.81" r="4" fill="none"  stroke="#20419A" stroke-width="1.5" stroke-dasharray="4 2"/>
-              <circle cx="183" cy="70.78" r="4" fill="white" stroke="#EF373E" stroke-width="1.5"/>
-              <circle cx="183" cy="70.78" r="4" fill="none"  stroke="#20419A" stroke-width="1.5" stroke-dasharray="4 2"/>
-              <circle cx="65"  cy="72.52" r="4" fill="white" stroke="#EF373E" stroke-width="1.5"/>
-              <circle cx="65"  cy="72.52" r="4" fill="none"  stroke="#20419A" stroke-width="1.5" stroke-dasharray="4 2"/>
+          <style>
+            #chartWhiteAr { position:relative; }
+            #white-tip-ar {
+              position:absolute; background:#ffffff; color:#1a1a1a;
+              font-size:clamp(11px,0.85vw,14px); padding:16px 20px;
+              border:1px solid #e0e0e0; border-radius:4px;
+              pointer-events:none; white-space:nowrap;
+              opacity:0; transition:opacity 0.15s;
+              line-height:2; z-index:10;
+              font-family:'Tajawal',sans-serif;
+              box-shadow:0 2px 8px rgba(0,0,0,0.08);
+            }
+            #white-tip-ar.show { opacity:1; }
+          </style>
+          <div style="position:relative; direction:ltr;">
+            <svg class="fc-svg" viewBox="-10 0 680 260" xmlns="http://www.w3.org/2000/svg" id="whiteChartAr" style="width:100%;height:auto;display:block;overflow:visible;">
+              <defs><clipPath id="white-clip-ar"><rect x="65" y="5" width="590" height="196"/></clipPath></defs>
+              <line x1="65" y1="201" x2="655" y2="201" stroke="#f0f0f0" stroke-dasharray="3 3"/>
+              <line x1="65" y1="152" x2="655" y2="152" stroke="#f0f0f0" stroke-dasharray="3 3"/>
+              <line x1="65" y1="103" x2="655" y2="103" stroke="#f0f0f0" stroke-dasharray="3 3"/>
+              <line x1="65" y1="54"  x2="655" y2="54"  stroke="#f0f0f0" stroke-dasharray="3 3"/>
+              <line x1="65" y1="5"   x2="655" y2="5"   stroke="#f0f0f0" stroke-dasharray="3 3"/>
+              <line x1="65"  y1="5" x2="65"  y2="201" stroke="#f0f0f0" stroke-dasharray="3 3"/>
+              <line x1="183" y1="5" x2="183" y2="201" stroke="#f0f0f0" stroke-dasharray="3 3"/>
+              <line x1="301" y1="5" x2="301" y2="201" stroke="#f0f0f0" stroke-dasharray="3 3"/>
+              <line x1="419" y1="5" x2="419" y2="201" stroke="#f0f0f0" stroke-dasharray="3 3"/>
+              <line x1="537" y1="5" x2="537" y2="201" stroke="#f0f0f0" stroke-dasharray="3 3"/>
+              <line x1="655" y1="5" x2="655" y2="201" stroke="#f0f0f0" stroke-dasharray="3 3"/>
+              <line x1="65" y1="201" x2="655" y2="201" stroke="#666" fill="none"/>
+              <line x1="65" y1="5"   x2="65"  y2="201" stroke="#666" fill="none"/>
+              <line x1="59" y1="201" x2="65" y2="201" stroke="#666"/><text x="57" y="201" text-anchor="end" fill="#666" font-size="10" dy="0.355em" font-family="Tajawal,sans-serif">0k</text>
+              <line x1="59" y1="152" x2="65" y2="152" stroke="#666"/><text x="57" y="152" text-anchor="end" fill="#666" font-size="10" dy="0.355em" font-family="Tajawal,sans-serif">150k</text>
+              <line x1="59" y1="103" x2="65" y2="103" stroke="#666"/><text x="57" y="103" text-anchor="end" fill="#666" font-size="10" dy="0.355em" font-family="Tajawal,sans-serif">300k</text>
+              <line x1="59" y1="54"  x2="65" y2="54"  stroke="#666"/><text x="57" y="54"  text-anchor="end" fill="#666" font-size="10" dy="0.355em" font-family="Tajawal,sans-serif">450k</text>
+              <line x1="59" y1="5"   x2="65" y2="5"   stroke="#666"/><text x="57" y="7.5" text-anchor="end" fill="#666" font-size="10" dy="0.355em" font-family="Tajawal,sans-serif">600k</text>
+              <line x1="65"  y1="201" x2="65"  y2="207" stroke="#666"/><text x="65"  y="209" text-anchor="middle" fill="#666" font-size="11" dy="0.71em" font-family="Tajawal,sans-serif">2020</text>
+              <line x1="183" y1="201" x2="183" y2="207" stroke="#666"/><text x="183" y="209" text-anchor="middle" fill="#666" font-size="11" dy="0.71em" font-family="Tajawal,sans-serif">2021</text>
+              <line x1="301" y1="201" x2="301" y2="207" stroke="#666"/><text x="301" y="209" text-anchor="middle" fill="#666" font-size="11" dy="0.71em" font-family="Tajawal,sans-serif">2022</text>
+              <line x1="419" y1="201" x2="419" y2="207" stroke="#666"/><text x="419" y="209" text-anchor="middle" fill="#666" font-size="11" dy="0.71em" font-family="Tajawal,sans-serif">2023</text>
+              <line x1="537" y1="201" x2="537" y2="207" stroke="#666"/><text x="537" y="209" text-anchor="middle" fill="#666" font-size="11" dy="0.71em" font-family="Tajawal,sans-serif">2024</text>
+              <line x1="655" y1="201" x2="655" y2="207" stroke="#666"/><text x="647" y="209" text-anchor="middle" fill="#666" font-size="11" dy="0.71em" font-family="Tajawal,sans-serif">2025</text>
+              <g clip-path="url(#white-clip-ar)">
+                <path fill="none" stroke="#EF373E" stroke-width="2"
+                  d="M65,96.061C104.333,91.01,143.667,85.96,183,81.567C222.333,77.174,261.667,74.163,301,69.703C340.333,65.244,379.667,54.81,419,54.81C458.333,54.81,497.667,69.619,537,70.779C576.333,71.938,615.667,72.228,655,72.518"/>
+                <path fill="none" stroke="#20419A" stroke-width="2" stroke-dasharray="4 2"
+                  d="M65,113.779C104.333,116.201,143.667,118.623,183,118.623C222.333,118.623,261.667,6.306,301,6.306C340.333,6.306,379.667,119.092,419,119.092C458.333,119.092,497.667,8.741,537,8.741C576.333,8.741,615.667,53.581,655,98.42"/>
+              </g>
+              <circle cx="65"  cy="96.061"  r="4" fill="#fff" stroke="#EF373E" stroke-width="2"/>
+              <circle cx="183" cy="81.567"  r="4" fill="#fff" stroke="#EF373E" stroke-width="2"/>
+              <circle cx="301" cy="69.703"  r="4" fill="#fff" stroke="#EF373E" stroke-width="2"/>
+              <circle cx="419" cy="54.81"   r="4" fill="#fff" stroke="#EF373E" stroke-width="2"/>
+              <circle cx="537" cy="70.779"  r="4" fill="#fff" stroke="#EF373E" stroke-width="2"/>
+              <circle cx="655" cy="72.518"  r="4" fill="#fff" stroke="#EF373E" stroke-width="2"/>
+              <circle cx="65"  cy="113.779" r="4" fill="#fff" stroke="#20419A" stroke-width="2"/>
+              <circle cx="183" cy="118.623" r="4" fill="#fff" stroke="#20419A" stroke-width="2"/>
+              <circle cx="301" cy="6.306"   r="4" fill="#fff" stroke="#20419A" stroke-width="2"/>
+              <circle cx="419" cy="119.092" r="4" fill="#fff" stroke="#20419A" stroke-width="2"/>
+              <circle cx="537" cy="8.741"   r="4" fill="#fff" stroke="#20419A" stroke-width="2"/>
+              <circle cx="655" cy="98.42"   r="4" fill="#fff" stroke="#20419A" stroke-width="2"/>
             </svg>
+            <div id="white-tip-ar"></div>
           </div>
-          <div style="display:flex; gap:16px; margin-top:10px; justify-content:flex-end;">
-            <div style="display:flex; align-items:center; gap:5px;"><span style="font-size:10px; color:#555;">إنتاج الكلنكر الأبيض</span><div style="width:16px; height:2px; background:#20419A;"></div></div>
-            <div style="display:flex; align-items:center; gap:5px;"><span style="font-size:10px; color:#555;">مبيعات الأسمنت الأبيض</span><div style="width:16px; height:2px; background:#EF373E;"></div></div>
+          <div style="display:flex; gap:20px; margin-top:12px; justify-content:center;">
+            <div style="display:flex; align-items:center; gap:6px;">
+              <img src="assets/Surface (8).svg" alt="إنتاج الكلنكر الأبيض" style="height:18px; width:auto;" />
+              <span style="font-size:clamp(10px,0.75vw,11.5px); color:#20419A; font-weight:600;">إنتاج الكلنكر الأبيض</span>
+            </div>
+            <div style="display:flex; align-items:center; gap:6px;">
+              <img src="assets/Surface (7).svg" alt="مبيعات الأسمنت الأبيض" style="height:18px; width:auto;" />
+              <span style="font-size:clamp(10px,0.75vw,11.5px); color:#EF373E; font-weight:600;">مبيعات الأسمنت الأبيض</span>
+            </div>
           </div>
+          <script>
+          (function(){
+            var wrap = document.getElementById('chartWhiteAr');
+            var svg  = document.getElementById('whiteChartAr');
+            var tip  = document.getElementById('white-tip-ar');
+            if(!wrap||!svg||!tip) return;
+            var cols = [
+              { x:65,  year:'2020', sales:'321,242',  clinker:'267,004' },
+              { x:183, year:'2021', sales:'358,000',  clinker:'265,000' },
+              { x:301, year:'2022', sales:'381,000',  clinker:'582,000' },
+              { x:419, year:'2023', sales:'407,000',  clinker:'264,000' },
+              { x:537, year:'2024', sales:'374,000',  clinker:'576,000' },
+              { x:655, year:'2025', sales:'393,312',  clinker:'310,000' }
+            ];
+            var cursor = document.createElementNS('http://www.w3.org/2000/svg','line');
+            cursor.setAttribute('y1','5'); cursor.setAttribute('y2','201');
+            cursor.setAttribute('stroke','#ccc'); cursor.setAttribute('stroke-width','1');
+            cursor.setAttribute('pointer-events','none');
+            cursor.style.display = 'none';
+            svg.appendChild(cursor);
+            var colW = 118;
+            cols.forEach(function(col, i){
+              var zoneX = col.x - colW/2;
+              if(i === 0) zoneX = 5;
+              var zoneW = (i === cols.length-1) ? (655 - zoneX) : colW;
+              var zone = document.createElementNS('http://www.w3.org/2000/svg','rect');
+              zone.setAttribute('x', zoneX); zone.setAttribute('y', '0');
+              zone.setAttribute('width', zoneW); zone.setAttribute('height', '220');
+              zone.setAttribute('fill', 'transparent'); zone.style.cursor = 'crosshair';
+              zone.addEventListener('mouseenter', function(){
+                cursor.setAttribute('x1', col.x); cursor.setAttribute('x2', col.x);
+                cursor.style.display = '';
+                tip.innerHTML = '<strong style="font-size:1.1em;color:#1a1a1a;">'+col.year+'</strong><br><br>'+
+                  '<span style="color:#EF373E;">مبيعات الأسمنت الأبيض : '+col.sales+'</span><br>'+
+                  '<span style="color:#20419A;">إنتاج الكلنكر الأبيض : '+col.clinker+'</span>';
+                tip.classList.add('show');
+              });
+              zone.addEventListener('mousemove', function(ev){
+                var r = wrap.getBoundingClientRect();
+                var px = ev.clientX - r.left, py = ev.clientY - r.top;
+                var tw = tip.offsetWidth, th = tip.offsetHeight;
+                var left = (px + 16 + tw < r.width) ? (px + 16) : (px - tw - 16);
+                var top = py - th/2;
+                if(top < 0) top = 4;
+                if(top + th > r.height) top = r.height - th - 4;
+                tip.style.left = left+'px'; tip.style.top = top+'px'; tip.style.transform = 'none';
+              });
+              zone.addEventListener('mouseleave', function(){ cursor.style.display='none'; tip.classList.remove('show'); });
+              svg.appendChild(zone);
+            });
+            var obs = new IntersectionObserver(function(entries){ entries.forEach(function(e){ if(e.isIntersecting){ wrap.classList.add('chart-visible'); obs.unobserve(wrap); } }); }, {threshold:0.2});
+            obs.observe(wrap);
+          })();
+          </script>
         </div>
       </div>
 

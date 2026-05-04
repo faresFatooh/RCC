@@ -2,7 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#ffffff" />
   <title>Leadership — Riyadh Cement Annual Report 2025</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
@@ -253,5 +254,269 @@
     </div>
   </footer>
   <script src="js/main.js"></script>
+
+  <!-- ═══════════════════════════════════════════
+       LEADERSHIP PAGE — PREMIUM SCROLL ANIMATIONS
+  ═══════════════════════════════════════════ -->
+  <script>
+  (function () {
+    'use strict';
+
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    /* ── Keyframes + base states ── */
+    const style = document.createElement('style');
+    style.textContent = `
+      .ld-anim { will-change: transform, opacity; }
+
+      /* Base hidden states */
+      .ld-fade-up    { opacity:0; transform:translateY(36px); }
+      .ld-fade-left  { opacity:0; transform:translateX(-44px); }
+      .ld-fade-right { opacity:0; transform:translateX(44px); }
+      .ld-scale-in   { opacity:0; transform:scale(0.92) translateY(18px); }
+      .ld-blur-in    { opacity:0; filter:blur(10px); transform:translateY(16px); }
+      .ld-flip-up    { opacity:0; transform:perspective(700px) rotateX(10deg) translateY(28px); transform-origin:top center; }
+      .ld-slide-up   { opacity:0; transform:translateY(60px); }
+
+      /* Animated states */
+      .ld-fade-up.ld-in,
+      .ld-fade-left.ld-in,
+      .ld-fade-right.ld-in,
+      .ld-slide-up.ld-in {
+        opacity:1; transform:none;
+        transition: opacity .72s cubic-bezier(.16,1,.3,1),
+                    transform .72s cubic-bezier(.16,1,.3,1);
+      }
+      .ld-scale-in.ld-in {
+        opacity:1; transform:scale(1) translateY(0);
+        transition: opacity .65s cubic-bezier(.16,1,.3,1),
+                    transform .65s cubic-bezier(.16,1,.3,1);
+      }
+      .ld-blur-in.ld-in {
+        opacity:1; filter:blur(0); transform:translateY(0);
+        transition: opacity .85s cubic-bezier(.16,1,.3,1),
+                    filter .85s cubic-bezier(.16,1,.3,1),
+                    transform .85s cubic-bezier(.16,1,.3,1);
+      }
+      .ld-flip-up.ld-in {
+        opacity:1; transform:perspective(700px) rotateX(0deg) translateY(0);
+        transition: opacity .75s cubic-bezier(.16,1,.3,1),
+                    transform .75s cubic-bezier(.16,1,.3,1);
+      }
+
+      /* Stagger delays */
+      .ld-d1 { transition-delay:.06s !important; }
+      .ld-d2 { transition-delay:.13s !important; }
+      .ld-d3 { transition-delay:.20s !important; }
+      .ld-d4 { transition-delay:.27s !important; }
+      .ld-d5 { transition-delay:.34s !important; }
+      .ld-d6 { transition-delay:.41s !important; }
+
+      /* Banner title */
+      .ov-title { overflow:hidden; }
+
+      /* Divider draw */
+      .ov-divider {
+        transform-origin: left;
+        transform: scaleX(0);
+        transition: transform .9s cubic-bezier(.16,1,.3,1) .15s;
+      }
+      .ov-divider.ld-in { transform: scaleX(1); }
+
+      /* Photo reveal — fade + scale */
+      .lead-photo-wrap {
+        opacity:0; transform:scale(0.96) translateY(20px);
+        transition: opacity .9s cubic-bezier(.16,1,.3,1) .1s,
+                    transform .9s cubic-bezier(.16,1,.3,1) .1s;
+      }
+      .lead-photo-wrap.ld-in { opacity:1; transform:scale(1) translateY(0); }
+
+      /* Info box slide */
+      .lead-info-box {
+        opacity:0; transform:translateY(16px);
+        transition: opacity .6s cubic-bezier(.16,1,.3,1) .5s,
+                    transform .6s cubic-bezier(.16,1,.3,1) .5s;
+      }
+      .lead-info-box.ld-in { opacity:1; transform:none; }
+
+      /* Topic cards — left border grow */
+      .lead-topic-card {
+        opacity:0;
+        transform: translateX(-20px);
+        border-left-width: 0;
+        transition: opacity .6s cubic-bezier(.16,1,.3,1),
+                    transform .6s cubic-bezier(.16,1,.3,1),
+                    border-left-width .4s ease;
+      }
+      .lead-topic-card.ld-in {
+        opacity:1;
+        transform: none;
+        border-left-width: 3px;
+      }
+
+      /* Highlight card — special entrance */
+      .lead-highlight-card {
+        opacity:0;
+        transform: translateY(24px) scale(.98);
+        transition: opacity .7s cubic-bezier(.16,1,.3,1),
+                    transform .7s cubic-bezier(.16,1,.3,1);
+      }
+      .lead-highlight-card.ld-in {
+        opacity:1;
+        transform: none;
+      }
+
+      /* Read more button */
+      .btn-read-more {
+        opacity:0; transform:translateY(12px);
+        transition: opacity .5s ease .2s, transform .5s cubic-bezier(.16,1,.3,1) .2s,
+                    background .2s, color .2s;
+      }
+      .btn-read-more.ld-in { opacity:1; transform:none; }
+
+      /* Section number badge pop */
+      .ov-section-num {
+        opacity:0; transform:scale(0.5) rotate(-15deg);
+        transition: opacity .5s cubic-bezier(.16,1,.3,1),
+                    transform .5s cubic-bezier(.34,1.56,.64,1);
+      }
+      .ov-section-num.ld-in { opacity:1; transform:scale(1) rotate(0deg); }
+
+      /* Section h2 */
+      .ov-section-title h2 {
+        opacity:0; transform:translateX(16px);
+        transition: opacity .65s cubic-bezier(.16,1,.3,1) .1s,
+                    transform .65s cubic-bezier(.16,1,.3,1) .1s;
+      }
+      .ov-section-title h2.ld-in { opacity:1; transform:none; }
+
+      /* Tags stagger */
+      .ov-tags a {
+        opacity:0; transform:translateY(8px) scale(.95);
+        transition: opacity .4s ease, transform .4s cubic-bezier(.16,1,.3,1);
+      }
+      .ov-tags.ld-tags-in a { opacity:1; transform:none; }
+
+      /* Banner label */
+      .ov-section-label {
+        opacity:0; letter-spacing:.22em;
+        transition: opacity .6s ease, letter-spacing .6s ease;
+      }
+      .ov-section-label.ld-in { opacity:1; letter-spacing:.22em; }
+
+      /* CEO section background parallax */
+      #ceo {
+        background-attachment: fixed;
+      }
+
+      /* Topic card h4 underline on hover */
+      .lead-topic-card h4 {
+        position: relative;
+        display: inline-block;
+      }
+      .lead-topic-card h4::after {
+        content:'';
+        position:absolute;
+        bottom:-2px; left:0;
+        width:0; height:2px;
+        background:#009189;
+        transition: width .35s cubic-bezier(.16,1,.3,1);
+      }
+      .lead-topic-card:hover h4::after { width:100%; }
+
+      /* Card hover lift */
+      .lead-topic-card {
+        transition: opacity .6s cubic-bezier(.16,1,.3,1),
+                    transform .6s cubic-bezier(.16,1,.3,1),
+                    border-left-width .4s ease,
+                    box-shadow .3s ease;
+      }
+      .lead-topic-card.ld-in:hover {
+        box-shadow: 0 8px 28px rgba(0,0,0,.08);
+        transform: translateY(-2px);
+      }
+      .lead-transparent-card.ld-in:hover {
+        box-shadow: 0 8px 28px rgba(0,0,0,.06);
+        transform: translateY(-2px);
+      }
+    `;
+    document.head.appendChild(style);
+
+    const q  = s => document.querySelector(s);
+    const qa = s => [...document.querySelectorAll(s)];
+    const add = (el, ...cls) => el && el.classList.add(...cls);
+
+    /* ── IntersectionObserver ── */
+    const io = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (!entry.isIntersecting) return;
+        const el = entry.target;
+
+        /* Tags — stagger children */
+        if (el.classList.contains('ov-tags')) {
+          el.classList.add('ld-tags-in');
+          qa('.ov-tags a').forEach((a, i) => {
+            a.style.transitionDelay = `${i * 0.08}s`;
+          });
+          io.unobserve(el);
+          return;
+        }
+
+        el.classList.add('ld-in');
+        io.unobserve(el);
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+
+    /* ── Assign classes + observe ── */
+    function init () {
+
+      /* Banner */
+      add(q('.ov-section-label'), 'ld-anim');
+      add(q('.ov-title'),         'ld-anim', 'ld-blur-in');
+      add(q('.ov-tags'),          'ld-anim');
+      add(q('.ov-more-btn'),      'ld-anim', 'ld-fade-right');
+
+      /* Section titles */
+      qa('.ov-section-num').forEach(el => add(el, 'ld-anim'));
+      qa('.ov-section-title h2').forEach(el => add(el, 'ld-anim'));
+      qa('.ov-divider').forEach(el => add(el, 'ld-anim'));
+
+      /* Photo columns — each section */
+      qa('.lead-photo-wrap').forEach((el, i) => {
+        add(el, 'ld-anim');
+        el.style.transitionDelay = `${i * 0.05}s`;
+      });
+      qa('.lead-info-box').forEach(el => add(el, 'ld-anim'));
+
+      /* Topic cards — staggered per section */
+      qa('#chairman .lead-topic-card').forEach((el, i) => {
+        add(el, 'ld-anim');
+        el.style.transitionDelay = `${i * 0.07}s`;
+      });
+      qa('#ceo .lead-topic-card:not(.lead-highlight-card)').forEach((el, i) => {
+        add(el, 'ld-anim');
+        el.style.transitionDelay = `${i * 0.07}s`;
+      });
+
+      /* Highlight card */
+      qa('.lead-highlight-card').forEach(el => add(el, 'ld-anim'));
+
+      /* Read more */
+      add(q('.btn-read-more'), 'ld-anim');
+
+      /* Observe all */
+      qa('.ld-anim, .ov-tags, .ov-divider, .ov-section-num, .ov-section-title h2,\
+         .lead-photo-wrap, .lead-info-box, .lead-topic-card, .lead-highlight-card,\
+         .btn-read-more, .ov-section-label').forEach(el => io.observe(el));
+    }
+
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', init);
+    } else {
+      init();
+    }
+
+  })();
+  </script>
 </body>
 </html>
