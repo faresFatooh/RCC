@@ -198,7 +198,7 @@
 
 /* Beige card — full width */
 .ov-card-beige {
-  background: #f5ede0;
+  background: #F1D3B5;
   border-radius: 8px;
   padding: 28px 32px;
   width: 100%;
@@ -259,15 +259,18 @@
   font-size: clamp(11.5px, 0.85vw, 13px);
   line-height: 1.7;
   color: #444;
-  padding-left: 16px;
+  padding-left: 22px;
   position: relative;
 }
 .ov-list li::before {
-  content: '•';
+  content: '';
   position: absolute;
   left: 0;
-  color: #009189;
-  font-weight: 700;
+  top: 0.45em;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: #009189;
 }
 
 /* Products block */
@@ -280,7 +283,21 @@
   margin-top: 8px;
 }
 
-/* ── Two business cards ── */
+/* ── Lines of Business wrapper ── */
+.ov-lob-wrap {
+  border: 1.5px solid #F0F0F0;
+  border-radius: 12px;
+  padding: 24px 28px;
+  margin-top: 8px;
+}
+
+.ov-lob-wrap .ov-two-cards {
+  margin-top: 16px;
+}
+
+.ov-lob-wrap .ov-body-text {
+  margin-bottom: 0;
+}
 .ov-two-cards {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -290,17 +307,23 @@
 .ov-biz-card {
   border-radius: 8px;
   padding: 24px 28px;
-  border: 1.5px solid #e0e0e0;
+  border: 1.5px solid #F1D3B5;
+  transition: border-color 0.2s, background 0.2s;
 }
 .ov-biz-card h5 {
   font-size: clamp(11px, 0.85vw, 13px);
   font-weight: 700;
   letter-spacing: 0.06em;
   margin-bottom: 14px;
+  transition: color 0.2s;
 }
-.grey-card h5 { color: #009189; }
-.white-card h5 { color: #1a1a1a; }
-.grey-card { border-color: #009189; }
+.grey-card h5 { color: #343741; }
+.white-card h5 { color: #343741; }
+.grey-card { border-color: #F1D3B5; }
+
+/* Hover */
+.ov-biz-card:hover { border-color: #009189; }
+.ov-biz-card:hover h5 { color: #009189; }
 .ov-biz-num {
   font-size: clamp(14px, 1.2vw, 17px);
   font-weight: 700;
@@ -392,9 +415,9 @@
   margin-bottom: 20px;
 }
 .ov-sustain-tag {
-  background: #f5ede0;
+  background: #F1D3B5;
   border-radius: 6px;
-  padding: 12px 16px;
+  padding: 12px 16px 20px;
   font-size: clamp(10px, 0.78vw, 12px);
   color: #444;
   font-weight: 500;
@@ -403,7 +426,7 @@
 
 /* Awards card */
 .ov-awards-card {
-  background: #f5ede0;
+  background: #F1D3B5;
   border-radius: 8px;
   padding: 20px 24px;
   margin-top: 4px;
@@ -469,7 +492,7 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  background: #fff;
+  background: #FAFAFA;
 }
 .ov-event {
   display: flex;
@@ -751,10 +774,34 @@
 
 /* ── Investment Case ── */
 .ov-invest-section {
-  background-image: url('../assets/freepik__a-minimalist-highend-corporate-background-for-text__64990_upscayl_3x_upscayl-standard-4x 2 (1).png');
-  background-size: cover;
-  background-position: center;
+  background: #fff;
+  position: relative;
+  overflow: hidden;
+}
+
+.ov-invest-bg-img {
+  display: none;
+}
+
+.ov-invest-section::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url('../assets/freepik__a-minimalist-highend-corporate-background-for-text__64990_upscayl_3x_upscayl-standard-4x 2 (6).png');
+  background-size: 100% auto;
+  background-position: bottom right;
   background-repeat: no-repeat;
+  background-color: #fff;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.ov-invest-section .ov-section-inner {
+  position: relative;
+  z-index: 1;
 }
 
 .ov-invest-grid {
@@ -765,8 +812,8 @@
 }
 
 .ov-invest-card {
-  background: #fff;
-  border: 1px solid #e5e5e5;
+  background: #FAFAFA;
+  border: 1px solid #F0F0F0;
   border-radius: 12px;
   padding: 24px 22px;
   display: flex;
@@ -878,7 +925,6 @@
 
 .lead-topic-card {
   background: #fff;
-  border: 1px solid #eeeeee;
   border-radius: 8px;
   padding: 20px 24px;
 }
@@ -902,6 +948,22 @@
 .lead-highlight-card {
   background: #F1D3B5;
   border-color: #e8dcc8;
+  width: calc(100% + 320px);
+  margin-left: -320px;
+  margin-right: 0;
+  margin-top: 16px;
+  border-radius: 12px;
+  box-sizing: border-box;
+  padding: 24px 24px 24px 24px;
+}
+
+.lead-highlight-card h4 {
+  padding-left: 0;
+  border-left: none;
+}
+
+.lead-transparent-card {
+  background: transparent;
 }
 
 .btn-read-more {
@@ -1055,7 +1117,6 @@
 
 .sr-kpi-body > div {
   padding: 18px 22px;
-  border-right: 1px solid #f0f0f0;
 }
 
 .sr-kpi-body > div:last-child { border-right: none; }
@@ -1083,3 +1144,5 @@
   color: #343741 !important;
   margin-bottom: 8px !important;
 }
+
+/* ── Two business cards ── */

@@ -610,6 +610,13 @@ body {
   margin-bottom: 4px;
   font-size: clamp(10px, 0.8vw, 12.5px);
 }
+
+.theme-card-body strong.stat-num {
+  font-size: clamp(28px, 3vw, 42px);
+  color: #009189;
+  line-height: 1;
+  margin-bottom: 8px;
+}
 .theme-card-body p { margin: 0; }
 
 .card-icon {

@@ -205,18 +205,177 @@
     <div class="ov-section-inner">
       <div style="width:100%; height:1px; background:#EEEEEE; margin-bottom:28px;"></div>
       <p style="font-size:clamp(12px,0.9vw,14px); font-weight:700; color:#1a1a1a; margin-bottom:16px;">الأداء المالي لـ 5 سنوات (ألف ر.س)</p>
-      <div class="chart-fade" id="finChart" style="transform:scaleX(-1);">
-        <img src="assets/Container.svg" alt="رسم الأداء المالي لـ 5 سنوات" style="width:100%; height:auto; display:block; transform:scaleX(-1);" />
+
+      <style>
+        .chart-fade { opacity:0; transform:translateY(16px); transition:opacity 0.8s ease, transform 0.8s ease; }
+        .chart-fade.visible { opacity:1; transform:translateY(0); }
+        .fc-wrap { position:relative; width:100%; }
+        .fc-svg { width:100%; height:auto; display:block; overflow:visible; }
+        .fc-line { fill:none; transition:opacity 0.2s; }
+        .fc-dot { fill:#fff; cursor:pointer; transition:opacity 0.2s; }
+        .fc-wrap:hover .fc-line { opacity:0.3; }
+        .fc-wrap:hover .fc-line-hovered { opacity:1; }
+        .fc-tooltip {
+          position:absolute; background:#1a1a1a; color:#fff;
+          font-size:11px; padding:8px 12px; border-radius:6px;
+          pointer-events:none; white-space:nowrap;
+          opacity:0; transition:opacity 0.15s;
+          transform:translate(-50%,-100%); margin-top:-10px;
+          line-height:1.7; z-index:10;
+        }
+        .fc-tooltip.show { opacity:1; }
+        .fc-legend { display:flex; gap:20px; flex-wrap:wrap; margin-top:14px; justify-content:center; }
+        .fc-legend-item { display:flex; align-items:center; gap:6px; font-size:clamp(10px,0.78vw,12px); font-weight:600; cursor:pointer; user-select:none; }
+        .fc-legend-line { width:22px; height:3px; border-radius:2px; }
+        .fc-legend-dash { width:22px; height:0; border-top:3px dashed; }
+        .fc-legend-dot2 { width:8px; height:8px; border-radius:50%; border:2px solid; background:#fff; flex-shrink:0; }
+        /* animation */
+        #lc1-rev { stroke-dasharray:3000; stroke-dashoffset:3000; }
+        #lc1-gp  { stroke-dasharray:3000; stroke-dashoffset:3000; }
+        #lc1-op  { stroke-dasharray:5 2;  stroke-dashoffset:3000; }
+        #lc1-np  { stroke-dasharray:3 3;  stroke-dashoffset:3000; }
+        #lineChart1.animated #lc1-rev { animation: lc1-draw 1.2s ease 0s    forwards; }
+        #lineChart1.animated #lc1-gp  { animation: lc1-draw 1.2s ease 0.15s forwards; }
+        #lineChart1.animated #lc1-op  { animation: lc1-draw 1.2s ease 0.3s  forwards; }
+        #lineChart1.animated #lc1-np  { animation: lc1-draw 1.2s ease 0.45s forwards; }
+        @keyframes lc1-draw { to { stroke-dashoffset:0; } }
+        .lc1-dot { opacity:0; }
+        #lineChart1.animated .lc1-dot { animation: lc1-dot-in 0.3s ease 1.1s forwards; }
+        @keyframes lc1-dot-in { to { opacity:1; } }
+      </style>
+
+      <div class="chart-fade fc-wrap" id="finChart">
+        <svg class="fc-svg" viewBox="0 0 1352 320" xmlns="http://www.w3.org/2000/svg" id="lineChart1" direction="ltr">
+          <defs>
+            <clipPath id="lc1-clip"><rect x="65" y="5" width="1282" height="256"/></clipPath>
+          </defs>
+          <!-- grid horizontal -->
+          <line x1="65" y1="261" x2="1347" y2="261" stroke="#f0f0f0" stroke-dasharray="3 3"/>
+          <line x1="65" y1="197" x2="1347" y2="197" stroke="#f0f0f0" stroke-dasharray="3 3"/>
+          <line x1="65" y1="133" x2="1347" y2="133" stroke="#f0f0f0" stroke-dasharray="3 3"/>
+          <line x1="65" y1="69"  x2="1347" y2="69"  stroke="#f0f0f0" stroke-dasharray="3 3"/>
+          <line x1="65" y1="5"   x2="1347" y2="5"   stroke="#f0f0f0" stroke-dasharray="3 3"/>
+          <!-- grid vertical -->
+          <line x1="65"    y1="5" x2="65"    y2="261" stroke="#f0f0f0" stroke-dasharray="3 3"/>
+          <line x1="385.5" y1="5" x2="385.5" y2="261" stroke="#f0f0f0" stroke-dasharray="3 3"/>
+          <line x1="706"   y1="5" x2="706"   y2="261" stroke="#f0f0f0" stroke-dasharray="3 3"/>
+          <line x1="1026.5" y1="5" x2="1026.5" y2="261" stroke="#f0f0f0" stroke-dasharray="3 3"/>
+          <line x1="1347"  y1="5" x2="1347"  y2="261" stroke="#f0f0f0" stroke-dasharray="3 3"/>
+          <!-- axes -->
+          <line x1="65" y1="261" x2="1347" y2="261" stroke="#666" fill="none"/>
+          <line x1="65" y1="5"   x2="65"   y2="261" stroke="#666" fill="none"/>
+          <!-- y ticks + labels -->
+          <line x1="59" y1="261" x2="65" y2="261" stroke="#666"/><text x="57" y="261" text-anchor="end" fill="#666" font-size="10" dy="0.355em">0M</text>
+          <line x1="59" y1="197" x2="65" y2="197" stroke="#666"/><text x="57" y="197" text-anchor="end" fill="#666" font-size="10" dy="0.355em">200M</text>
+          <line x1="59" y1="133" x2="65" y2="133" stroke="#666"/><text x="57" y="133" text-anchor="end" fill="#666" font-size="10" dy="0.355em">400M</text>
+          <line x1="59" y1="69"  x2="65" y2="69"  stroke="#666"/><text x="57" y="69"  text-anchor="end" fill="#666" font-size="10" dy="0.355em">600M</text>
+          <line x1="59" y1="5"   x2="65" y2="5"   stroke="#666"/><text x="57" y="7.5" text-anchor="end" fill="#666" font-size="10" dy="0.355em">800M</text>
+          <!-- x ticks + labels -->
+          <line x1="65"    y1="261" x2="65"    y2="267" stroke="#666"/><text x="65"      y="269" text-anchor="middle" fill="#666" font-size="12" dy="0.71em">2021</text>
+          <line x1="385.5" y1="261" x2="385.5" y2="267" stroke="#666"/><text x="385.5"   y="269" text-anchor="middle" fill="#666" font-size="12" dy="0.71em">2022</text>
+          <line x1="706"   y1="261" x2="706"   y2="267" stroke="#666"/><text x="706"     y="269" text-anchor="middle" fill="#666" font-size="12" dy="0.71em">2023</text>
+          <line x1="1026.5" y1="261" x2="1026.5" y2="267" stroke="#666"/><text x="1026.5" y="269" text-anchor="middle" fill="#666" font-size="12" dy="0.71em">2024</text>
+          <line x1="1347"  y1="261" x2="1347"  y2="267" stroke="#666"/><text x="1337.8"  y="269" text-anchor="middle" fill="#666" font-size="12" dy="0.71em">2025</text>
+          <!-- lines -->
+          <g clip-path="url(#lc1-clip)">
+            <path class="fc-line" id="lc1-rev" stroke="#009189" stroke-width="2.5"
+              d="M65,46.259C171.833,57.948,278.667,69.638,385.5,69.638C492.333,69.638,599.167,64.798,706,55.117C812.833,45.437,919.667,8.393,1026.5,8.393C1133.333,8.393,1240.167,8.676,1347,8.96"/>
+            <path class="fc-line" id="lc1-gp" stroke="#20419A" stroke-width="2"
+              d="M65,175.704C171.833,181.305,278.667,186.905,385.5,186.905C492.333,186.905,599.167,186.334,706,185.192C812.833,184.05,919.667,155.795,1026.5,155.795C1133.333,155.795,1240.167,167.146,1347,178.498"/>
+            <path class="fc-line" id="lc1-op" stroke="#00AE81" stroke-width="2"
+              d="M65,186.343C171.833,191.269,278.667,196.194,385.5,196.38C492.333,196.567,599.167,196.66,706,196.66C812.833,196.66,919.667,167.26,1026.5,167.26C1133.333,167.26,1240.167,179.531,1347,191.801"/>
+            <path class="fc-line" id="lc1-np" stroke="#EF373E" stroke-width="2"
+              d="M65,192.606C171.833,196.315,278.667,200.023,385.5,200.251C492.333,200.479,599.167,200.593,706,200.593C812.833,200.593,919.667,161.66,1026.5,161.66C1133.333,161.66,1240.167,178.077,1347,194.495"/>
+          </g>
+          <!-- dots Revenue -->
+          <circle class="fc-dot lc1-dot" cx="65"     cy="46.259"  r="4" stroke="#009189" stroke-width="2.5" data-label="الإيرادات"          data-year="2021" data-val="671,066" data-line="lc1-rev"/>
+          <circle class="fc-dot lc1-dot" cx="385.5"  cy="69.638"  r="4" stroke="#009189" stroke-width="2.5" data-label="الإيرادات"          data-year="2022" data-val="598,006" data-line="lc1-rev"/>
+          <circle class="fc-dot lc1-dot" cx="706"    cy="55.117"  r="4" stroke="#009189" stroke-width="2.5" data-label="الإيرادات"          data-year="2023" data-val="643,383" data-line="lc1-rev"/>
+          <circle class="fc-dot lc1-dot" cx="1026.5" cy="8.393"   r="4" stroke="#009189" stroke-width="2.5" data-label="الإيرادات"          data-year="2024" data-val="789,396" data-line="lc1-rev"/>
+          <circle class="fc-dot lc1-dot" cx="1347"   cy="8.96"    r="4" stroke="#009189" stroke-width="2.5" data-label="الإيرادات"          data-year="2025" data-val="787,626" data-line="lc1-rev"/>
+          <!-- dots Gross Profit -->
+          <circle class="fc-dot lc1-dot" cx="65"     cy="175.704" r="3" stroke="#20419A" stroke-width="2"   data-label="إجمالي الربح"     data-year="2021" data-val="266,550" data-line="lc1-gp"/>
+          <circle class="fc-dot lc1-dot" cx="385.5"  cy="186.905" r="3" stroke="#20419A" stroke-width="2"   data-label="إجمالي الربح"     data-year="2022" data-val="231,546" data-line="lc1-gp"/>
+          <circle class="fc-dot lc1-dot" cx="706"    cy="185.192" r="3" stroke="#20419A" stroke-width="2"   data-label="إجمالي الربح"     data-year="2023" data-val="236,899" data-line="lc1-gp"/>
+          <circle class="fc-dot lc1-dot" cx="1026.5" cy="155.795" r="3" stroke="#20419A" stroke-width="2"   data-label="إجمالي الربح"     data-year="2024" data-val="328,767" data-line="lc1-gp"/>
+          <circle class="fc-dot lc1-dot" cx="1347"   cy="178.498" r="3" stroke="#20419A" stroke-width="2"   data-label="إجمالي الربح"     data-year="2025" data-val="257,818" data-line="lc1-gp"/>
+          <!-- dots Operating Profit -->
+          <circle class="fc-dot lc1-dot" cx="65"     cy="186.343" r="3" stroke="#00AE81" stroke-width="2"   data-label="الربح التشغيلي" data-year="2021" data-val="233,303" data-line="lc1-op"/>
+          <circle class="fc-dot lc1-dot" cx="385.5"  cy="196.38"  r="3" stroke="#00AE81" stroke-width="2"   data-label="الربح التشغيلي" data-year="2022" data-val="201,936" data-line="lc1-op"/>
+          <circle class="fc-dot lc1-dot" cx="706"    cy="196.66"  r="3" stroke="#00AE81" stroke-width="2"   data-label="الربح التشغيلي" data-year="2023" data-val="201,064" data-line="lc1-op"/>
+          <circle class="fc-dot lc1-dot" cx="1026.5" cy="167.26"  r="3" stroke="#00AE81" stroke-width="2"   data-label="الربح التشغيلي" data-year="2024" data-val="292,936" data-line="lc1-op"/>
+          <circle class="fc-dot lc1-dot" cx="1347"   cy="191.801" r="3" stroke="#00AE81" stroke-width="2"   data-label="الربح التشغيلي" data-year="2025" data-val="216,248" data-line="lc1-op"/>
+          <!-- dots Net Profit -->
+          <circle class="fc-dot lc1-dot" cx="65"     cy="192.606" r="3" stroke="#EF373E" stroke-width="2"   data-label="صافي الربح"       data-year="2021" data-val="213,731" data-line="lc1-np"/>
+          <circle class="fc-dot lc1-dot" cx="385.5"  cy="200.251" r="3" stroke="#EF373E" stroke-width="2"   data-label="صافي الربح"       data-year="2022" data-val="189,840" data-line="lc1-np"/>
+          <circle class="fc-dot lc1-dot" cx="706"    cy="200.593" r="3" stroke="#EF373E" stroke-width="2"   data-label="صافي الربح"       data-year="2023" data-val="188,772" data-line="lc1-np"/>
+          <circle class="fc-dot lc1-dot" cx="1026.5" cy="161.66"  r="3" stroke="#EF373E" stroke-width="2"   data-label="صافي الربح"       data-year="2024" data-val="310,439" data-line="lc1-np"/>
+          <circle class="fc-dot lc1-dot" cx="1347"   cy="194.495" r="3" stroke="#EF373E" stroke-width="2"   data-label="صافي الربح"       data-year="2025" data-val="207,827" data-line="lc1-np"/>
+        </svg>
+        <div class="fc-tooltip" id="lc1-tip"></div>
+        <div class="fc-legend">
+          <div class="fc-legend-item" data-line="lc1-rev">
+            <img src="assets/Surface (1).svg" alt="الإيرادات" style="height:18px; width:auto;" />
+            <span style="color:#009189;">الإيرادات</span>
+          </div>
+          <div class="fc-legend-item" data-line="lc1-gp">
+            <img src="assets/Surface (2).svg" alt="إجمالي الربح" style="height:18px; width:auto;" />
+            <span style="color:#20419A;">إجمالي الربح</span>
+          </div>
+          <div class="fc-legend-item" data-line="lc1-op">
+            <img src="assets/Surface (3).svg" alt="الربح التشغيلي" style="height:18px; width:auto;" />
+            <span style="color:#00AE81;">الربح التشغيلي</span>
+          </div>
+          <div class="fc-legend-item" data-line="lc1-np">
+            <img src="assets/Surface (4).svg" alt="صافي الربح" style="height:18px; width:auto;" />
+            <span style="color:#EF373E;">صافي الربح</span>
+          </div>
+        </div>
       </div>
+
       <script>
-        (function(){
-          const el = document.getElementById('finChart');
-          if (!el) return;
-          const obs = new IntersectionObserver((entries) => {
-            entries.forEach(e => { if (e.isIntersecting) { el.classList.add('visible'); obs.unobserve(el); } });
-          }, { threshold: 0.2 });
-          obs.observe(el);
-        })();
+      (function(){
+        var wrap = document.getElementById('finChart');
+        var svg  = document.getElementById('lineChart1');
+        var tip  = document.getElementById('lc1-tip');
+        if(!wrap||!svg||!tip) return;
+        var obs = new IntersectionObserver(function(entries){
+          entries.forEach(function(e){
+            if(e.isIntersecting){ wrap.classList.add('visible'); svg.classList.add('animated'); obs.unobserve(wrap); }
+          });
+        },{threshold:0.2});
+        obs.observe(wrap);
+        svg.querySelectorAll('.fc-dot').forEach(function(dot){
+          dot.addEventListener('mouseenter', function(){
+            var svgRect  = svg.getBoundingClientRect();
+            var wrapRect = wrap.getBoundingClientRect();
+            var cx = parseFloat(this.getAttribute('cx'));
+            var cy = parseFloat(this.getAttribute('cy'));
+            var px = cx*(svgRect.width/1352)  + (svgRect.left-wrapRect.left);
+            var py = cy*(svgRect.height/320) + (svgRect.top-wrapRect.top);
+            tip.innerHTML = '<strong>'+this.dataset.year+'</strong><br>'+this.dataset.label+': '+this.dataset.val;
+            tip.style.left = px+'px'; tip.style.top = py+'px';
+            tip.classList.add('show');
+            var lid = this.dataset.line;
+            svg.querySelectorAll('.fc-line').forEach(function(l){ l.classList.remove('fc-line-hovered'); });
+            if(lid){ var el=document.getElementById(lid); if(el) el.classList.add('fc-line-hovered'); }
+          });
+          dot.addEventListener('mouseleave', function(){
+            tip.classList.remove('show');
+            svg.querySelectorAll('.fc-line').forEach(function(l){ l.classList.remove('fc-line-hovered'); });
+          });
+        });
+        wrap.querySelectorAll('.fc-legend-item').forEach(function(item){
+          item.addEventListener('click', function(){
+            var lid = this.dataset.line;
+            var line = document.getElementById(lid);
+            if(!line) return;
+            var active = !line.classList.contains('fc-line-hovered');
+            svg.querySelectorAll('.fc-line').forEach(function(l){ l.classList.remove('fc-line-hovered'); });
+            if(active) line.classList.add('fc-line-hovered');
+          });
+        });
+      })();
       </script>
     </div>
   </section>
@@ -226,18 +385,110 @@
     <div class="ov-section-inner">
       <div style="width:100%; height:1px; background:#EEEEEE; margin-bottom:28px;"></div>
       <p style="font-size:clamp(12px,0.9vw,14px); font-weight:700; color:#1a1a1a; margin-bottom:16px;">مقارنة 2025 مقابل 2024 (ألف ر.س)</p>
-      <div class="chart-fade" id="finChart2" style="transform:scaleX(-1);">
-        <img src="assets/Container (1).svg" alt="رسم مقارنة 2025 مقابل 2024" style="width:100%; height:auto; display:block; transform:scaleX(-1);" />
+
+      <style>
+        .bc2-bar { transition:opacity 0.2s; cursor:pointer; }
+        .bc2-wrap:hover .bc2-bar { opacity:0.4; }
+        .bc2-wrap:hover .bc2-bar:hover { opacity:1; }
+        .bc2-rect { transform-box:fill-box; transform-origin:bottom; transform:scaleY(0); }
+        #barChart2.animated .bc2-rect { animation: bc2-grow 0.8s ease forwards; }
+        @keyframes bc2-grow { to { transform:scaleY(1); } }
+      </style>
+
+      <div class="chart-fade bc2-wrap" id="finChart2">
+        <svg class="fc-svg" viewBox="0 0 1352 300" xmlns="http://www.w3.org/2000/svg" id="barChart2" direction="ltr">
+          <defs>
+            <clipPath id="bc2-clip"><rect x="65" y="5" width="1282" height="236"/></clipPath>
+          </defs>
+          <!-- grid horizontal -->
+          <line x1="65" y1="241" x2="1347" y2="241" stroke="#f0f0f0" stroke-dasharray="3 3"/>
+          <line x1="65" y1="182" x2="1347" y2="182" stroke="#f0f0f0" stroke-dasharray="3 3"/>
+          <line x1="65" y1="123" x2="1347" y2="123" stroke="#f0f0f0" stroke-dasharray="3 3"/>
+          <line x1="65" y1="64"  x2="1347" y2="64"  stroke="#f0f0f0" stroke-dasharray="3 3"/>
+          <line x1="65" y1="5"   x2="1347" y2="5"   stroke="#f0f0f0" stroke-dasharray="3 3"/>
+          <!-- grid vertical -->
+          <line x1="225.25"  y1="5" x2="225.25"  y2="241" stroke="#f0f0f0" stroke-dasharray="3 3"/>
+          <line x1="545.75"  y1="5" x2="545.75"  y2="241" stroke="#f0f0f0" stroke-dasharray="3 3"/>
+          <line x1="866.25"  y1="5" x2="866.25"  y2="241" stroke="#f0f0f0" stroke-dasharray="3 3"/>
+          <line x1="1186.75" y1="5" x2="1186.75" y2="241" stroke="#f0f0f0" stroke-dasharray="3 3"/>
+          <line x1="65"      y1="5" x2="65"      y2="241" stroke="#f0f0f0" stroke-dasharray="3 3"/>
+          <line x1="1347"    y1="5" x2="1347"    y2="241" stroke="#f0f0f0" stroke-dasharray="3 3"/>
+          <!-- axes -->
+          <line x1="65" y1="241" x2="1347" y2="241" stroke="#666" fill="none"/>
+          <line x1="65" y1="5"   x2="65"   y2="241" stroke="#666" fill="none"/>
+          <!-- y ticks + labels -->
+          <line x1="59" y1="241" x2="65" y2="241" stroke="#666"/><text x="57" y="241" text-anchor="end" fill="#666" font-size="10" dy="0.355em">0M</text>
+          <line x1="59" y1="182" x2="65" y2="182" stroke="#666"/><text x="57" y="182" text-anchor="end" fill="#666" font-size="10" dy="0.355em">200M</text>
+          <line x1="59" y1="123" x2="65" y2="123" stroke="#666"/><text x="57" y="123" text-anchor="end" fill="#666" font-size="10" dy="0.355em">400M</text>
+          <line x1="59" y1="64"  x2="65" y2="64"  stroke="#666"/><text x="57" y="64"  text-anchor="end" fill="#666" font-size="10" dy="0.355em">600M</text>
+          <line x1="59" y1="5"   x2="65" y2="5"   stroke="#666"/><text x="57" y="7.5" text-anchor="end" fill="#666" font-size="10" dy="0.355em">800M</text>
+          <!-- x ticks + labels -->
+          <line x1="225.25"  y1="241" x2="225.25"  y2="247" stroke="#666"/><text x="225.25"  y="249" text-anchor="middle" fill="#666" font-size="11" dy="0.71em">الإيرادات</text>
+          <line x1="545.75"  y1="241" x2="545.75"  y2="247" stroke="#666"/><text x="545.75"  y="249" text-anchor="middle" fill="#666" font-size="11" dy="0.71em">إجمالي الربح</text>
+          <line x1="866.25"  y1="241" x2="866.25"  y2="247" stroke="#666"/><text x="866.25"  y="249" text-anchor="middle" fill="#666" font-size="11" dy="0.71em">الربح التشغيلي</text>
+          <line x1="1186.75" y1="241" x2="1186.75" y2="247" stroke="#666"/><text x="1186.75" y="249" text-anchor="middle" fill="#666" font-size="11" dy="0.71em">صافي الربح</text>
+          <!-- bars 2025 (#009189) -->
+          <g clip-path="url(#bc2-clip)">
+            <path class="bc2-bar bc2-rect" fill="#009189" data-label="الإيرادات 2025"          data-val="787,626" style="animation-delay:0.05s"
+              d="M97.05,11.65A3,3,0,0,1,100.05,8.65L223.05,8.65A3,3,0,0,1,226.05,11.65L226.05,241L97.05,241Z"/>
+            <path class="bc2-bar bc2-rect" fill="#009189" data-label="إجمالي الربح 2025"     data-val="257,818" style="animation-delay:0.15s"
+              d="M417.55,167.94A3,3,0,0,1,420.55,164.94L543.55,164.94A3,3,0,0,1,546.55,167.94L546.55,241L417.55,241Z"/>
+            <path class="bc2-bar bc2-rect" fill="#009189" data-label="الربح التشغيلي 2025" data-val="216,248" style="animation-delay:0.25s"
+              d="M738.05,180.21A3,3,0,0,1,741.05,177.21L864.05,177.21A3,3,0,0,1,867.05,180.21L867.05,241L738.05,241Z"/>
+            <path class="bc2-bar bc2-rect" fill="#009189" data-label="صافي الربح 2025"       data-val="207,827" style="animation-delay:0.35s"
+              d="M1058.55,182.69A3,3,0,0,1,1061.55,179.69L1184.55,179.69A3,3,0,0,1,1187.55,182.69L1187.55,241L1058.55,241Z"/>
+            <!-- bars 2024 (#343741) -->
+            <path class="bc2-bar bc2-rect" fill="#343741" data-label="الإيرادات 2024"          data-val="789,396" style="animation-delay:0.05s"
+              d="M227.05,11.13A3,3,0,0,1,230.05,8.13L353.05,8.13A3,3,0,0,1,356.05,11.13L356.05,241L227.05,241Z"/>
+            <path class="bc2-bar bc2-rect" fill="#343741" data-label="إجمالي الربح 2024"     data-val="328,767" style="animation-delay:0.15s"
+              d="M547.55,147.01A3,3,0,0,1,550.55,144.01L673.55,144.01A3,3,0,0,1,676.55,147.01L676.55,241L547.55,241Z"/>
+            <path class="bc2-bar bc2-rect" fill="#343741" data-label="الربح التشغيلي 2024" data-val="292,936" style="animation-delay:0.25s"
+              d="M868.05,157.58A3,3,0,0,1,871.05,154.58L994.05,154.58A3,3,0,0,1,997.05,157.58L997.05,241L868.05,241Z"/>
+            <path class="bc2-bar bc2-rect" fill="#343741" data-label="صافي الربح 2024"       data-val="310,439" style="animation-delay:0.35s"
+              d="M1188.55,152.42A3,3,0,0,1,1191.55,149.42L1314.55,149.42A3,3,0,0,1,1317.55,152.42L1317.55,241L1188.55,241Z"/>
+          </g>
+        </svg>
+        <div class="fc-tooltip" id="bc2-tip"></div>
+        <div class="fc-legend">
+          <div class="fc-legend-item">
+            <div style="width:14px;height:14px;border-radius:2px;background:#009189;flex-shrink:0;"></div>
+            <span style="color:#555;">2025</span>
+          </div>
+          <div class="fc-legend-item">
+            <div style="width:14px;height:14px;border-radius:2px;background:#343741;flex-shrink:0;"></div>
+            <span style="color:#555;">2024</span>
+          </div>
+        </div>
       </div>
+
       <script>
-        (function(){
-          const el = document.getElementById('finChart2');
-          if (!el) return;
-          const obs = new IntersectionObserver((entries) => {
-            entries.forEach(e => { if (e.isIntersecting) { el.classList.add('visible'); obs.unobserve(el); } });
-          }, { threshold: 0.2 });
-          obs.observe(el);
-        })();
+      (function(){
+        var wrap = document.getElementById('finChart2');
+        var svg  = document.getElementById('barChart2');
+        var tip  = document.getElementById('bc2-tip');
+        if(!wrap||!svg||!tip) return;
+        var obs = new IntersectionObserver(function(entries){
+          entries.forEach(function(e){
+            if(e.isIntersecting){ wrap.classList.add('visible'); svg.classList.add('animated'); obs.unobserve(wrap); }
+          });
+        },{threshold:0.2});
+        obs.observe(wrap);
+        svg.querySelectorAll('.bc2-bar').forEach(function(bar){
+          bar.addEventListener('mouseenter', function(){
+            var svgRect  = svg.getBoundingClientRect();
+            var wrapRect = wrap.getBoundingClientRect();
+            var bbox = this.getBBox();
+            var cx = bbox.x + bbox.width/2;
+            var cy = bbox.y;
+            var px = cx*(svgRect.width/1352)  + (svgRect.left-wrapRect.left);
+            var py = cy*(svgRect.height/300) + (svgRect.top-wrapRect.top);
+            tip.innerHTML = '<strong>'+this.dataset.label+'</strong><br>SAR '+this.dataset.val;
+            tip.style.left = px+'px'; tip.style.top = py+'px';
+            tip.classList.add('show');
+          });
+          bar.addEventListener('mouseleave', function(){ tip.classList.remove('show'); });
+        });
+      })();
       </script>
     </div>
   </section>
@@ -247,18 +498,122 @@
     <div class="ov-section-inner">
       <div style="width:100%; height:1px; background:#EEEEEE; margin-bottom:28px;"></div>
       <p style="font-size:clamp(12px,0.9vw,14px); font-weight:700; color:#1a1a1a; margin-bottom:16px;">اتجاه الهوامش (%)</p>
-      <div class="chart-fade" id="finChart3" style="transform:scaleX(-1);">
-        <img src="assets/Container (2).svg" alt="رسم اتجاه الهوامش" style="width:100%; height:auto; display:block; transform:scaleX(-1);" />
+
+      <style>
+        #lc3-gm { stroke-dasharray:3000; stroke-dashoffset:3000; }
+        #lc3-nm { stroke-dasharray:4 2;  stroke-dashoffset:3000; }
+        #lineChart3.animated #lc3-gm { animation: lc1-draw 1.2s ease 0s    forwards; }
+        #lineChart3.animated #lc3-nm { animation: lc1-draw 1.2s ease 0.2s  forwards; }
+        .lc3-dot { opacity:0; }
+        #lineChart3.animated .lc3-dot { animation: lc1-dot-in 0.3s ease 1.1s forwards; }
+      </style>
+
+      <div class="chart-fade fc-wrap" id="finChart3">
+        <svg class="fc-svg" viewBox="0 0 1352 280" xmlns="http://www.w3.org/2000/svg" id="lineChart3" direction="ltr">
+          <defs>
+            <clipPath id="lc3-clip"><rect x="65" y="5" width="1282" height="216"/></clipPath>
+          </defs>
+          <!-- grid horizontal -->
+          <line x1="65" y1="221"   x2="1347" y2="221"   stroke="#f0f0f0" stroke-dasharray="3 3"/>
+          <line x1="65" y1="156.2" x2="1347" y2="156.2" stroke="#f0f0f0" stroke-dasharray="3 3"/>
+          <line x1="65" y1="91.4"  x2="1347" y2="91.4"  stroke="#f0f0f0" stroke-dasharray="3 3"/>
+          <line x1="65" y1="5"     x2="1347" y2="5"     stroke="#f0f0f0" stroke-dasharray="3 3"/>
+          <!-- grid vertical -->
+          <line x1="65"    y1="5" x2="65"    y2="221" stroke="#f0f0f0" stroke-dasharray="3 3"/>
+          <line x1="385.5" y1="5" x2="385.5" y2="221" stroke="#f0f0f0" stroke-dasharray="3 3"/>
+          <line x1="706"   y1="5" x2="706"   y2="221" stroke="#f0f0f0" stroke-dasharray="3 3"/>
+          <line x1="1026.5" y1="5" x2="1026.5" y2="221" stroke="#f0f0f0" stroke-dasharray="3 3"/>
+          <line x1="1347"  y1="5" x2="1347"  y2="221" stroke="#f0f0f0" stroke-dasharray="3 3"/>
+          <!-- axes -->
+          <line x1="65" y1="221" x2="1347" y2="221" stroke="#666" fill="none"/>
+          <line x1="65" y1="5"   x2="65"   y2="221" stroke="#666" fill="none"/>
+          <!-- y ticks + labels -->
+          <line x1="59" y1="221"   x2="65" y2="221"   stroke="#666"/><text x="57" y="221"   text-anchor="end" fill="#666" font-size="10" dy="0.355em">0%</text>
+          <line x1="59" y1="156.2" x2="65" y2="156.2" stroke="#666"/><text x="57" y="156.2" text-anchor="end" fill="#666" font-size="10" dy="0.355em">15%</text>
+          <line x1="59" y1="91.4"  x2="65" y2="91.4"  stroke="#666"/><text x="57" y="91.4"  text-anchor="end" fill="#666" font-size="10" dy="0.355em">30%</text>
+          <line x1="59" y1="5"     x2="65" y2="5"     stroke="#666"/><text x="57" y="7.5"   text-anchor="end" fill="#666" font-size="10" dy="0.355em">50%</text>
+          <!-- x ticks + labels -->
+          <line x1="65"    y1="221" x2="65"    y2="227" stroke="#666"/><text x="65"      y="229" text-anchor="middle" fill="#666" font-size="12" dy="0.71em">2021</text>
+          <line x1="385.5" y1="221" x2="385.5" y2="227" stroke="#666"/><text x="385.5"   y="229" text-anchor="middle" fill="#666" font-size="12" dy="0.71em">2022</text>
+          <line x1="706"   y1="221" x2="706"   y2="227" stroke="#666"/><text x="706"     y="229" text-anchor="middle" fill="#666" font-size="12" dy="0.71em">2023</text>
+          <line x1="1026.5" y1="221" x2="1026.5" y2="227" stroke="#666"/><text x="1026.5" y="229" text-anchor="middle" fill="#666" font-size="12" dy="0.71em">2024</text>
+          <line x1="1347"  y1="221" x2="1347"  y2="227" stroke="#666"/><text x="1337.8"  y="229" text-anchor="middle" fill="#666" font-size="12" dy="0.71em">2025</text>
+          <!-- lines -->
+          <g clip-path="url(#lc3-clip)">
+            <path class="fc-line" id="lc3-gm" stroke="#009189" stroke-width="2.5"
+              d="M65,49.496C171.833,50.612,278.667,51.728,385.5,53.816C492.333,55.904,599.167,62.024,706,62.024C812.833,62.024,919.667,41.288,1026.5,41.288C1133.333,41.288,1240.167,60.512,1347,79.736"/>
+            <path class="fc-line" id="lc3-nm" stroke="#20419A" stroke-width="2"
+              d="M65,80.6C171.833,81.176,278.667,81.752,385.5,84.056C492.333,86.36,599.167,94.424,706,94.424C812.833,94.424,919.667,51.224,1026.5,51.224C1133.333,51.224,1240.167,79.088,1347,106.952"/>
+          </g>
+          <!-- dots Gross Profit Margin -->
+          <circle class="fc-dot lc3-dot" cx="65"     cy="49.496" r="4" stroke="#009189" stroke-width="2.5" data-label="هامش إجمالي الربح" data-year="2021" data-val="39.7%" data-line="lc3-gm"/>
+          <circle class="fc-dot lc3-dot" cx="385.5"  cy="53.816" r="4" stroke="#009189" stroke-width="2.5" data-label="هامش إجمالي الربح" data-year="2022" data-val="38.7%" data-line="lc3-gm"/>
+          <circle class="fc-dot lc3-dot" cx="706"    cy="62.024" r="4" stroke="#009189" stroke-width="2.5" data-label="هامش إجمالي الربح" data-year="2023" data-val="36.8%" data-line="lc3-gm"/>
+          <circle class="fc-dot lc3-dot" cx="1026.5" cy="41.288" r="4" stroke="#009189" stroke-width="2.5" data-label="هامش إجمالي الربح" data-year="2024" data-val="41.6%" data-line="lc3-gm"/>
+          <circle class="fc-dot lc3-dot" cx="1347"   cy="79.736" r="4" stroke="#009189" stroke-width="2.5" data-label="هامش إجمالي الربح" data-year="2025" data-val="32.7%" data-line="lc3-gm"/>
+          <!-- dots Net Profit Margin -->
+          <circle class="fc-dot lc3-dot" cx="65"     cy="80.6"    r="4" stroke="#20419A" stroke-width="2" data-label="هامش صافي الربح" data-year="2021" data-val="31.8%" data-line="lc3-nm"/>
+          <circle class="fc-dot lc3-dot" cx="385.5"  cy="84.056"  r="4" stroke="#20419A" stroke-width="2" data-label="هامش صافي الربح" data-year="2022" data-val="31.7%" data-line="lc3-nm"/>
+          <circle class="fc-dot lc3-dot" cx="706"    cy="94.424"  r="4" stroke="#20419A" stroke-width="2" data-label="هامش صافي الربح" data-year="2023" data-val="29.3%" data-line="lc3-nm"/>
+          <circle class="fc-dot lc3-dot" cx="1026.5" cy="51.224"  r="4" stroke="#20419A" stroke-width="2" data-label="هامش صافي الربح" data-year="2024" data-val="39.3%" data-line="lc3-nm"/>
+          <circle class="fc-dot lc3-dot" cx="1347"   cy="106.952" r="4" stroke="#20419A" stroke-width="2" data-label="هامش صافي الربح" data-year="2025" data-val="26.4%" data-line="lc3-nm"/>
+        </svg>
+        <div class="fc-tooltip" id="lc3-tip"></div>
+        <div class="fc-legend">
+          <div class="fc-legend-item" data-line="lc3-gm">
+            <img src="assets/Surface (1).svg" alt="هامش إجمالي الربح" style="height:18px; width:auto;" />
+            <span style="color:#009189;">هامش إجمالي الربح</span>
+          </div>
+          <div class="fc-legend-item" data-line="lc3-nm">
+            <img src="assets/Surface (2).svg" alt="هامش صافي الربح" style="height:18px; width:auto;" />
+            <span style="color:#20419A;">هامش صافي الربح</span>
+          </div>
+        </div>
       </div>
+
       <script>
-        (function(){
-          const el = document.getElementById('finChart3');
-          if (!el) return;
-          const obs = new IntersectionObserver((entries) => {
-            entries.forEach(e => { if (e.isIntersecting) { el.classList.add('visible'); obs.unobserve(el); } });
-          }, { threshold: 0.2 });
-          obs.observe(el);
-        })();
+      (function(){
+        var wrap = document.getElementById('finChart3');
+        var svg  = document.getElementById('lineChart3');
+        var tip  = document.getElementById('lc3-tip');
+        if(!wrap||!svg||!tip) return;
+        var obs = new IntersectionObserver(function(entries){
+          entries.forEach(function(e){
+            if(e.isIntersecting){ wrap.classList.add('visible'); svg.classList.add('animated'); obs.unobserve(wrap); }
+          });
+        },{threshold:0.2});
+        obs.observe(wrap);
+        svg.querySelectorAll('.fc-dot').forEach(function(dot){
+          dot.addEventListener('mouseenter', function(){
+            var svgRect  = svg.getBoundingClientRect();
+            var wrapRect = wrap.getBoundingClientRect();
+            var cx = parseFloat(this.getAttribute('cx'));
+            var cy = parseFloat(this.getAttribute('cy'));
+            var px = cx*(svgRect.width/1352)  + (svgRect.left-wrapRect.left);
+            var py = cy*(svgRect.height/280) + (svgRect.top-wrapRect.top);
+            tip.innerHTML = '<strong>'+this.dataset.year+'</strong><br>'+this.dataset.label+': '+this.dataset.val;
+            tip.style.left = px+'px'; tip.style.top = py+'px';
+            tip.classList.add('show');
+            var lid = this.dataset.line;
+            svg.querySelectorAll('.fc-line').forEach(function(l){ l.classList.remove('fc-line-hovered'); });
+            if(lid){ var el=document.getElementById(lid); if(el) el.classList.add('fc-line-hovered'); }
+          });
+          dot.addEventListener('mouseleave', function(){
+            tip.classList.remove('show');
+            svg.querySelectorAll('.fc-line').forEach(function(l){ l.classList.remove('fc-line-hovered'); });
+          });
+        });
+        wrap.querySelectorAll('.fc-legend-item').forEach(function(item){
+          item.addEventListener('click', function(){
+            var lid = this.dataset.line;
+            var line = document.getElementById(lid);
+            if(!line) return;
+            var active = !line.classList.contains('fc-line-hovered');
+            svg.querySelectorAll('.fc-line').forEach(function(l){ l.classList.remove('fc-line-hovered'); });
+            if(active) line.classList.add('fc-line-hovered');
+          });
+        });
+      })();
       </script>
     </div>
   </section>
@@ -491,8 +846,10 @@
   </section>
 
 
-  <!-- سكشن 9 — الميزانية العمومية -->
-  <section class="ov-section" style="padding-top:0; background:#fff; background-image:url('assets/freepik__a-minimalist-highend-corporate-background-for-text__64990_upscayl_3x_upscayl-standard-4x 2 (3).png'); background-size:100% 100%; background-position:center; background-repeat:no-repeat;">
+  <!-- سكشن 9 و 10 — الميزانية العمومية + بطاقات النسب (خلفية مشتركة) -->
+  <div style="background-image:url('assets/freepik__a-minimalist-highend-corporate-background-for-text__64990_upscayl_3x_upscayl-standard-4x 2 (3).png'); background-size:cover; background-position:center; background-repeat:no-repeat;">
+
+  <section class="ov-section" style="padding-top:0; background:transparent;">
     <div class="ov-section-inner">
       <div style="width:100%; height:1px; background:#EEEEEE; margin-bottom:28px;"></div>
       <p style="font-size:clamp(12px,0.9vw,14px); font-weight:700; color:#1a1a1a; margin-bottom:16px;">جدول الميزانية العمومية (ألف ر.س)</p>
@@ -576,6 +933,31 @@
       </table>
     </div>
   </section>
+
+  <!-- سكشن 10 — بطاقات النسب -->
+  <section class="ov-section" style="padding-top:0; background:transparent;">
+    <div class="ov-section-inner">
+      <div style="background:#F1D3B5; border-radius:12px; padding:24px 28px;">
+        <p style="font-size:clamp(12px,0.9vw,14px); font-weight:700; color:#1a1a1a; margin-bottom:16px;">بطاقات النسب</p>
+        <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:12px;">
+          <div style="background:#fff; border-radius:8px; padding:18px 20px; text-align:center;">
+            <div style="font-size:clamp(22px,2.2vw,32px); font-weight:800; color:#009189; line-height:1.1;">4.70x</div>
+            <div style="font-size:clamp(10.5px,0.78vw,12px); color:#555; margin-top:6px;">نسبة التداول</div>
+          </div>
+          <div style="background:#fff; border-radius:8px; padding:18px 20px; text-align:center;">
+            <div style="font-size:clamp(22px,2.2vw,32px); font-weight:800; color:#1a1a1a; line-height:1.1;">665,338</div>
+            <div style="font-size:clamp(10.5px,0.78vw,12px); color:#555; margin-top:6px;">الأصول المتداولة (ألف ر.س)</div>
+          </div>
+          <div style="background:#fff; border-radius:8px; padding:18px 20px; text-align:center;">
+            <div style="font-size:clamp(22px,2.2vw,32px); font-weight:800; color:#1a1a1a; line-height:1.1;">141,427</div>
+            <div style="font-size:clamp(10.5px,0.78vw,12px); color:#555; margin-top:6px;">الالتزامات المتداولة (ألف ر.س)</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  </div><!-- end shared background wrapper -->
 
   <!-- الفوتر -->
   <footer class="footer">

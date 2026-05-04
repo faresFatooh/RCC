@@ -99,3 +99,31 @@ body { font-family: 'Swissra', sans-serif; }
 .navbar-overview-ar .nav-inner { flex-direction: row-reverse !important; }
 .navbar-overview-ar .nav-links { flex-direction: row !important; justify-content: center; }
 .navbar-overview-ar .nav-ctas  { flex-direction: row !important; }
+
+/* ── Leadership highlight card — RTL fix ── */
+[dir="rtl"] .lead-highlight-card,
+.rtl .lead-highlight-card {
+  margin-left: 0;
+  margin-right: -320px;
+  margin-top: 16px;
+  padding-left: 24px;
+  padding-right: 24px;
+}
+
+[dir="rtl"] .lead-highlight-card h4,
+.rtl .lead-highlight-card h4 {
+  padding-right: 0;
+  border-right: none;
+  padding-left: 0;
+  border-left: none;
+}
+
+/* ── Overview list bullets — RTL (right side) ── */
+[dir="rtl"] .ov-list li {
+  padding-left: 0;
+  padding-right: 22px;
+}
+[dir="rtl"] .ov-list li::before {
+  left: auto;
+  right: 0;
+}
