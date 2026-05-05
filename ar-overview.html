@@ -9,10 +9,10 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/rtl.css" />
   <link rel="stylesheet" href="css/overview.css" />
+  <link rel="stylesheet" href="css/rtl.css" />
   <style>
-    body { font-family: 'Swissra', sans-serif; }
+    body { font-family: "SwissraNumbers", "Swissra", sans-serif; }
 
     /* flip all images horizontally */
     .ov-frame,
@@ -54,10 +54,10 @@
       padding-right: 12px;
     }
 
-    /* sub-bar — flip for RTL */
+    /* sub-bar — RTL: bar on right */
     .ov-sub-title {
-      flex-direction: row-reverse;
-      justify-content: flex-end;
+      flex-direction: row;
+      justify-content: flex-start;
     }
 
     /* navbar RTL handled by rtl.css */
@@ -83,6 +83,29 @@
     .navbar-overview-ar .nav-inner { flex-direction: row-reverse !important; }
     .navbar-overview-ar .nav-links { flex-direction: row !important; justify-content: center; }
     .navbar-overview-ar .nav-ctas  { flex-direction: row !important; }
+
+    /* Restore dark-green circles for event numbering (01, 02…) */
+    .ov-event > span {
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      background: #343741;
+      color: #fff;
+      font-family: "Montserrat", sans-serif;
+      font-size: 10px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    /* Fix: force Swissra on event paragraphs so the browser doesn't
+       create anonymous font-run boxes (from SwissraNumbers unicode-range)
+       that accidentally inherit the .ov-event span circle styles */
+    .ov-event p {
+      font-family: "Swissra", sans-serif;
+    }
   </style>
 </head>
 <body class="page-overview">
@@ -103,7 +126,7 @@
         <li><a href="ar-overview.html" class="active">نظرة عامة</a></li>
       </ul>
       <div class="nav-ctas">
-        <a href="Annual Report 2025_ar.pdf" class="cta-download" download target="_blank">
+        <a href="pdf/Annual Report 2025_ar.pdf" class="cta-download" download target="_blank">
           <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M6.5 1v7.5M3.5 6l3 3 3-3M1.5 11.5h10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
           تحميل
         </a>
@@ -130,7 +153,7 @@
       <li><a href="ar-financial-review.html">المراجعة المالية</a></li>
     </ul>
     <div class="mobile-menu-footer">
-      <a href="Annual Report 2025_ar.pdf" class="cta-download" download target="_blank">
+      <a href="pdf/Annual Report 2025_ar.pdf" class="cta-download" download target="_blank">
         <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M6.5 1v7.5M3.5 6l3 3 3-3M1.5 11.5h10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
         تحميل
       </a>
@@ -144,24 +167,24 @@
   <!-- BANNER -->
   <section class="ov-banner">
     <div class="ov-banner-inner">
+      <div class="ov-banner-right">
+        <a href="pdf/Annual Report 2025_ar-5-16.pdf" class="ov-more-btn">
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M6.5 1v7.5M3.5 6l3 3 3-3M1.5 11.5h10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          المزيد عن النظرة العامة
+        </a>
+      </div>
       <div class="ov-banner-left">
         <p class="ov-section-label">القسم 01</p>
         <h1 class="ov-title">نظرة عامة</h1>
         <div class="ov-tags">
           <a href="#about">عن شركة أسمنت الرياض</a>
           <a href="#glance">لمحة سريعة</a>
-          <a href="#review">2025 في مراجعة</a>
+          <a href="#review"> في مراجعة 2025</a>
           <a href="#operate">أين نعمل</a>
           <a href="#history">التاريخ</a>
           <a href="#stakeholder">تفاعل أصحاب المصلحة</a>
           <a href="#investment">حالة الاستثمار</a>
         </div>
-      </div>
-      <div class="ov-banner-right">
-        <a href="#" class="ov-more-btn">
-          <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M6.5 1v7.5M3.5 6l3 3 3-3M1.5 11.5h10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          المزيد عن النظرة العامة
-        </a>
       </div>
     </div>
   </section>
@@ -171,7 +194,7 @@
     <div class="ov-subnav-inner">
       <a href="#about"       class="ov-tab active">عن شركة أسمنت الرياض</a>
       <a href="#glance"      class="ov-tab">لمحة سريعة</a>
-      <a href="#review"      class="ov-tab">2025 في مراجعة</a>
+      <a href="#review"      class="ov-tab"> في مراجعة 2025</a>
       <a href="#operate"     class="ov-tab">أين نعمل</a>
       <a href="#history"     class="ov-tab">التاريخ</a>
       <a href="#stakeholder" class="ov-tab">تفاعل أصحاب المصلحة</a>
@@ -386,7 +409,7 @@
       <div style="width:100%; height:1px; background:#EEEEEE; margin:28px 0 16px;"></div>
       <div class="ov-section-title">
         <span class="ov-section-num">3</span>
-        <h2>2025 في مراجعة</h2>
+        <h2> في مراجعة 2025</h2>
       </div>
       <div class="ov-divider" style="height:2px; margin-bottom:24px;"></div>
 

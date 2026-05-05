@@ -1,4 +1,22 @@
 /* =====================
+   Montserrat — for numbers in Arabic pages
+===================== */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap');
+
+/* SwissraNumbers: virtual font that maps ONLY Latin digits (0–9)
+   and common numeric punctuation to Montserrat glyphs.
+   Place it first in the font-family stack so the browser uses
+   Montserrat for digits and falls back to Swissra for Arabic text. */
+@font-face {
+  font-family: 'SwissraNumbers';
+  src: local('Montserrat'),
+       url('https://fonts.gstatic.com/s/montserrat/v26/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCtr6Hw5aXo.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  unicode-range: U+0030-0039, U+002B, U+002D, U+002E, U+002C, U+0025, U+002F, U+003A;
+}
+
+/* =====================
    Swissra Font Face
 ===================== */
 @font-face {
@@ -29,7 +47,29 @@
 /* =====================
    RTL — Arabic overrides
 ===================== */
-body { font-family: 'Swissra', sans-serif; }
+/* Keep Arabic UI font unchanged */
+html[lang="ar"] body {
+  font-variant-numeric: lining-nums;
+  font-feature-settings: "lnum" 1, "tnum" 1;
+}
+
+/* Force Latin glyphs for numbers only */
+html[lang="ar"] .en-num {
+  font-family: "Montserrat", "Segoe UI", Arial, sans-serif !important;
+  direction: ltr;
+  unicode-bidi: embed;
+  font-variant-numeric: lining-nums tabular-nums;
+  font-feature-settings: "lnum" 1, "tnum" 1;
+}
+
+/* =====================
+   ARABIC PAGES — Force Montserrat for all numbers
+   SwissraNumbers is a virtual @font-face that maps only the
+   Latin digit unicode range (0-9) and numeric punctuation to
+   Montserrat. By placing it first in the font stack, the browser
+   uses Montserrat for digits and falls back to Swissra for Arabic
+   text — preventing Swissra's Eastern Arabic (Hindi) digit glyphs.
+===================== */
 
 /* Navbar — logo right, links center, CTAs left */
 .nav-inner { flex-direction: row-reverse; }
@@ -110,6 +150,16 @@ body { font-family: 'Swissra', sans-serif; }
   padding-right: 24px;
 }
 
+/* Leadership highlight card on small screens */
+@media (max-width: 1024px) {
+  [dir="rtl"] .lead-highlight-card,
+  .rtl .lead-highlight-card {
+    width: 100%;
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
+
 [dir="rtl"] .lead-highlight-card h4,
 .rtl .lead-highlight-card h4 {
   padding-right: 0;
@@ -149,22 +199,35 @@ body { font-family: 'Swissra', sans-serif; }
   .stat-divider { display: none; }
 
   /* Overview banner RTL */
-  .ov-banner-inner { flex-direction: column; align-items: flex-start; }
-  .ov-tags { justify-content: flex-start; }
+  [dir="rtl"] .ov-banner-inner {
+    flex-direction: column;
+    align-items: flex-end;
+  }
+  [dir="rtl"] .ov-banner-left {
+    width: 100%;
+    text-align: right;
+  }
+  [dir="rtl"] .ov-banner-right {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+  }
+  [dir="rtl"] .ov-section-label,
+  [dir="rtl"] .ov-title {
+    text-align: right;
+  }
+  [dir="rtl"] .ov-tags { justify-content: flex-end; }
 
   /* Overview subnav RTL */
   .ov-subnav-inner { direction: rtl; }
-
-  /* Overview section title RTL */
-  .ov-section-title { flex-direction: row-reverse; }
 
   /* History RTL mobile */
   .ov-history-list::before {
     right: calc(52px + 14px + 9px);
     left: auto;
   }
-  .ov-hist-row { flex-direction: row-reverse; }
-  .ov-hist-year { text-align: left; }
+  .ov-hist-row { flex-direction: row; }
+  .ov-hist-year { text-align: right; }
 }
 
 @media (max-width: 520px) {
@@ -173,4 +236,136 @@ body { font-family: 'Swissra', sans-serif; }
     left: auto;
   }
   .mobile-menu { padding: calc(var(--nav-h) + 20px) 20px 36px; }
+}
+
+/* =====================
+   OVERVIEW PAGE — RTL FULL FIXES
+   Applied via [dir="rtl"] for high specificity
+===================== */
+
+/* ── Banner ── */
+[dir="rtl"] .ov-banner-inner { flex-direction: row-reverse; }
+[dir="rtl"] .ov-section-label { text-align: right; }
+[dir="rtl"] .ov-title { text-align: right; }
+[dir="rtl"] .ov-tags { justify-content: flex-start; direction: rtl; }
+[dir="rtl"] .ov-more-btn { flex-direction: row-reverse; }
+
+/* ── Subnav RTL — tabs start from right ── */
+[dir="rtl"] .ov-subnav-inner { direction: rtl; }
+[dir="rtl"] .ov-section-title { flex-direction: row; }
+[dir="rtl"] .ov-section-title h2 { text-align: right; }
+
+/* ── Sub-title bar — right side ── */
+[dir="rtl"] .ov-sub-title { flex-direction: row; justify-content: flex-start; }
+[dir="rtl"] .ov-sub-title h4 { text-align: right; }
+
+/* ── Body text ── */
+[dir="rtl"] .ov-body-text { text-align: right; }
+[dir="rtl"] .ov-card-beige h3 { text-align: right; }
+[dir="rtl"] .ov-card-beige p { text-align: right; }
+[dir="rtl"] .ov-biz-card h5 { text-align: right; }
+[dir="rtl"] .ov-biz-card p { text-align: right; }
+[dir="rtl"] .ov-biz-num { text-align: right; }
+
+/* ── KPI cards ── */
+[dir="rtl"] .ov-kpi-card { text-align: right; }
+[dir="rtl"] .ov-highlights-title { text-align: right; }
+[dir="rtl"] .ov-sustain-tag { text-align: right; }
+
+/* ── Awards ── */
+[dir="rtl"] .ov-awards-list li { flex-direction: row; }
+[dir="rtl"] .ov-awards-card h5 { text-align: right; }
+[dir="rtl"] .ov-awards-card { text-align: right; }
+
+/* ── Timeline ── */
+[dir="rtl"] .ov-month-header { text-align: right; }
+[dir="rtl"] .ov-event { flex-direction: row; }
+[dir="rtl"] .ov-event p { text-align: right; }
+[dir="rtl"] .ov-month-body { text-align: right; }
+
+/* ── History ── */
+[dir="rtl"] .ov-history-list::before { left: auto; right: calc(72px + 20px + 9px); }
+[dir="rtl"] .ov-hist-row { flex-direction: row; }
+[dir="rtl"] .ov-hist-year { text-align: right; }
+[dir="rtl"] .ov-hist-text { text-align: right; }
+
+/* ── Revenue / Map ── */
+[dir="rtl"] .ov-rev-label-row { flex-direction: row-reverse; }
+[dir="rtl"] .ov-map-label { flex-direction: row-reverse; }
+[dir="rtl"] .ov-revenue-title { text-align: right; }
+[dir="rtl"] .ov-rev-name { text-align: right; }
+
+/* ── Stakeholder ── */
+[dir="rtl"] .ov-stake-card p { text-align: right; }
+[dir="rtl"] .ov-stake-title {
+  border-left: none;
+  border-right: 3px solid #009189;
+  padding-left: 0;
+  padding-right: 12px;
+  text-align: right;
+}
+
+/* ── Investment ── */
+[dir="rtl"] .ov-invest-card { text-align: right; }
+[dir="rtl"] .ov-invest-title { text-align: right; }
+[dir="rtl"] .ov-invest-card p { text-align: right; }
+
+/* ── Responsive ── */
+@media (max-width: 860px) {
+  [dir="rtl"] .ov-banner-inner { flex-direction: column; align-items: flex-end; }
+  [dir="rtl"] .ov-history-list::before { right: calc(52px + 14px + 9px); left: auto; }
+}
+@media (max-width: 520px) {
+  [dir="rtl"] .ov-history-list::before { right: calc(44px + 12px + 9px); left: auto; }
+}
+
+/* =====================
+   STRATEGIC REVIEW — RTL FIXES
+===================== */
+[dir="rtl"] .sr-pillar-header { flex-direction: row; }
+[dir="rtl"] .sr-pillar-header h4 { text-align: right; }
+[dir="rtl"] .sr-pillar-header p  { text-align: right; }
+[dir="rtl"] .sr-pillar-body > div { text-align: right; }
+[dir="rtl"] .sr-pillar-topic { text-align: right; }
+[dir="rtl"] .sr-pillar-body p { text-align: right; }
+
+[dir="rtl"] .sr-kpi-header { flex-direction: row; }
+[dir="rtl"] .sr-kpi-body > div { text-align: right; }
+[dir="rtl"] .sr-pillar-topic { text-align: right; }
+[dir="rtl"] .sr-where-label { text-align: right; }
+[dir="rtl"] .sr-kpi-body p { text-align: right; }
+
+[dir="rtl"] .sr-intro-box { text-align: right; }
+[dir="rtl"] .sr-intro-box h3 { text-align: right; }
+[dir="rtl"] .sr-intro-box p { text-align: right; }
+
+/* Strategic link cards */
+[dir="rtl"] .sr-intro-box [style*="background:#fff"] p { text-align: right; }
+
+/* =====================
+   GOVERNANCE — RTL FIXES
+===================== */
+[dir="rtl"] .bod-card { flex-direction: row; }
+[dir="rtl"] .bod-info { text-align: right; }
+[dir="rtl"] .bod-name { text-align: right; }
+[dir="rtl"] .bod-role { text-align: right; }
+[dir="rtl"] .bod-note { text-align: right; }
+[dir="rtl"] .bod-badge { text-align: right; }
+
+/* Details grid RTL */
+[dir="rtl"] .bod-details-grid { direction: rtl; }
+[dir="rtl"] .bod-details-col h4 { text-align: right; }
+[dir="rtl"] .bod-details-col ul li { text-align: right; padding-right: 12px; padding-left: 0; }
+[dir="rtl"] .bod-details-col ul li::before { right: 0; left: auto; }
+
+/* Committee cards RTL */
+[dir="rtl"] .ov-section [style*="background:#009189"] span,
+[dir="rtl"] .ov-section [style*="background:#343741"] span { text-align: right; }
+[dir="rtl"] .ov-section [style*="display:flex"][style*="align-items:center"][style*="gap:8px"] {
+  flex-direction: row;
+}
+[dir="rtl"] .ov-section p[style*="margin:0 0 0 16px"] {
+  margin-left: 0;
+  margin-right: 16px;
+  text-align: right;
 }

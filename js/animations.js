@@ -1,318 +1,168 @@
 /* ============================================================
-   ANIMATIONS.JS — Riyadh Cement Annual Report 2025
-   - Fade + slide on scroll (repeatable)
-   - Counter animation (repeatable)
-   - Text typewriter effect
-   - Image reveal
-   ============================================================ */
-
+  ANIMATIONS.JS — Global subtle motion system
+  - Section reveal (fade/slide)
+  - Counter-up for key numbers
+  - Typewriter for major titles
+  - One-time, professional, low-noise behavior
+============================================================ */
 'use strict';
 
-/* ─── Easing ─────────────────────────────────────────────── */
-const easeOutCubic  = t => 1 - Math.pow(1 - t, 3);
-const easeOutExpo   = t => t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
+if (!window.__rcAnimationsInitialized) {
+  window.__rcAnimationsInitialized = true;
 
-/* ─── CSS for base animation states ─────────────────────── */
-const style = document.createElement('style');
-style.textContent = `
-  .anim-fade-up,
-  .anim-fade-left,
-  .anim-fade-right,
-  .anim-fade-in,
-  .anim-scale-up,
-  .anim-reveal {
-    opacity: 0;
-    transition: none;
-    will-change: transform, opacity;
-  }
-  .anim-fade-up    { transform: translateY(36px); }
-  .anim-fade-left  { transform: translateX(-36px); }
-  .anim-fade-right { transform: translateX(36px); }
-  .anim-scale-up   { transform: scale(0.94); }
-  .anim-reveal     { clip-path: inset(0 100% 0 0); }
+  const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
 
-  .anim-fade-up.in,
-  .anim-fade-left.in,
-  .anim-fade-right.in,
-  .anim-fade-in.in,
-  .anim-scale-up.in {
-    opacity: 1;
-    transform: none;
-    transition: opacity 0.7s cubic-bezier(0.16,1,0.3,1),
-                transform 0.7s cubic-bezier(0.16,1,0.3,1);
-  }
-  .anim-reveal.in {
-    opacity: 1;
-    clip-path: inset(0 0% 0 0);
-    transition: clip-path 0.9s cubic-bezier(0.16,1,0.3,1),
-                opacity 0.1s;
-  }
-
-  /* Stagger delays */
-  .anim-d1 { transition-delay: 0.05s !important; }
-  .anim-d2 { transition-delay: 0.12s !important; }
-  .anim-d3 { transition-delay: 0.19s !important; }
-  .anim-d4 { transition-delay: 0.26s !important; }
-  .anim-d5 { transition-delay: 0.33s !important; }
-  .anim-d6 { transition-delay: 0.40s !important; }
-  .anim-d7 { transition-delay: 0.47s !important; }
-`;
-document.head.appendChild(style);
-
-/* ─── Assign animation classes to elements ──────────────── */
-function assignClasses() {
-
-  /* Hero */
-  q('.eyebrow')?.classList.add('anim-fade-up', 'anim-d1');
-  q('.hero-text h1')?.classList.add('anim-fade-up', 'anim-d2');
-  q('.sub')?.classList.add('anim-fade-up', 'anim-d3');
-  q('.btns')?.classList.add('anim-fade-up', 'anim-d4');
-  q('.hero-stats, .stats')?.classList.add('anim-fade-up', 'anim-d5');
-
-  /* Theme section */
-  q('.theme-header')?.classList.add('anim-fade-up');
-  q('.theme-img-wrap img')?.classList.add('anim-fade-up');
-  qa('.theme-card').forEach((el, i) => {
-    el.classList.add('anim-fade-up', `anim-d${Math.min(i + 1, 7)}`);
-  });
-  qa('.group-title').forEach(el => el.classList.add('anim-fade-up'));
-
-  /* Explore section */
-  q('.explore-header')?.classList.add('anim-fade-up');
-  qa('.explore-card').forEach((el, i) => {
-    el.classList.add('anim-scale-up', `anim-d${Math.min(i + 1, 7)}`);
-  });
-  qa('.ex-stat').forEach((el, i) => {
-    el.classList.add('anim-fade-up', `anim-d${Math.min(i + 1, 6)}`);
-  });
-
-  /* Footer */
-  q('.footer-brand')?.classList.add('anim-fade-up', 'anim-d1');
-  qa('.footer-col').forEach((el, i) => {
-    el.classList.add('anim-fade-up', `anim-d${i + 2}`);
-  });
-  q('.footer-bottom')?.classList.add('anim-fade-in');
-}
-
-/* ─── Intersection Observer (repeatable) ────────────────── */
-function initScrollAnimations() {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add('in');
-      } else {
-        /* Remove so it re-animates on next scroll into view */
-        entry.target.classList.remove('in');
-      }
-    });
-  }, {
-    threshold: 0.12,
-    rootMargin: '0px 0px -40px 0px'
-  });
-
-  qa('.anim-fade-up, .anim-fade-left, .anim-fade-right, .anim-fade-in, .anim-scale-up, .anim-reveal')
-    .forEach(el => observer.observe(el));
-}
-
-/* ─── Counter animation (repeatable) ────────────────────── */
-function initCounters() {
-  const counterObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        runCounter(entry.target);
-      }
-    });
-  }, { threshold: 0.4 });
-
-  qa('[data-count]').forEach(el => counterObserver.observe(el));
-}
-
-function runCounter(el) {
-  const raw      = el.dataset.count;
-  const prefix   = el.dataset.prefix  || '';
-  const suffix   = el.dataset.suffix  || '';
-  const decimals = parseInt(el.dataset.decimals || '0');
-  const target   = parseFloat(raw);
-  const duration = 1800;
-  const start    = performance.now();
-
-  function formatNum(val) {
-    if (decimals > 0) {
-      // e.g. 787.6 → "787.6"
-      return val.toFixed(decimals);
-    } else {
-      // e.g. 3497830 → "3,497,830"
-      return Math.round(val).toLocaleString('en-US');
+  const style = document.createElement('style');
+  style.textContent = `
+    .rc-anim {
+      opacity: 0;
+      transform: translate3d(0, 18px, 0);
+      transition: opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1);
+      will-change: opacity, transform;
     }
+    .rc-anim.rc-left  { transform: translate3d(-18px, 0, 0); }
+    .rc-anim.rc-right { transform: translate3d(18px, 0, 0); }
+    .rc-anim.rc-scale { transform: scale(.98); }
+    .rc-anim.rc-in {
+      opacity: 1;
+      transform: none;
+    }
+    @media (prefers-reduced-motion: reduce) {
+      .rc-anim { opacity: 1 !important; transform: none !important; transition: none !important; }
+    }
+  `;
+  document.head.appendChild(style);
+
+  function q(selector) {
+    return Array.from(document.querySelectorAll(selector));
   }
 
-  function tick(now) {
-    const p   = Math.min((now - start) / duration, 1);
-    const val = target * easeOutExpo(p);
-    el.textContent = prefix + formatNum(val) + suffix;
-    if (p < 1) requestAnimationFrame(tick);
-  }
-  requestAnimationFrame(tick);
-}
-
-/* ─── Typewriter effect ──────────────────────────────────── */
-function initTypewriters() {
-  const twObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        typewrite(entry.target);
-      } else {
-        /* Reset for re-play */
-        const el = entry.target;
-        el.textContent = '';
-      }
+  function addAnim(selector, variant) {
+    q(selector).forEach((el) => {
+      if (el.classList.contains('rc-anim')) return;
+      el.classList.add('rc-anim');
+      if (variant) el.classList.add(variant);
     });
-  }, { threshold: 0.5 });
+  }
 
-  qa('[data-typewrite]').forEach(el => {
-    el.dataset.original = el.textContent.trim();
+  function addStagger(selector, variant) {
+    q(selector).forEach((el, i) => {
+      if (el.classList.contains('rc-anim')) return;
+      el.classList.add('rc-anim');
+      if (variant) el.classList.add(variant);
+      el.style.transitionDelay = `${Math.min(i * 60, 360)}ms`;
+    });
+  }
+
+  function setupRevealAnimations() {
+    addAnim('.ov-banner-left > *, .ov-banner-right > *', 'rc-right');
+    addAnim('.ov-section-title, .ov-sub-title, .theme-header, .explore-header, .footer-brand', 'rc-left');
+    addAnim('.ov-body-text, .sub, .footer-bottom', 'rc-right');
+    addAnim('.ov-bags-img img, .theme-img-wrap img, .lead-photo-wrap img', 'rc-scale');
+    addStagger('.ov-kpi-card, .theme-card, .explore-card, .ex-stat, .footer-col, .ov-tab', 'rc-up');
+    addStagger('.lead-topic-card, .ov-biz-card, .sr-kpi-pillar, .sr-vision-pillar', 'rc-up');
+    addStagger('.ov-section table tr', 'rc-up');
+  }
+
+  function observeReveal() {
+    if (prefersReducedMotion) {
+      q('.rc-anim').forEach((el) => el.classList.add('rc-in'));
+      return;
+    }
+    const io = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add('rc-in');
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -10% 0px' });
+    q('.rc-anim').forEach((el) => io.observe(el));
+  }
+
+  function parseCounterText(text) {
+    const match = text.match(/-?\d[\d,]*(?:\.\d+)?/);
+    if (!match) return null;
+    const numeric = match[0];
+    const value = parseFloat(numeric.replace(/,/g, ''));
+    if (!Number.isFinite(value) || value === 0) return null;
+    const decimals = (numeric.split('.')[1] || '').length;
+    return {
+      value,
+      decimals,
+      prefix: text.slice(0, match.index),
+      suffix: text.slice((match.index || 0) + numeric.length)
+    };
+  }
+
+  function animateCounter(el) {
+    if (el.dataset.rcCountDone === '1') return;
+    const parsed = parseCounterText(el.textContent.trim());
+    if (!parsed) return;
+    el.dataset.rcCountDone = '1';
+
+    const duration = 1400;
+    const start = performance.now();
+    const toText = (n) => parsed.decimals > 0
+      ? n.toFixed(parsed.decimals)
+      : Math.round(n).toLocaleString('en-US');
+
+    const tick = (now) => {
+      const p = Math.min((now - start) / duration, 1);
+      const val = parsed.value * easeOutCubic(p);
+      el.textContent = `${parsed.prefix}${toText(val)}${parsed.suffix}`;
+      if (p < 1) requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+  }
+
+  function setupCounters() {
+    const counterTargets = q('.stat-item strong, .ex-stat strong, .big-num, .ov-kpi-val, .ov-biz-num');
+    if (prefersReducedMotion) return;
+    const io = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        animateCounter(entry.target);
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.35 });
+    counterTargets.forEach((el) => io.observe(el));
+  }
+
+  function typeWrite(el) {
+    if (el.dataset.rcTyped === '1') return;
+    const text = (el.dataset.rcOriginal || el.textContent || '').trim();
+    if (!text || text.length > 80) return;
+    el.dataset.rcTyped = '1';
+    el.dataset.rcOriginal = text;
     el.textContent = '';
-    twObserver.observe(el);
-  });
-
-  /* Typewrite span only (theme-header) */
-  const spanObserver = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const span = entry.target;
-        const text = span.dataset.original;
-        const speed = 40;
-        let i = 0;
-        span.textContent = '';
-        function typeSpan() {
-          if (i < text.length) { span.textContent += text[i++]; setTimeout(typeSpan, speed); }
-        }
-        typeSpan();
-      } else {
-        entry.target.textContent = '';
-      }
-    });
-  }, { threshold: 0.5 });
-
-  qa('[data-typewrite-span]').forEach(el => spanObserver.observe(el));
-}
-
-function typewrite(el) {
-  const text    = el.dataset.original || el.dataset.typewrite;
-  const speed   = parseInt(el.dataset.speed || '40');
-  let   i       = 0;
-  el.textContent = '';
-
-  function type() {
-    if (i < text.length) {
+    let i = 0;
+    const speed = 22;
+    const step = () => {
+      if (i >= text.length) return;
       el.textContent += text[i++];
-      setTimeout(type, speed);
-    }
+      setTimeout(step, speed);
+    };
+    step();
   }
-  type();
-}
 
-/* ─── Assign data attributes to counters ────────────────── */
-function assignCounters() {
-  const isRTL = document.documentElement.dir === 'rtl';
+  function setupTypewriters() {
+    const typeTargets = q('.ov-title, .ov-section-title h2, .theme-header h2, .explore-header h2, .lead-topic-card h4');
+    if (prefersReducedMotion) return;
+    const io = new IntersectionObserver((entries, observer) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        typeWrite(entry.target);
+        observer.unobserve(entry.target);
+      });
+    }, { threshold: 0.65 });
+    typeTargets.forEach((el) => io.observe(el));
+  }
 
-  /* Hero stats */
-  const heroStats = qa('.stat-item strong');
-  const heroData = isRTL
-    ? [
-        { count: '787.6', decimals: 1, prefix: '', suffix: ' مليون ر.س' },
-        { count: '207.8', decimals: 1, prefix: '', suffix: ' مليون ر.س' },
-        { count: '3.6',   decimals: 1, prefix: '', suffix: ' م+ طن' },
-      ]
-    : [
-        { count: '787.6', decimals: 1, prefix: 'SAR ', suffix: 'M' },
-        { count: '207.8', decimals: 1, prefix: 'SAR ', suffix: 'M' },
-        { count: '3.6',   decimals: 1, prefix: '',     suffix: 'M+T' },
-      ];
-
-  heroStats.forEach((el, i) => {
-    if (!heroData[i]) return;
-    el.dataset.count    = heroData[i].count;
-    el.dataset.prefix   = heroData[i].prefix;
-    el.dataset.suffix   = heroData[i].suffix;
-    el.dataset.decimals = heroData[i].decimals;
-  });
-
-  /* Explore stats */
-  const exStats = qa('.ex-stat strong');
-  const exData = isRTL
-    ? [
-        { count: '787.6',    decimals: 1, prefix: '', suffix: ' مليون ر.س' },
-        { count: '207.8',    decimals: 1, prefix: '', suffix: ' مليون ر.س' },
-        { count: '3497830',  decimals: 0, prefix: '', suffix: ' طن' },
-        { count: '393312',   decimals: 0, prefix: '', suffix: ' طن' },
-        { count: '3626304',  decimals: 0, prefix: '', suffix: '' },
-        { count: '85',       decimals: 0, prefix: '', suffix: ' مليون ر.س' },
-      ]
-    : [
-        { count: '787.6',    decimals: 1, prefix: 'SAR ', suffix: 'M' },
-        { count: '207.8',    decimals: 1, prefix: 'SAR ', suffix: 'M' },
-        { count: '3497830',  decimals: 0, prefix: '',     suffix: 'T' },
-        { count: '393312',   decimals: 0, prefix: '',     suffix: 'T' },
-        { count: '3626304',  decimals: 0, prefix: '',     suffix: '' },
-        { count: '85',       decimals: 0, prefix: 'SAR ', suffix: 'M' },
-      ];
-
-  exStats.forEach((el, i) => {
-    if (!exData[i]) return;
-    el.dataset.count    = exData[i].count;
-    el.dataset.prefix   = exData[i].prefix;
-    el.dataset.suffix   = exData[i].suffix;
-    el.dataset.decimals = exData[i].decimals;
-  });
-
-  /* Big numbers in theme section — skip ones that contain images */
-  qa('.big-num').forEach(el => {
-    if (el.querySelector('img')) return; /* skip SAR icon ones */
-    const txt = el.textContent.trim();
-    const num = parseFloat(txt.replace(/[^0-9.]/g, ''));
-    if (!isNaN(num) && num > 0) {
-      el.dataset.count    = num;
-      el.dataset.decimals = '0';
-      el.dataset.prefix   = '';
-      el.dataset.suffix   = '';
-    }
+  document.addEventListener('DOMContentLoaded', () => {
+    setupRevealAnimations();
+    observeReveal();
+    setupCounters();
+    setupTypewriters();
   });
 }
-
-/* ─── Assign typewriter to headings ─────────────────────── */
-function assignTypewriters() {
-  /* Section headings get typewriter — skip theme-header h2 (has colored span) */
-  qa('.explore-header h2').forEach(el => {
-    el.setAttribute('data-typewrite', '');
-    el.dataset.speed = '35';
-  });
-
-  /* theme-header h2 — typewrite only the span text, keep prefix static */
-  qa('.theme-header h2').forEach(el => {
-    const span = el.querySelector('span');
-    if (!span) return;
-    const spanText = span.textContent.trim();
-    span.textContent = '';
-    span.dataset.original = spanText;
-    span.setAttribute('data-typewrite-span', '');
-  });
-}
-
-/* ─── Helpers ────────────────────────────────────────────── */
-function q(sel)  { return document.querySelector(sel); }
-function qa(sel) { return [...document.querySelectorAll(sel)]; }
-
-/* ─── Init ───────────────────────────────────────────────── */
-document.addEventListener('DOMContentLoaded', () => {
-  assignClasses();
-  assignCounters();
-  assignTypewriters();
-
-  /* Small delay so CSS is applied before observer fires */
-  requestAnimationFrame(() => {
-    initScrollAnimations();
-    initCounters();
-    initTypewriters();
-  });
-});

@@ -8,6 +8,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
   <style>
     @font-face {
@@ -30,9 +31,24 @@
       src: url('fonts/Swissra-Bold.otf') format('opentype');
       font-weight: 700;
     }
+    /* SwissraNumbers — Montserrat للأرقام اللاتينية فقط */
+    @font-face {
+      font-family: 'SwissraNumbers';
+      src: local('Montserrat'),
+           url('https://fonts.gstatic.com/s/montserrat/v26/JTUHjIg1_i6t8kCHKm4532VJOt5-QNFgpCtr6Hw5aXo.woff2') format('woff2');
+      font-weight: 100 900;
+      font-style: normal;
+      unicode-range: U+0030-0039, U+002B, U+002D, U+002E, U+002C, U+0025, U+002F, U+003A;
+    }
     /* Swissra على كل الصفحة */
     body {
-      font-family: 'Swissra', sans-serif;
+      font-family: "Montserrat", "Swissra", sans-serif;
+      font-variant-numeric: lining-nums;
+      font-feature-settings: "lnum" 1, "tnum" 1;
+    }
+    body * {
+      font-variant-numeric: lining-nums;
+      font-feature-settings: "lnum" 1, "tnum" 1;
     }
 
     /* Override Montserrat في سكشن استعرض التقرير */
@@ -43,7 +59,21 @@
     .ex-stat strong,
     .ex-stat span,
     .ex-stat small {
-      font-family: 'Swissra', sans-serif !important;
+      font-family: "Montserrat", "Swissra", sans-serif !important;
+    }
+
+    /* stat-item في الهيرو — أرقام بـ Montserrat */
+    .stat-item strong,
+    .stat-item span,
+    .big-num {
+      font-family: "Montserrat", "Swissra", sans-serif !important;
+    }
+
+    /* explore-num — أخضر مع نص أبيض */
+    .explore-num {
+      background: #009189 !important;
+      color: #ffffff !important;
+      -webkit-text-fill-color: #ffffff !important;
     }
 
     /* تصحيح ارتفاع السطر في الهيدر */
@@ -74,7 +104,7 @@
         <li><a href="ar-financial-review.html">المراجعة المالية</a></li>
       </ul>
       <div class="nav-ctas">
-        <a href="Annual Report 2025_ar.pdf" class="cta-download" download target="_blank">
+        <a href="pdf/Annual Report 2025_ar.pdf" class="cta-download" download target="_blank">
           <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M6.5 1v7.5M3.5 6l3 3 3-3M1.5 11.5h10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
           تحميل
         </a>
@@ -101,7 +131,7 @@
       <li><a href="ar-financial-review.html">المراجعة المالية</a></li>
     </ul>
     <div class="mobile-menu-footer">
-      <a href="Annual Report 2025_ar.pdf" class="cta-download" download target="_blank">
+      <a href="pdf/Annual Report 2025_ar.pdf" class="cta-download" download target="_blank">
         <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M6.5 1v7.5M3.5 6l3 3 3-3M1.5 11.5h10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
         تحميل
       </a>

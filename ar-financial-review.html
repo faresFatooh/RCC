@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8" />
@@ -6,32 +7,21 @@
   <meta name="theme-color" content="#ffffff" />
   <title>المراجعة المالية — التقرير السنوي لأسمنت الرياض 2025</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="css/style.css" />
-  <link rel="stylesheet" href="css/rtl.css" />
   <link rel="stylesheet" href="css/overview.css" />
+  <link rel="stylesheet" href="css/rtl.css" />
   <style>
-    body { font-family: "Swissra", sans-serif; overflow-x: hidden; }
+    body { font-family: "SwissraNumbers", "Swissra", sans-serif; overflow-x: hidden; }
     html { overflow-x: hidden; }
-    .navbar-fr-ar { background:#ffffff; border-bottom:1px solid rgba(0,0,0,0.08); }
-    .navbar-fr-ar .nav-links a { color:#333; opacity:1; }
-    .navbar-fr-ar .nav-links a:hover,
-    .navbar-fr-ar .nav-links a.active { color:#009189; opacity:1; }
-    .navbar-fr-ar .cta-download { background:rgba(0,0,0,0.05); border-color:rgba(0,0,0,0.15); color:#333; }
-    .navbar-fr-ar .cta-lang { border-color:rgba(0,0,0,0.2); color:#333; }
-    .navbar-fr-ar .burger span { background:#333; }
-    .navbar-fr-ar .nav-inner { flex-direction:row-reverse !important; }
-    .navbar-fr-ar .nav-links { flex-direction:row !important; justify-content:center; }
-    .navbar-fr-ar .nav-ctas { flex-direction:row !important; }
-    .chart-fade { opacity:0; transform:translateY(16px); transition:opacity 0.8s ease, transform 0.8s ease; }
-    .chart-fade.visible { opacity:1; transform:translateY(0); }
-  </style>
-</head>
-<body class="page-overview">
+    .navbar-white .nav-inner { flex-direction: row-reverse !important; }
+    .navbar-white .nav-links { flex-direction: row !important; justify-content: center; }
+    .navbar-white .nav-ctas  { flex-direction: row !important; }
+  </style></head>
+<body class="page-overview page-financial-review">
 
   <!-- NAVBAR -->
-  <nav class="navbar navbar-fr-ar" id="navbar" dir="ltr">
+  <nav class="navbar navbar-white" id="navbar" dir="ltr">
     <div class="nav-inner">
       <a href="ar.html" class="logo"><img src="assets/Link.svg" alt="أسمنت الرياض" /></a>
       <ul class="nav-links" id="navLinks">
@@ -44,7 +34,7 @@
         <li><a href="ar-overview.html">نظرة عامة</a></li>
       </ul>
       <div class="nav-ctas">
-        <a href="Annual Report 2025_ar.pdf" class="cta-download" download target="_blank"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M6.5 1v7.5M3.5 6l3 3 3-3M1.5 11.5h10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg> تحميل</a>
+        <a href="pdf/Annual Report 2025_ar.pdf" class="cta-download" download target="_blank"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M6.5 1v7.5M3.5 6l3 3 3-3M1.5 11.5h10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg> تحميل</a>
         <a href="financial-review.html" class="cta-lang"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><circle cx="6.5" cy="6.5" r="5.5" stroke="currentColor" stroke-width="1.4"/><path d="M6.5 1c-1.8 1.8-1.8 7.4 0 11M6.5 1c1.8 1.8 1.8 7.4 0 11M1 6.5h11" stroke="currentColor" stroke-width="1.4"/></svg> EN</a>
       </div>
       <button class="burger" id="burger" aria-label="القائمة"><span></span><span></span><span></span></button>
@@ -54,16 +44,16 @@
   <!-- MOBILE MENU -->
   <div class="mobile-menu" id="mobileMenu">
     <ul class="mobile-menu-links">
-      <li><a href="ar-overview.html">نظرة عامة</a></li>
-      <li><a href="ar-leadership.html">القيادة</a></li>
-      <li><a href="ar-strategic-review.html">المراجعة الاستراتيجية</a></li>
-      <li><a href="ar-operating-review.html">المراجعة التشغيلية</a></li>
-      <li><a href="ar-sustainability.html">الاستدامة</a></li>
-      <li><a href="ar-governance.html">الحوكمة</a></li>
       <li><a href="ar-financial-review.html">المراجعة المالية</a></li>
+      <li><a href="ar-governance.html">الحوكمة</a></li>
+      <li><a href="ar-sustainability.html">الاستدامة</a></li>
+      <li><a href="ar-operating-review.html">المراجعة التشغيلية</a></li>
+      <li><a href="ar-strategic-review.html">المراجعة الاستراتيجية</a></li>
+      <li><a href="ar-leadership.html">القيادة</a></li>
+      <li><a href="ar-overview.html">نظرة عامة</a></li>
     </ul>
     <div class="mobile-menu-footer">
-      <a href="Annual Report 2025_ar.pdf" class="cta-download" download target="_blank"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M6.5 1v7.5M3.5 6l3 3 3-3M1.5 11.5h10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg> تحميل</a>
+      <a href="pdf/Annual Report 2025_ar.pdf" class="cta-download" download target="_blank"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M6.5 1v7.5M3.5 6l3 3 3-3M1.5 11.5h10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg> تحميل</a>
       <a href="financial-review.html" class="cta-lang"><svg width="13" height="13" viewBox="0 0 13 13" fill="none"><circle cx="6.5" cy="6.5" r="5.5" stroke="currentColor" stroke-width="1.4"/><path d="M6.5 1c-1.8 1.8-1.8 7.4 0 11M6.5 1c1.8 1.8 1.8 7.4 0 11M1 6.5h11" stroke="currentColor" stroke-width="1.4"/></svg> EN</a>
     </div>
   </div>
@@ -71,18 +61,18 @@
   <!-- BANNER -->
   <section class="ov-banner">
     <div class="ov-banner-inner">
+      <div class="ov-banner-right">
+        <a href="pdf/Annual Report 2025_ar-95-97.pdf" class="ov-more-btn" download target="_blank">
+          <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M6.5 1v7.5M3.5 6l3 3 3-3M1.5 11.5h10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          المزيد حول المراجعة المالية
+        </a>
+      </div>
       <div class="ov-banner-left">
         <p class="ov-section-label">القسم 07</p>
         <h1 class="ov-title">المراجعة المالية</h1>
         <div class="ov-tags">
           <a href="#financial-review">المراجعة المالية</a>
         </div>
-      </div>
-      <div class="ov-banner-right">
-        <a href="Financial Statement 2025_ar.pdf" class="ov-more-btn" download target="_blank">
-          <svg width="13" height="13" viewBox="0 0 13 13" fill="none"><path d="M6.5 1v7.5M3.5 6l3 3 3-3M1.5 11.5h10" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/></svg>
-          المزيد عن المراجعة المالية
-        </a>
       </div>
     </div>
   </section>
@@ -99,7 +89,7 @@
     <img src="assets/freepik_edit_A-realistic-professional-photograph-symbolizing-fizzzzz 1.png" alt="المراجعة المالية — أسمنت الرياض" class="ov-frame" style="width:100%; height:auto; display:block; transform:scaleX(-1);" />
   </div>
 
-  <!-- سكشن 1 — المراجعة المالية (KPIs) -->
+  <!-- SECTION 1 — FINANCIAL REVIEW -->
   <section class="ov-section" id="financial-review">
     <div class="ov-section-inner">
       <div class="ov-section-title" style="margin-top:20px;">
@@ -108,7 +98,7 @@
       </div>
       <div style="width:100%; height:2px; background:#009189; margin-bottom:24px;"></div>
 
-      <!-- الصف الأول -->
+      <!-- Row 1 -->
       <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:12px;">
         <div style="background:#fff; border:1px solid #e5e5e5; border-radius:8px; padding:18px 20px;">
           <div style="font-size:clamp(20px,2vw,28px); font-weight:800; color:#009189; line-height:1.1;">787.6</div>
@@ -132,7 +122,7 @@
         </div>
       </div>
 
-      <!-- الصف الثاني -->
+      <!-- Row 2 -->
       <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:12px;">
         <div style="background:#fff; border:1px solid #e5e5e5; border-radius:8px; padding:18px 20px;">
           <div style="font-size:clamp(20px,2vw,28px); font-weight:800; color:#009189; line-height:1.1;">243.1</div>
@@ -155,7 +145,7 @@
         </div>
       </div>
 
-      <!-- الصف الثالث -->
+      <!-- Row 3 -->
       <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:12px; margin-bottom:12px;">
         <div style="background:#fff; border:1px solid #e5e5e5; border-radius:8px; padding:18px 20px;">
           <div style="font-size:clamp(20px,2vw,28px); font-weight:800; color:#009189; line-height:1.1;">32.7%</div>
@@ -175,7 +165,7 @@
         </div>
       </div>
 
-      <!-- الصف الرابع -->
+      <!-- Row 4 -->
       <div style="display:grid; grid-template-columns:repeat(4,1fr); gap:12px;">
         <div style="background:#fff; border:1px solid #e5e5e5; border-radius:8px; padding:18px 20px;">
           <div style="font-size:clamp(20px,2vw,28px); font-weight:800; color:#009189; line-height:1.1;">1,896.9</div>
@@ -201,7 +191,7 @@
     </div>
   </section>
 
-  <!-- سكشن 2 — رسم الأداء المالي 5 سنوات -->
+  <!-- SECTION 2 — 5-YEAR FINANCIAL PERFORMANCE CHART -->
   <section class="ov-section" style="padding-top:0; background:#fff;">
     <div class="ov-section-inner">
       <div style="width:100%; height:1px; background:#EEEEEE; margin-bottom:28px;"></div>
@@ -223,7 +213,7 @@
           pointer-events:none; white-space:nowrap;
           opacity:0; transition:opacity 0.15s;
           line-height:2; z-index:10;
-          font-family:'Swissra',sans-serif;
+          font-family: "SwissraNumbers", "Swissra", sans-serif;
         }
         .fc-tooltip.show { opacity:1; }
         .fc-legend { display:flex; gap:20px; flex-wrap:wrap; margin-top:14px; justify-content:center; }
@@ -341,6 +331,8 @@
         var svg  = document.getElementById('lineChart1');
         var tip  = document.getElementById('lc1-tip');
         if(!wrap||!svg||!tip) return;
+
+        // IntersectionObserver → animate
         var obs = new IntersectionObserver(function(entries){
           entries.forEach(function(e){
             if(e.isIntersecting){ wrap.classList.add('visible'); svg.classList.add('animated'); obs.unobserve(wrap); }
@@ -348,6 +340,7 @@
         },{threshold:0.2});
         obs.observe(wrap);
 
+        // Column hover data — 5 years
         var cols = [
           { x:65,     year:'2021', rev:'671k', gp:'267k', op:'233k', np:'214k' },
           { x:385.5,  year:'2022', rev:'598k', gp:'232k', op:'202k', np:'190k' },
@@ -356,6 +349,7 @@
           { x:1347,   year:'2025', rev:'788k', gp:'258k', op:'216k', np:'208k' }
         ];
 
+        // Create vertical cursor line
         var cursor = document.createElementNS('http://www.w3.org/2000/svg','line');
         cursor.setAttribute('y1','5'); cursor.setAttribute('y2','261');
         cursor.setAttribute('stroke','#ccc'); cursor.setAttribute('stroke-width','1');
@@ -363,7 +357,9 @@
         cursor.style.display = 'none';
         svg.appendChild(cursor);
 
-        var colW = 320.5;
+        // Create hover zones (invisible rects over each column)
+        var vbW = 1352, vbH = 320;
+        var colW = 320.5; // approx spacing between columns
         cols.forEach(function(col, i){
           var zoneX = col.x - colW/2;
           if(i === 0) zoneX = 5;
@@ -378,22 +374,27 @@
           zone.style.cursor = 'crosshair';
 
           zone.addEventListener('mouseenter', function(){
+            // show cursor line
             cursor.setAttribute('x1', col.x); cursor.setAttribute('x2', col.x);
             cursor.style.display = '';
             tip.innerHTML =
               '<strong style="font-size:1.1em;color:#1a1a1a;">'+col.year+'</strong><br><br>'+
-              '<span style="color:#009189;">الإيرادات : ر.س '+col.rev+'</span><br>'+
-              '<span style="color:#20419A;">إجمالي الربح : ر.س '+col.gp+'</span><br>'+
-              '<span style="color:#00AE81;">الربح التشغيلي : ر.س '+col.op+'</span><br>'+
-              '<span style="color:#EF373E;">صافي الربح : ر.س '+col.np+'</span>';
+              '<span style="color:#009189;">الإيرادات: '+col.rev+' ألف ر.س</span><br>'+
+              '<span style="color:#20419A;">إجمالي الربح: '+col.gp+' ألف ر.س</span><br>'+
+              '<span style="color:#00AE81;">الربح التشغيلي: '+col.op+' ألف ر.س</span><br>'+
+              '<span style="color:#EF373E;">صافي الربح: '+col.np+' ألف ر.س</span>';
             tip.classList.add('show');
           });
           zone.addEventListener('mousemove', function(ev){
             var wrapRect = wrap.getBoundingClientRect();
             var px = ev.clientX - wrapRect.left;
             var py = ev.clientY - wrapRect.top;
-            tip.style.left = (px - tip.offsetWidth - 16) + 'px';
-            tip.style.top  = (py - tip.offsetHeight/2) + 'px';
+            var tw = tip.offsetWidth, th = tip.offsetHeight;
+            var left = (px - tw - 16 >= 0) ? (px - tw - 16) : (px + 16);
+            var top = py - th / 2;
+            if (top < 0) top = 4;
+            tip.style.left = left + 'px';
+            tip.style.top  = top  + 'px';
             tip.style.transform = 'none';
           });
           zone.addEventListener('mouseleave', function(){
@@ -403,6 +404,7 @@
           svg.appendChild(zone);
         });
 
+        // Legend click → highlight line
         wrap.querySelectorAll('.fc-legend-item').forEach(function(item){
           item.addEventListener('click', function(){
             var lid = this.dataset.line;
@@ -416,9 +418,11 @@
       })();
       </script>
     </div>
+ 
+    
   </section>
 
-  <!-- سكشن 3 — مقارنة 2025 مقابل 2024 -->
+  <!-- SECTION 3 — 2025 VS 2024 COMPARISON CHART -->
   <section class="ov-section" style="padding-top:0; background:#fff;">
     <div class="ov-section-inner">
       <div style="width:100%; height:1px; background:#EEEEEE; margin-bottom:28px;"></div>
@@ -520,9 +524,20 @@
             var cy = bbox.y;
             var px = cx*(svgRect.width/1352)  + (svgRect.left-wrapRect.left);
             var py = cy*(svgRect.height/300) + (svgRect.top-wrapRect.top);
-            tip.innerHTML = '<strong>'+this.dataset.label+'</strong><br>SAR '+this.dataset.val;
+            tip.innerHTML = '<strong>'+this.dataset.label+'</strong><br>'+this.dataset.val+' ألف ر.س';
             tip.style.left = px+'px'; tip.style.top = py+'px';
             tip.classList.add('show');
+            // clamp after render
+            requestAnimationFrame(function(){
+              var tw = tip.offsetWidth, th = tip.offsetHeight;
+              var left = parseFloat(tip.style.left) - tw/2;
+              if (left < 4) left = 4;
+              if (left + tw > wrapRect.width - 4) left = wrapRect.width - tw - 4;
+              var top = parseFloat(tip.style.top) - th - 8;
+              if (top < 4) top = parseFloat(tip.style.top) + 8;
+              tip.style.left = left + 'px';
+              tip.style.top  = top  + 'px';
+            });
           });
           bar.addEventListener('mouseleave', function(){ tip.classList.remove('show'); });
         });
@@ -531,7 +546,8 @@
     </div>
   </section>
 
-  <!-- سكشن 4 — اتجاه الهوامش -->
+
+  <!-- SECTION 4 — MARGIN TREND CHART -->
   <section class="ov-section" style="padding-top:0; background:#fff;">
     <div class="ov-section-inner">
       <div style="width:100%; height:1px; background:#EEEEEE; margin-bottom:28px;"></div>
@@ -622,6 +638,7 @@
         },{threshold:0.2});
         obs.observe(wrap);
 
+        // Column hover data — 5 years
         var cols3 = [
           { x:65,     year:'2021', gm:'39.7%', nm:'31.8%' },
           { x:385.5,  year:'2022', gm:'38.7%', nm:'31.7%' },
@@ -630,6 +647,7 @@
           { x:1347,   year:'2025', gm:'32.7%', nm:'26.4%' }
         ];
 
+        // Vertical cursor line
         var cursor3 = document.createElementNS('http://www.w3.org/2000/svg','line');
         cursor3.setAttribute('y1','5'); cursor3.setAttribute('y2','221');
         cursor3.setAttribute('stroke','#ccc'); cursor3.setAttribute('stroke-width','1');
@@ -656,16 +674,20 @@
             cursor3.style.display = '';
             tip.innerHTML =
               '<strong style="font-size:1.1em;color:#1a1a1a;">'+col.year+'</strong><br><br>'+
-              '<span style="color:#009189;">هامش إجمالي الربح : '+col.gm+'</span><br>'+
-              '<span style="color:#20419A;">هامش صافي الربح : '+col.nm+'</span>';
+              '<span style="color:#009189;">هامش إجمالي الربح: '+col.gm+'</span><br>'+
+              '<span style="color:#20419A;">هامش صافي الربح: '+col.nm+'</span>';
             tip.classList.add('show');
           });
           zone.addEventListener('mousemove', function(ev){
             var wrapRect = wrap.getBoundingClientRect();
             var px = ev.clientX - wrapRect.left;
             var py = ev.clientY - wrapRect.top;
-            tip.style.left = (px - tip.offsetWidth - 16) + 'px';
-            tip.style.top  = (py - tip.offsetHeight/2) + 'px';
+            var tw = tip.offsetWidth, th = tip.offsetHeight;
+            var left = (px - tw - 16 >= 0) ? (px - tw - 16) : (px + 16);
+            var top = py - th / 2;
+            if (top < 0) top = 4;
+            tip.style.left = left + 'px';
+            tip.style.top  = top  + 'px';
             tip.style.transform = 'none';
           });
           zone.addEventListener('mouseleave', function(){
@@ -675,6 +697,7 @@
           svg.appendChild(zone);
         });
 
+        // Legend click → highlight line
         wrap.querySelectorAll('.fc-legend-item').forEach(function(item){
           item.addEventListener('click', function(){
             var lid = this.dataset.line;
@@ -690,12 +713,11 @@
     </div>
   </section>
 
-  <!-- صورة كاملة العرض -->
   <div class="ov-bags-img">
     <img src="assets/170 3.png" alt="مصنع أسمنت الرياض" />
   </div>
 
-  <!-- سكشن 5 — التدفق النقدي والرأسمال -->
+  <!-- SECTION 5 — CASH FLOW & CAPITAL -->
   <section class="ov-section" style="background:#fff;">
     <div class="ov-section-inner">
       <div style="background:#F1D3B5; border-radius:12px; padding:24px 28px;">
@@ -722,76 +744,33 @@
     </div>
   </section>
 
-  <!-- سكشن 6 — الرسوم الدائرية -->
+  <!-- SECTION 6 — DONUT CHARTS -->
   <section class="ov-section" style="padding-top:0; background:#fff;">
     <div class="ov-section-inner">
       <div style="width:100%; height:1px; background:#EEEEEE; margin-bottom:28px;"></div>
       <div style="display:grid; grid-template-columns:repeat(3,1fr); gap:24px;">
 
-        <!-- الهيكل الرأسمالي -->
+        <!-- Capital Structure -->
         <div>
           <p style="font-size:clamp(12px,0.9vw,14px); font-weight:700; color:#1a1a1a; margin-bottom:16px;">الهيكل الرأسمالي (2025)</p>
-          <div style="position:relative;">
-            <svg viewBox="0 0 429 200" style="width:100%; height:auto; display:block; overflow:visible;" direction="ltr">
-              <path fill="#009189" stroke="#fff" stroke-width="2"
+          <div class="donut-wrap" id="donut1-wrap" style="position:relative;">
+            <svg viewBox="0 0 429 200" style="width:100%; height:auto; display:block; overflow:visible;">
+              <path class="donut-sector" fill="#009189" stroke="#fff" stroke-width="2"
                 d="M 299.5,100A 85,85,0,1,0,285.03966130745476,147.42526945236654L 260.1433102577648,130.68693905741364A 55,55,0,1,1,269.5,100 Z"
                 data-name="حقوق الملكية" data-val="ر.س 1,718,191"
-                onmouseenter="showDonutTip('ar-donut1-tip',this)" onmouseleave="hideDonutTip('ar-donut1-tip')" style="cursor:pointer;transition:opacity 0.2s;" onmouseover="this.style.opacity=0.8" onmouseout="this.style.opacity=1"/>
-              <path fill="#343741" stroke="#fff" stroke-width="2"
+                onmouseenter="showDonutTip('donut1-tip',this)" onmouseleave="hideDonutTip('donut1-tip')" style="cursor:pointer;transition:opacity 0.2s;" onmouseover="this.style.opacity=0.8" onmouseout="this.style.opacity=1"/>
+              <path class="donut-sector" fill="#343741" stroke="#fff" stroke-width="2"
                 d="M 285.03966130745476,147.42526945236654A 85,85,0,0,0,299.5,100.00000000000001L 269.5,100.00000000000001A 55,55,0,0,1,260.1433102577648,130.68693905741364 Z"
                 data-name="الالتزامات" data-val="ر.س 178,696"
-                onmouseenter="showDonutTip('ar-donut1-tip',this)" onmouseleave="hideDonutTip('ar-donut1-tip')" style="cursor:pointer;transition:opacity 0.2s;" onmouseover="this.style.opacity=0.8" onmouseout="this.style.opacity=1"/>
-              <text x="114" y="69" font-size="10" fill="#009189" font-weight="600" text-anchor="end" font-family="Swissra,sans-serif">حقوق الملكية: 90.6%</text>
-              <text x="315" y="131" font-size="10" fill="#343741" font-weight="600" text-anchor="start" font-family="Swissra,sans-serif">الالتزامات: 9.4%</text>
+                onmouseenter="showDonutTip('donut1-tip',this)" onmouseleave="hideDonutTip('donut1-tip')" style="cursor:pointer;transition:opacity 0.2s;" onmouseover="this.style.opacity=0.8" onmouseout="this.style.opacity=1"/>
+              <text x="114" y="69" font-size="10" fill="#009189" font-weight="600" text-anchor="end" font-family="Montserrat,sans-serif">حقوق الملكية: 90.6%</text>
+              <text x="315" y="131" font-size="10" fill="#343741" font-weight="600" text-anchor="start" font-family="Montserrat,sans-serif">الالتزامات: 9.4%</text>
             </svg>
-            <div id="ar-donut1-tip" style="position:absolute;background:#fff;color:#1a1a1a;font-size:clamp(12px,0.9vw,15px);font-weight:700;padding:12px 20px;border:1px solid #e5e5e5;border-radius:4px;pointer-events:none;white-space:nowrap;opacity:0;transition:opacity 0.15s;z-index:10;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Swissra',sans-serif;"></div>
+            <div id="donut1-tip" style="position:absolute;background:#fff;color:#1a1a1a;font-size:clamp(12px,0.9vw,15px);font-weight:700;padding:12px 20px;border:1px solid #e5e5e5;border-radius:4px;pointer-events:none;white-space:nowrap;opacity:0;transition:opacity 0.15s;z-index:10;top:50%;left:50%;transform:translate(-50%,-50%);font-family: "SwissraNumbers", "Swissra", sans-serif;"></div>
           </div>
         </div>
 
-        <!-- الإيرادات حسب المنتج -->
-        <div>
-          <p style="font-size:clamp(12px,0.9vw,14px); font-weight:700; color:#1a1a1a; margin-bottom:16px;">الإيرادات حسب المنتج (2025)</p>
-          <div style="position:relative;">
-            <svg viewBox="0 0 429 200" style="width:100%; height:auto; display:block; overflow:visible;" direction="ltr">
-              <path fill="#009189" stroke="#fff" stroke-width="2"
-                d="M 299.5,100A 85,85,0,1,0,237.70091451897267,181.7723520848173L 229.5123564534529,152.9115219372347A 55,55,0,1,1,269.5,100 Z"
-                data-name="الأسمنت الرمادي" data-val="ر.س 625,380"
-                onmouseenter="showDonutTip('ar-donut2-tip',this)" onmouseleave="hideDonutTip('ar-donut2-tip')" style="cursor:pointer;transition:opacity 0.2s;" onmouseover="this.style.opacity=0.8" onmouseout="this.style.opacity=1"/>
-              <path fill="#F1D3D5" stroke="#fff" stroke-width="2"
-                d="M 237.70091451897267,181.7723520848173A 85,85,0,0,0,299.5,99.99999999999994L 269.5,99.99999999999997A 55,55,0,0,1,229.5123564534529,152.9115219372347 Z"
-                data-name="الأسمنت الأبيض" data-val="ر.س 162,246"
-                onmouseenter="showDonutTip('ar-donut2-tip',this)" onmouseleave="hideDonutTip('ar-donut2-tip')" style="cursor:pointer;transition:opacity 0.2s;" onmouseover="this.style.opacity=0.8" onmouseout="this.style.opacity=1"/>
-              <text x="130.7" y="36.7" font-size="10" fill="#009189" font-weight="600" text-anchor="end" font-family="Swissra,sans-serif">الأسمنت الرمادي: 79.4%</text>
-              <text x="298.3" y="163.3" font-size="10" fill="#F1D3D5" font-weight="600" text-anchor="start" font-family="Swissra,sans-serif">الأسمنت الأبيض: 20.6%</text>
-            </svg>
-            <div id="ar-donut2-tip" style="position:absolute;background:#fff;color:#1a1a1a;font-size:clamp(12px,0.9vw,15px);font-weight:700;padding:12px 20px;border:1px solid #e5e5e5;border-radius:4px;pointer-events:none;white-space:nowrap;opacity:0;transition:opacity 0.15s;z-index:10;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Swissra',sans-serif;"></div>
-          </div>
-        </div>
-
-        <!-- الإيرادات حسب الجغرافيا -->
-        <div>
-          <p style="font-size:clamp(12px,0.9vw,14px); font-weight:700; color:#1a1a1a; margin-bottom:16px;">الإيرادات حسب الجغرافيا (2025)</p>
-          <div style="position:relative;">
-            <svg viewBox="0 0 429 200" style="width:100%; height:auto; display:block; overflow:visible;" direction="ltr">
-              <path fill="#009189" stroke="#fff" stroke-width="2"
-                d="M 299.5,100A 85,85,0,1,0,299.4848999523688,101.6021173758097L 269.49022938094447,101.03666418434744A 55,55,0,1,1,269.5,100 Z"
-                data-name="المملكة العربية السعودية" data-val="ر.س 784,881"
-                onmouseenter="showDonutTip('ar-donut3-tip',this)" onmouseleave="hideDonutTip('ar-donut3-tip')" style="cursor:pointer;transition:opacity 0.2s;" onmouseover="this.style.opacity=0.8" onmouseout="this.style.opacity=1"/>
-              <path fill="#343741" stroke="#fff" stroke-width="2"
-                d="M 299.4848999523688,101.6021173758097A 85,85,0,0,0,299.5,100.00000000000001L 269.5,100.00000000000001A 55,55,0,0,1,269.49022938094447,101.03666418434744 Z"
-                data-name="الأسواق التصديرية" data-val="ر.س 2,745"
-                onmouseenter="showDonutTip('ar-donut3-tip',this)" onmouseleave="hideDonutTip('ar-donut3-tip')" style="cursor:pointer;transition:opacity 0.2s;" onmouseover="this.style.opacity=0.8" onmouseout="this.style.opacity=1"/>
-              <text x="109.5" y="99" font-size="10" fill="#009189" font-weight="600" text-anchor="end" font-family="Swissra,sans-serif">المملكة العربية السعودية: 99.7%</text>
-              <text x="319.5" y="101" font-size="10" fill="#343741" font-weight="600" text-anchor="start" font-family="Swissra,sans-serif">الأسواق التصديرية: 0.3%</text>
-            </svg>
-            <div id="ar-donut3-tip" style="position:absolute;background:#fff;color:#1a1a1a;font-size:clamp(12px,0.9vw,15px);font-weight:700;padding:12px 20px;border:1px solid #e5e5e5;border-radius:4px;pointer-events:none;white-space:nowrap;opacity:0;transition:opacity 0.15s;z-index:10;top:50%;left:50%;transform:translate(-50%,-50%);font-family:'Swissra',sans-serif;"></div>
-          </div>
-        </div>
-
-      </div>
-
-      <script>
-      if(typeof showDonutTip === 'undefined') {
+        <script>
         function showDonutTip(tipId, el) {
           var tip = document.getElementById(tipId);
           if(!tip) return;
@@ -802,10 +781,56 @@
           var tip = document.getElementById(tipId);
           if(tip) tip.style.opacity = '0';
         }
-      }
-      </script>
+        </script>
 
-  <!-- سكشن 7 — الإيرادات حسب الجغرافيا (جدول) -->
+        <!-- Revenue by Product -->
+        <div>
+          <p style="font-size:clamp(12px,0.9vw,14px); font-weight:700; color:#1a1a1a; margin-bottom:16px;">الإيرادات حسب المنتج (2025)</p>
+          <div class="donut-wrap" id="donut2-wrap" style="position:relative;">
+            <svg viewBox="0 0 429 200" style="width:100%; height:auto; display:block; overflow:visible;">
+              <!-- Grey Cement 79.4% -->
+              <path fill="#009189" stroke="#fff" stroke-width="2"
+                d="M 299.5,100A 85,85,0,1,0,237.70091451897267,181.7723520848173L 229.5123564534529,152.9115219372347A 55,55,0,1,1,269.5,100 Z"
+                data-name="الأسمنت الرمادي" data-val="ر.س 625,380"
+                onmouseenter="showDonutTip('donut2-tip',this)" onmouseleave="hideDonutTip('donut2-tip')" style="cursor:pointer;transition:opacity 0.2s;" onmouseover="this.style.opacity=0.8" onmouseout="this.style.opacity=1"/>
+              <!-- White Cement 20.6% -->
+              <path fill="#F1D3D5" stroke="#fff" stroke-width="2"
+                d="M 237.70091451897267,181.7723520848173A 85,85,0,0,0,299.5,99.99999999999994L 269.5,99.99999999999997A 55,55,0,0,1,229.5123564534529,152.9115219372347 Z"
+                data-name="الأسمنت الأبيض" data-val="ر.س 162,246"
+                onmouseenter="showDonutTip('donut2-tip',this)" onmouseleave="hideDonutTip('donut2-tip')" style="cursor:pointer;transition:opacity 0.2s;" onmouseover="this.style.opacity=0.8" onmouseout="this.style.opacity=1"/>
+              <text x="130.7" y="36.7" font-size="10" fill="#009189" font-weight="600" text-anchor="end" font-family="Montserrat,sans-serif">الأسمنت الرمادي: 79.4%</text>
+              <text x="298.3" y="163.3" font-size="10" fill="#F1D3D5" font-weight="600" text-anchor="start" font-family="Montserrat,sans-serif">الأسمنت الأبيض: 20.6%</text>
+            </svg>
+            <div id="donut2-tip" style="position:absolute;background:#fff;color:#1a1a1a;font-size:clamp(12px,0.9vw,15px);font-weight:700;padding:12px 20px;border:1px solid #e5e5e5;border-radius:4px;pointer-events:none;white-space:nowrap;opacity:0;transition:opacity 0.15s;z-index:10;top:50%;left:50%;transform:translate(-50%,-50%);font-family: "SwissraNumbers", "Swissra", sans-serif;"></div>
+          </div>
+        </div>
+
+        <!-- Revenue by Geography -->
+        <div>
+          <p style="font-size:clamp(12px,0.9vw,14px); font-weight:700; color:#1a1a1a; margin-bottom:16px;">الإيرادات حسب الجغرافيا (2025)</p>
+          <div class="donut-wrap" id="donut3-wrap" style="position:relative;">
+            <svg viewBox="0 0 429 200" style="width:100%; height:auto; display:block; overflow:visible;">
+              <!-- Saudi Arabia 99.7% -->
+              <path fill="#009189" stroke="#fff" stroke-width="2"
+                d="M 299.5,100A 85,85,0,1,0,299.4848999523688,101.6021173758097L 269.49022938094447,101.03666418434744A 55,55,0,1,1,269.5,100 Z"
+                data-name="المملكة العربية السعودية" data-val="ر.س 784,881"
+                onmouseenter="showDonutTip('donut3-tip',this)" onmouseleave="hideDonutTip('donut3-tip')" style="cursor:pointer;transition:opacity 0.2s;" onmouseover="this.style.opacity=0.8" onmouseout="this.style.opacity=1"/>
+              <!-- Export markets 0.3% -->
+              <path fill="#343741" stroke="#fff" stroke-width="2"
+                d="M 299.4848999523688,101.6021173758097A 85,85,0,0,0,299.5,100.00000000000001L 269.5,100.00000000000001A 55,55,0,0,1,269.49022938094447,101.03666418434744 Z"
+                data-name="الأسواق التصديرية" data-val="ر.س 2,745"
+                onmouseenter="showDonutTip('donut3-tip',this)" onmouseleave="hideDonutTip('donut3-tip')" style="cursor:pointer;transition:opacity 0.2s;" onmouseover="this.style.opacity=0.8" onmouseout="this.style.opacity=1"/>
+              <text x="109.5" y="99" font-size="10" fill="#009189" font-weight="600" text-anchor="end" font-family="Montserrat,sans-serif">المملكة العربية السعودية: 99.7%</text>
+              <text x="319.5" y="101" font-size="10" fill="#343741" font-weight="600" text-anchor="start" font-family="Montserrat,sans-serif">الأسواق التصديرية: 0.3%</text>
+            </svg>
+            <div id="donut3-tip" style="position:absolute;background:#fff;color:#1a1a1a;font-size:clamp(12px,0.9vw,15px);font-weight:700;padding:12px 20px;border:1px solid #e5e5e5;border-radius:4px;pointer-events:none;white-space:nowrap;opacity:0;transition:opacity 0.15s;z-index:10;top:50%;left:50%;transform:translate(-50%,-50%);font-family: "SwissraNumbers", "Swissra", sans-serif;"></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+  <!-- SECTION 7 — REVENUE BY GEOGRAPHY TABLE -->
   <section class="ov-section" style="padding-top:0; background:#fff;">
     <div class="ov-section-inner">
       <div style="width:100%; height:1px; background:#EEEEEE; margin-bottom:28px;"></div>
@@ -813,7 +838,7 @@
       <table style="width:100%; border-collapse:collapse; font-size:clamp(10.5px,0.78vw,12.5px);">
         <thead>
           <tr style="background:#009189; color:#fff;">
-            <th style="padding:12px 16px; text-align:right; font-weight:600;">الدولة</th>
+            <th style="padding:12px 16px; text-align:left; font-weight:600;">الدولة</th>
             <th style="padding:12px 16px; text-align:right; font-weight:600;">2025 (ر.س)</th>
             <th style="padding:12px 16px; text-align:right; font-weight:600;">2024 (ر.س)</th>
           </tr>
@@ -836,7 +861,7 @@
           </tr>
           <tr style="background:#fafafa;">
             <td style="padding:11px 16px; border-bottom:1px solid #f0f0f0; color:#1a1a1a;">المملكة الأردنية الهاشمية</td>
-            <td style="padding:11px 16px; text-align:right; border-bottom:1px solid #f0f0f0; color:#888;">—</td>
+            <td style="padding:11px 16px; text-align:right; border-bottom:1px solid #f0f0f0; color:#888;">–</td>
             <td style="padding:11px 16px; text-align:right; border-bottom:1px solid #f0f0f0; color:#555;">528,124</td>
           </tr>
           <tr style="background:#fff;">
@@ -851,16 +876,14 @@
           </tr>
           <tr style="background:#fff;">
             <td style="padding:11px 16px; color:#1a1a1a;">دولة الكويت</td>
-            <td style="padding:11px 16px; text-align:right; color:#888;">—</td>
-            <td style="padding:11px 16px; text-align:right; color:#888;">—</td>
+            <td style="padding:11px 16px; text-align:right; color:#888;">–</td>
+            <td style="padding:11px 16px; text-align:right; color:#888;">–</td>
           </tr>
         </tbody>
       </table>
     </div>
   </section>
-
-
-  <!-- سكشن 8 — قائمة الدخل -->
+  <!-- SECTION 8 — INCOME STATEMENT -->
   <section class="ov-section" style="padding-top:0; background:#fff;">
     <div class="ov-section-inner">
       <div style="width:100%; height:1px; background:#EEEEEE; margin-bottom:28px;"></div>
@@ -868,7 +891,7 @@
       <table style="width:100%; border-collapse:collapse; font-size:clamp(10.5px,0.78vw,12.5px);">
         <thead>
           <tr style="background:#009189; color:#fff;">
-            <th style="padding:12px 16px; text-align:right; font-weight:600;">البند</th>
+            <th style="padding:12px 16px; text-align:left; font-weight:600;">البند</th>
             <th style="padding:12px 16px; text-align:right; font-weight:600;">2025</th>
             <th style="padding:12px 16px; text-align:right; font-weight:600;">2024</th>
             <th style="padding:12px 16px; text-align:right; font-weight:600;">2023</th>
@@ -921,7 +944,7 @@
             <td style="padding:10px 16px; border-bottom:1px solid #f0f0f0; color:#555;">الزكاة</td>
             <td style="padding:10px 16px; text-align:right; border-bottom:1px solid #f0f0f0; color:#EF373E;">-11,564</td>
             <td style="padding:10px 16px; text-align:right; border-bottom:1px solid #f0f0f0; color:#555;">11,199</td>
-            <td style="padding:10px 16px; text-align:right; border-bottom:1px solid #f0f0f0; color:#EF373E;">-12,741</td>
+            <td style="padding:10px 16px; text-align:right; border-bottom:1px solid #f0f0f0; color:#EF373E;">-12,740</td>
             <td style="padding:10px 16px; text-align:right; border-bottom:1px solid #f0f0f0; color:#EF373E;">-9,500</td>
             <td style="padding:10px 16px; text-align:right; border-bottom:1px solid #f0f0f0; color:#EF373E;">-18,000</td>
           </tr>
@@ -953,9 +976,7 @@
       </table>
     </div>
   </section>
-
-
-  <!-- سكشن 9 و 10 — الميزانية العمومية + بطاقات النسب (خلفية مشتركة) -->
+  <!-- SECTIONS 9 & 10 — BALANCE SHEET + RATIO CARDS (shared background) -->
   <div style="background-image:url('assets/freepik__a-minimalist-highend-corporate-background-for-text__64990_upscayl_3x_upscayl-standard-4x 2 (3).png'); background-size:cover; background-position:center; background-repeat:no-repeat;">
 
   <section class="ov-section" style="padding-top:0; background:transparent;">
@@ -965,7 +986,7 @@
       <table style="width:100%; border-collapse:collapse; font-size:clamp(10.5px,0.78vw,12.5px);">
         <thead>
           <tr style="background:#343741; color:#fff;">
-            <th style="padding:12px 16px; text-align:right; font-weight:600;">البند</th>
+            <th style="padding:12px 16px; text-align:left; font-weight:600;">البند</th>
             <th style="padding:12px 16px; text-align:right; font-weight:600;">2025</th>
             <th style="padding:12px 16px; text-align:right; font-weight:600;">2024</th>
             <th style="padding:12px 16px; text-align:right; font-weight:600;">2023</th>
@@ -1043,8 +1064,8 @@
     </div>
   </section>
 
-  <!-- سكشن 10 — بطاقات النسب -->
-  <section class="ov-section" style="padding-top:0; background:transparent;">
+  <!-- SECTION 10 — RATIO CARDS -->
+  <section class="ov-section" style="padding-top:0; padding-bottom:0; background:transparent;">
     <div class="ov-section-inner">
       <div style="background:#F1D3B5; border-radius:12px; padding:24px 28px;">
         <p style="font-size:clamp(12px,0.9vw,14px); font-weight:700; color:#1a1a1a; margin-bottom:16px;">بطاقات النسب</p>
@@ -1068,7 +1089,6 @@
 
   </div><!-- end shared background wrapper -->
 
-  <!-- الفوتر -->
   <footer class="footer">
     <div class="footer-top">
       <div class="footer-brand">
@@ -1114,4 +1134,15 @@
   <script src="js/main.js"></script>
 </body>
 </html>
+
+
+
+
+
+
+
+
+
+
+
 

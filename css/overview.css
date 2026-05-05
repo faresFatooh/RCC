@@ -1,4 +1,4 @@
-/* =====================
+﻿/* =====================
    OVERVIEW PAGE
 ===================== */
 
@@ -105,8 +105,10 @@
   border-bottom: 1.5px solid #e8e8e8;
   position: sticky;
   top: var(--nav-h);
-  z-index: 100;
+  z-index: 200;
   box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  /* Ensure sticky works — no overflow:hidden on ancestors */
+  will-change: transform;
 }
 .ov-subnav-inner {
   display: flex;
@@ -499,7 +501,7 @@
   gap: 10px;
   align-items: flex-start;
 }
-.ov-event span {
+.ov-event > span {
   width: 32px;
   height: 32px;
   border-radius: 50%;
@@ -1270,7 +1272,7 @@
   right: 0;
 }
 [dir="rtl"] .ov-sub-title {
-  flex-direction: row-reverse;
+  flex-direction: row;
 }
 [dir="rtl"] .ov-history-list::before {
   left: auto;
@@ -1294,9 +1296,7 @@
 [dir="rtl"] .ov-awards-list li {
   flex-direction: row-reverse;
 }
-[dir="rtl"] .ov-section-title {
-  flex-direction: row-reverse;
-}
+
 [dir="rtl"] .ov-banner-inner {
   flex-direction: row-reverse;
 }
@@ -1323,7 +1323,7 @@
 }
 
 /* ── viewport meta fix — prevent horizontal scroll ── */
-.page-overview { overflow-x: hidden; }
+.page-overview { overflow-x: clip; }
 
 /* =====================
    LEADERSHIP — MOBILE RESPONSIVE
@@ -1654,9 +1654,7 @@
 [dir="rtl"] .sr-kpi-header {
   flex-direction: row-reverse;
 }
-[dir="rtl"] .ov-section-title {
-  flex-direction: row-reverse;
-}
+
 
 @media (max-width: 860px) {
   [dir="rtl"] .sr-pillar-body > div {
@@ -2148,14 +2146,22 @@
    FINANCIAL REVIEW — MOBILE RESPONSIVE
 ===================== */
 
-/* ─── SVG Charts — always scale with container ─── */
+/* ─── SVG Charts — scale with container, no scroll ─── */
 .fc-wrap, .bc2-wrap {
-  overflow-x: auto;
-  -webkit-overflow-scrolling: touch;
+  overflow: visible;
   max-width: 100%;
+  position: relative;
 }
 .fc-svg {
-  min-width: 480px; /* allow scroll on very small screens */
+  width: 100%;
+  height: auto;
+  overflow: visible;
+}
+
+/* ─── Tooltip clipping fix ─── */
+.fc-tooltip {
+  white-space: nowrap;
+  max-width: none;
 }
 
 /* ─── Donut charts — direction fix ─── */
@@ -2164,8 +2170,8 @@
 /* ─── Tablet (≤1024px) ─── */
 @media (max-width: 1024px) {
   /* 4-col KPI → 2-col */
-  .ov-section [style*="grid-template-columns:repeat(4,1fr)"],
-  .ov-section [style*="grid-template-columns: repeat(4, 1fr)"] {
+  .page-financial-review .ov-section [style*="grid-template-columns:repeat(4,1fr)"],
+  .page-financial-review .ov-section [style*="grid-template-columns: repeat(4, 1fr)"] {
     grid-template-columns: repeat(2, 1fr) !important;
   }
 
@@ -2175,15 +2181,15 @@
 /* ─── Mobile (≤860px) ─── */
 @media (max-width: 860px) {
   /* 4-col → 2-col */
-  .ov-section [style*="grid-template-columns:repeat(4,1fr)"],
-  .ov-section [style*="grid-template-columns: repeat(4, 1fr)"] {
+  .page-financial-review .ov-section [style*="grid-template-columns:repeat(4,1fr)"],
+  .page-financial-review .ov-section [style*="grid-template-columns: repeat(4, 1fr)"] {
     grid-template-columns: repeat(2, 1fr) !important;
     gap: 10px !important;
   }
 
   /* 3-col donuts → 1-col (each donut full width) */
-  .ov-section [style*="grid-template-columns:repeat(3,1fr)"][style*="gap:24px"],
-  .ov-section [style*="grid-template-columns: repeat(3, 1fr)"][style*="gap: 24px"] {
+  .page-financial-review .ov-section [style*="grid-template-columns:repeat(3,1fr)"][style*="gap:24px"],
+  .page-financial-review .ov-section [style*="grid-template-columns: repeat(3, 1fr)"][style*="gap: 24px"] {
     grid-template-columns: 1fr !important;
     gap: 20px !important;
   }
@@ -2191,35 +2197,35 @@
   /* 3-col ratio cards → 3-col (keep, they're small) */
 
   /* Cash flow beige box padding */
-  .ov-section [style*="background:#F1D3B5"][style*="padding:24px 28px"],
-  .ov-section [style*="background:#F1D3B5"][style*="padding: 24px 28px"] {
+  .page-financial-review .ov-section [style*="background:#F1D3B5"][style*="padding:24px 28px"],
+  .page-financial-review .ov-section [style*="background:#F1D3B5"][style*="padding: 24px 28px"] {
     padding: 16px !important;
   }
 
   /* KPI card padding */
-  .ov-section [style*="padding:18px 20px"] {
+  .page-financial-review .ov-section [style*="padding:18px 20px"] {
     padding: 12px 14px !important;
   }
 
   /* Tables — horizontal scroll for wide tables */
-  .ov-section table {
+  .page-financial-review .ov-section table {
     display: block;
     overflow-x: auto;
     -webkit-overflow-scrolling: touch;
     width: 100%;
   }
-  .ov-section table thead,
-  .ov-section table tbody,
-  .ov-section table tr {
+  .page-financial-review .ov-section table thead,
+  .page-financial-review .ov-section table tbody,
+  .page-financial-review .ov-section table tr {
     display: table;
     width: 100%;
     table-layout: fixed;
   }
 
   /* 6-col tables — reduce cell padding */
-  .ov-section table th[style*="padding:12px 16px"],
-  .ov-section table td[style*="padding:10px 16px"],
-  .ov-section table td[style*="padding:11px 16px"] {
+  .page-financial-review .ov-section table th[style*="padding:12px 16px"],
+  .page-financial-review .ov-section table td[style*="padding:10px 16px"],
+  .page-financial-review .ov-section table td[style*="padding:11px 16px"] {
     padding: 8px 10px !important;
     font-size: 11px !important;
   }
@@ -2235,28 +2241,28 @@
 /* ─── Small mobile (≤520px) ─── */
 @media (max-width: 520px) {
   /* 4-col → 2-col (keep 2 for KPIs) */
-  .ov-section [style*="grid-template-columns:repeat(4,1fr)"],
-  .ov-section [style*="grid-template-columns: repeat(4, 1fr)"] {
+  .page-financial-review .ov-section [style*="grid-template-columns:repeat(4,1fr)"],
+  .page-financial-review .ov-section [style*="grid-template-columns: repeat(4, 1fr)"] {
     grid-template-columns: 1fr 1fr !important;
     gap: 8px !important;
   }
 
   /* 3-col ratio → 1-col */
-  .ov-section [style*="grid-template-columns:repeat(3,1fr)"][style*="gap:12px"],
-  .ov-section [style*="grid-template-columns: repeat(3, 1fr)"][style*="gap: 12px"] {
+  .page-financial-review .ov-section [style*="grid-template-columns:repeat(3,1fr)"][style*="gap:12px"],
+  .page-financial-review .ov-section [style*="grid-template-columns: repeat(3, 1fr)"][style*="gap: 12px"] {
     grid-template-columns: 1fr 1fr !important;
     gap: 8px !important;
   }
 
   /* KPI large numbers */
-  .ov-section [style*="font-size:clamp(20px,2vw,28px)"],
-  .ov-section [style*="font-size:clamp(22px,2.2vw,32px)"] {
+  .page-financial-review .ov-section [style*="font-size:clamp(20px,2vw,28px)"],
+  .page-financial-review .ov-section [style*="font-size:clamp(22px,2.2vw,32px)"] {
     font-size: clamp(16px, 5vw, 22px) !important;
   }
 
   /* Table cells even smaller */
-  .ov-section table th,
-  .ov-section table td {
+  .page-financial-review .ov-section table th,
+  .page-financial-review .ov-section table td {
     padding: 6px 8px !important;
     font-size: 10.5px !important;
   }
@@ -2270,6 +2276,7 @@
 [dir="rtl"] .fc-legend {
   direction: rtl;
 }
-[dir="rtl"] .ov-section table {
+[dir="rtl"] .page-financial-review .ov-section table {
   direction: rtl;
 }
+

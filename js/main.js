@@ -118,3 +118,97 @@ document.querySelectorAll('.ov-tags a').forEach(tag => {
     window.scrollTo({ top: target.getBoundingClientRect().top + window.scrollY - offset, behavior: 'smooth' });
   });
 });
+
+// =====================
+// GLOBAL ANIMATIONS LOADER
+// =====================
+(function () {
+  const hasScript = [...document.scripts].some(s => (s.getAttribute('src') || '').includes('js/animations.js'));
+  if (hasScript || window.__rcAnimationsScriptLoading) return;
+  window.__rcAnimationsScriptLoading = true;
+
+  const script = document.createElement('script');
+  script.src = 'js/animations.js';
+  script.defer = true;
+  document.body.appendChild(script);
+})();
+
+// =====================
+// ARABIC PAGES — FORCE ENGLISH NUMERAL GLYPHS
+// =====================
+document.addEventListener('DOMContentLoaded', () => {
+  if (document.documentElement.lang !== 'ar') return;
+  if (window.__rcEnglishNumbersApplied) return;
+  window.__rcEnglishNumbersApplied = true;
+
+  const skipTags = new Set(['SCRIPT', 'STYLE', 'NOSCRIPT']);
+  const numberRegex = /[0-9٠-٩]+(?:[.,٫،][0-9٠-٩]+)*(?:[%+\-xX])?/g;
+  const arToEnMap = { '٠':'0','١':'1','٢':'2','٣':'3','٤':'4','٥':'5','٦':'6','٧':'7','٨':'8','٩':'9','٫':'.','،':',' };
+  let applying = false;
+
+  function normalizeDigits(str) {
+    return String(str).replace(/[٠-٩٫،]/g, (ch) => arToEnMap[ch] || ch);
+  }
+
+  function applyEnglishNumbers() {
+    if (applying) return;
+    applying = true;
+
+    const walker = document.createTreeWalker(
+      document.body,
+      NodeFilter.SHOW_TEXT,
+      {
+        acceptNode(node) {
+          const parent = node.parentElement;
+          if (!parent) return NodeFilter.FILTER_REJECT;
+          if (parent.closest('.en-num')) return NodeFilter.FILTER_REJECT;
+          if (skipTags.has(parent.tagName)) return NodeFilter.FILTER_REJECT;
+          if (parent.closest('svg')) return NodeFilter.FILTER_REJECT;
+          return /[0-9٠-٩]/.test(node.nodeValue || '') ? NodeFilter.FILTER_ACCEPT : NodeFilter.FILTER_REJECT;
+        }
+      }
+    );
+
+    const targets = [];
+    let current;
+    while ((current = walker.nextNode())) targets.push(current);
+
+    targets.forEach((textNode) => {
+      const text = textNode.nodeValue || '';
+      numberRegex.lastIndex = 0;
+      if (!numberRegex.test(text)) return;
+
+      const frag = document.createDocumentFragment();
+      let last = 0;
+      numberRegex.lastIndex = 0;
+      let match;
+      while ((match = numberRegex.exec(text)) !== null) {
+        const idx = match.index;
+        if (idx > last) frag.appendChild(document.createTextNode(text.slice(last, idx)));
+        const span = document.createElement('span');
+        span.className = 'en-num';
+        span.setAttribute('dir', 'ltr');
+        span.setAttribute('lang', 'en');
+        span.textContent = normalizeDigits(match[0]);
+        frag.appendChild(span);
+        last = idx + match[0].length;
+      }
+      if (last < text.length) frag.appendChild(document.createTextNode(text.slice(last)));
+      textNode.parentNode.replaceChild(frag, textNode);
+    });
+
+    applying = false;
+  }
+
+  applyEnglishNumbers();
+
+  const mo = new MutationObserver(() => {
+    if (applying) return;
+    requestAnimationFrame(applyEnglishNumbers);
+  });
+  mo.observe(document.body, {
+    childList: true,
+    subtree: true,
+    characterData: true
+  });
+});
