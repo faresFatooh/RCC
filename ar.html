@@ -51,34 +51,44 @@
       font-feature-settings: "lnum" 1, "tnum" 1;
     }
 
-    /* Override Montserrat في سكشن استعرض التقرير */
-    .explore-header h2,
-    .explore-header p,
-    .explore-card strong,
-    .explore-card span,
-    .ex-stat strong,
-    .ex-stat span,
-    .ex-stat small {
-      font-family: "Montserrat", "Swissra", sans-serif !important;
-    }
-
-    /* stat-item في الهيرو — أرقام بـ Montserrat */
-    .stat-item strong,
-    .stat-item span,
-    .big-num {
-      font-family: "Montserrat", "Swissra", sans-serif !important;
-    }
-
-    /* explore-num — أخضر مع نص أبيض */
+    
+    /* explore-num — نفس اللون والحجم كالنسخة الإنجليزية */
     .explore-num {
-      background: #009189 !important;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 26px;
+      height: 26px;
+      background: #009189;
       color: #ffffff !important;
+      border-radius: 6px;
+      font-family: 'Montserrat', sans-serif !important;
+      font-size: 12px;
+      font-weight: 700;
+      flex-shrink: 0;
       -webkit-text-fill-color: #ffffff !important;
+      font-variant-numeric: normal !important;
+      font-feature-settings: normal !important;
     }
 
     /* تصحيح ارتفاع السطر في الهيدر */
     .hero-text h1 {
       line-height: 1.25;
+    }
+
+    /* تصحيح padding الـ ex-stat في RTL */
+    .ex-stat:first-child { padding-right: 0; padding-left: 24px; }
+    .ex-stat:last-child  { border-right: none; padding-left: 0; padding-right: 24px; }
+
+    /* لون الأرقام أخضر مثل الإنجليزي */
+    .ex-stat strong { color: #009189 !important; }
+
+    /* أرقام التفاصيل — أبيض وصغير */
+    .ex-detail-num {
+      color: #ffffff !important;
+      -webkit-text-fill-color: #ffffff !important;
+      font-size: clamp(9px, 0.65vw, 11px) !important;
+      font-family: 'Montserrat', sans-serif !important;
     }
 
     .hero-bg { background-image: url('assets/Containerar.png'); }
@@ -344,31 +354,31 @@
       <div class="explore-stats">
         <div class="ex-stat">
           <strong>787.6 مليون ر.س</strong>
-          <span>الإيرادات</span>
-          <small>‎-0.2% مقارنة بـ 2024</small>
+          <span class="ex-stat-label">الإيرادات</span>
+          <small class="ex-stat-detail"><span class="ex-detail-num">-0.2%</span> مقارنة بـ 2024</small>
         </div>
         <div class="ex-stat">
           <strong>207.8 مليون ر.س</strong>
-          <span>صافي الربح</span>
-          <small>‎-33.1% مقارنة بـ 2024</small>
+          <span class="ex-stat-label">صافي الربح</span>
+          <small class="ex-stat-detail"><span class="ex-detail-num">-33.1%</span> مقارنة بـ 2024</small>
         </div>
         <div class="ex-stat">
           <strong>3,497,830 طن</strong>
-          <span>مبيعات الأسمنت الرمادي</span>
+          <span class="ex-stat-label">مبيعات الأسمنت الرمادي</span>
         </div>
         <div class="ex-stat">
           <strong>393,312 طن</strong>
-          <span>مبيعات الأسمنت الأبيض</span>
+          <span class="ex-stat-label">مبيعات الأسمنت الأبيض</span>
         </div>
         <div class="ex-stat">
           <strong>3,626,304</strong>
-          <span>ساعات العمل الآمنة</span>
-          <small>صفر إصابات</small>
+          <span class="ex-stat-label">ساعات العمل الآمنة</span>
+          <small class="ex-stat-detail">صفر إصابات</small>
         </div>
         <div class="ex-stat">
-          <strong>85 مليون ر.س</strong>
-          <span>عقد الربط الكهربائي</span>
-          <small>إنجاز 2025</small>
+          <strong>85 مليون</strong>
+          <span class="ex-stat-label">عقد الربط الكهربائي</span>
+          <small class="ex-stat-detail">إنجاز 2025</small>
         </div>
       </div>
     </div>

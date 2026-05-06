@@ -141,8 +141,11 @@
     </div>
   </section>
 
+  <!-- CEO + HIGHLIGHT — خلفية مشتركة ثابتة -->
+  <div class="ceo-bg-wrapper">
+
   <!-- CEO MESSAGE -->
-  <section class="ov-section" id="ceo" style="background: url('assets/freepik__a-minimalist-highend-corporate-background-for-text__64990_upscayl_3x_upscayl-standard-4x 3.png') center/cover no-repeat;">
+  <section class="ov-section" id="ceo">
     <div class="ov-section-inner">
 
       <div class="ov-section-title">
@@ -196,22 +199,29 @@
             <p style="margin-top:10px;">This enabled us to fund critical projects, maintain maintenance standards, and continue dividend distributions to shareholders.</p>
           </div>
 
-          <div class="lead-topic-card lead-highlight-card">
-            <h4>Proximity to the Central Region's largest construction activities</h4>
-            <p>supports shorter delivery lead times; however, execution success depends on disciplined planning, coordinated fleet and dispatch operations, and strict controls for order management from receipt through to delivery. The Company also strengthened technical support capabilities to help customers optimize mix designs, address placement-condition challenges, and meet performance requirements, particularly in specialized white cement applications, where consistency and finish quality are critical.</p>
-          </div>
-
-          <div style="margin-top:20px; display:flex; justify-content:flex-end;">
-            <a href="#" class="btn-read-more">
-              <img src="assets/Icon (5).svg" alt="" style="width:14px;height:14px;filter:brightness(0) saturate(100%);" />
-              Read More
-            </a>
-          </div>
-
         </div>
       </div>
     </div>
   </section>
+
+  <!-- HIGHLIGHT + READ MORE — سكشن منفصل تحت CEO -->
+  <section class="lead-highlight-section">
+    <div class="ov-section-inner">
+      <div class="lead-topic-card lead-highlight-card" style="width:100%; margin:0;">
+        <h4>Proximity to the Central Region's largest construction activities</h4>
+        <p>supports shorter delivery lead times; however, execution success depends on disciplined planning, coordinated fleet and dispatch operations, and strict controls for order management from receipt through to delivery. The Company also strengthened technical support capabilities to help customers optimize mix designs, address placement-condition challenges, and meet performance requirements, particularly in specialized white cement applications, where consistency and finish quality are critical.</p>
+      </div>
+      <div style="margin-top:20px; display:flex; justify-content:flex-end;">
+        <a href="#" class="btn-read-more">
+          <img src="assets/Icon (5).svg" alt="" style="width:14px;height:14px;filter:brightness(0) saturate(100%);" />
+          Read More
+        </a>
+      </div>
+    </div>
+  </section>
+
+  </div><!-- end .ceo-bg-wrapper -->
+
   <footer class="footer">
     <div class="footer-top">
       <div class="footer-brand">
@@ -339,8 +349,8 @@
       }
       .ov-tags.ld-tags-in a { opacity:1; transform:none; }
 
-      /* CEO section background parallax */
-      #ceo { background-attachment: fixed; }
+      /* CEO section background parallax — handled by .ceo-bg-wrapper */
+      /* #ceo { background-attachment: fixed; } */
 
       /* Read more button */
       .btn-read-more {

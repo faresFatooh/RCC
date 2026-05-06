@@ -775,22 +775,41 @@ body {
 .ex-stat:first-child { padding-left: 0; }
 .ex-stat:last-child  { border-right: none; padding-right: 0; }
 .ex-stat strong {
-  font-family: 'Montserrat', sans-serif;
+  font-family: 'Swissra', sans-serif;
   font-size: clamp(16px, 1.6vw, 22px);
   font-weight: 800;
   color: #009189;
   letter-spacing: -0.01em;
 }
+
 .ex-stat span {
   font-family: 'Montserrat', sans-serif;
-  font-size: clamp(10px, 0.75vw, 12px);
-  color: var(--white);
+  color: var(--);
+  font-weight: 700;
+}
+.ex-stat-label {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(10px, 0.75vw, 12px) !important;
+  color: #ffffff !important;
   font-weight: 500;
 }
 .ex-stat small {
   font-family: 'Montserrat', sans-serif;
-  font-size: clamp(9px, 0.65vw, 11px);
-  color: var(--muted);
+  font-size: clamp(10px, 0.75vw, 12px) ;
+  color: var(--white) !important;
+}
+.ex-stat-detail {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(10px, 0.65vw, 11px) !important;
+  color: var(--white) !important;
+}
+.ex-detail-num {
+  font-family: 'Montserrat', sans-serif !important;
+  font-variant-numeric: lining-nums tabular-nums ;
+  font-size: clamp(9px, 0.65vw, 11px) !important;
+  color: var(--white) !important ;
+
+
 }
 
 /* =====================
