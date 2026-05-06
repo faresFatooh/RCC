@@ -257,9 +257,45 @@
   gap: 8px;
   width: 100%;
 }
-.ov-list li {
-  font-size: clamp(11.5px, 0.85vw, 13px);
+
+/* Value created list — used inside beige card */
+.ov-value-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.ov-value-list li {
+  font-size: clamp(12px, 0.88vw, 13.5px);
   line-height: 1.7;
+  color: #444;
+  padding-left: 18px;
+  position: relative;
+}
+.ov-value-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.5em;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #009189;
+  flex-shrink: 0;
+}
+[dir="rtl"] .ov-value-list li {
+  padding-left: 0;
+  padding-right: 18px;
+}
+[dir="rtl"] .ov-value-list li::before {
+  left: auto;
+  right: 0;
+}
+.ov-list li {
+  font-size: clamp(12.5px, 0.9vw, 14px);
+  line-height: 1.8;
   color: #444;
   padding-left: 22px;
   position: relative;
@@ -313,9 +349,9 @@
   transition: border-color 0.2s, background 0.2s;
 }
 .ov-biz-card h5 {
-  font-size: clamp(11px, 0.85vw, 13px);
+  font-size: clamp(13px, 1vw, 15px);
   font-weight: 700;
-  letter-spacing: 0.06em;
+  letter-spacing: 0.04em;
   margin-bottom: 14px;
   transition: color 0.2s;
 }
@@ -333,10 +369,23 @@
   margin: 14px 0 6px;
 }
 .ov-biz-card p {
-  font-size: clamp(11px, 0.8vw, 12.5px);
-  line-height: 1.75;
+  font-size: clamp(12.5px, 0.9vw, 14px);
+  line-height: 1.8;
   color: #555;
   margin-bottom: 10px;
+  padding-left: 18px;
+  position: relative;
+}
+.ov-biz-card p::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #009189;
+  flex-shrink: 0;
 }
 .ov-biz-card p:last-child { margin-bottom: 0; }
 
@@ -1162,6 +1211,16 @@
 
 .sr-kpi-body > div {
   padding: 18px 22px;
+  font-size: clamp(11px, 0.82vw, 13px);
+  line-height: 1.8;
+  color: #555;
+}
+
+.sr-kpi-body > div p {
+  font-size: clamp(11px, 0.82vw, 13px);
+  line-height: 1.8;
+  color: #555;
+  margin: 0;
 }
 
 .sr-kpi-body > div:last-child { border-right: none; }
@@ -1651,6 +1710,16 @@
     border-right: 3px solid #009189;
     padding-left: 0;
     padding-right: 10px;
+  }
+
+  /* Biz cards p bullet — RTL */
+  [dir="rtl"] .ov-biz-card p {
+    padding-left: 0;
+    padding-right: 18px;
+  }
+  [dir="rtl"] .ov-biz-card p::before {
+    left: auto;
+    right: 0;
   }
 }
 
