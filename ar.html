@@ -94,6 +94,9 @@
     .hero-bg { background-image: url('assets/Containerar.png'); }
     .stat-item:first-child { padding-right: 0; padding-left: 20px; }
     .stat-item:last-child  { padding-left: 0;  padding-right: 20px; }
+    .stat-item strong { color: #ffffff !important; }
+    .stat-item span   { color: #ffffff !important; }
+    .stat-divider     { background: rgba(255,255,255,1) !important; }
 
   </style>
 </head>
@@ -161,8 +164,8 @@
         <h1>عام وسّعنا<br>فيه نطاق<br><span class="gold">تأثيرنا</span></h1>
         <p class="sub">شركة أسمنت الرياض — تقديم الجودة والاستدامة والابتكار<br>في قلب أكبر ممر للبناء في المملكة العربية السعودية.</p>
         <div class="btns">
-          <a href="#" class="btn-fill">موضوع العام <span>→</span></a>
-          <a href="#" class="btn-ghost">استعرض التقرير</a>
+          <a href="#theme-of-year" class="btn-fill" onclick="event.preventDefault();document.getElementById('theme-of-year').scrollIntoView({behavior:'smooth'})">موضوع العام <span>←</span></a>
+          <a href="ar-overview.html" class="btn-ghost">استعرض التقرير</a>
         </div>
         <div class="stats">
           <div class="stat-item">
@@ -189,7 +192,7 @@
   </section>
 
   <!-- THEME OF THE YEAR SECTION -->
-  <section class="theme-section">
+  <section class="theme-section" id="theme-of-year">
     <div class="theme-bg"></div>
     <div class="theme-inner">
 

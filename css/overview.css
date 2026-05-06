@@ -152,10 +152,10 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 120%;
-  height: 120%;
+  width: 123%;
+  height: 123%;
   object-fit: contain;
-  transform: translate(-50%, -42%);
+  transform: translate(-50%, -41%);
   pointer-events: none;
   display: block;
 }
