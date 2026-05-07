@@ -147,7 +147,7 @@ if (!window.__rcAnimationsInitialized) {
   }
 
   function setupTypewriters() {
-    const typeTargets = q('.ov-title, .ov-section-title h2, .theme-header h2, .explore-header h2, .lead-topic-card h4');
+    const typeTargets = q('.ov-title, .ov-section-title h2, .explore-header h2, .lead-topic-card h4');
     if (prefersReducedMotion) return;
     const io = new IntersectionObserver((entries, observer) => {
       entries.forEach((entry) => {
