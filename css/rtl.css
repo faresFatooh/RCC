@@ -264,7 +264,15 @@ html[lang="ar"] .en-num {
 [dir="rtl"] .ov-card-beige h3 { text-align: right; }
 [dir="rtl"] .ov-card-beige p { text-align: right; }
 [dir="rtl"] .ov-biz-card h5 { text-align: right; }
-[dir="rtl"] .ov-biz-card p { text-align: right; }
+[dir="rtl"] .ov-biz-card p {
+  text-align: right;
+  padding-left: 0;
+  padding-right: 18px;
+}
+[dir="rtl"] .ov-biz-card p::before {
+  left: auto;
+  right: 0;
+}
 [dir="rtl"] .ov-biz-num { text-align: right; }
 
 /* ── KPI cards ── */

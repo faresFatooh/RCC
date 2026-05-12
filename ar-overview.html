@@ -14,14 +14,12 @@
   <style>
     body { font-family: "SwissraNumbers", "Swissra", sans-serif; }
 
-    /* flip all images horizontally */
-    .ov-frame,
-    .theme-img-wrap img { transform: scaleX(-1); }
+    /* hero images — no flip */
+    .ov-frame { transform: none; }
+    .ov-helmet { transform: translate(-50%, -42%); }
 
-    /* helmet — centered over frame, flipped */
-    .ov-helmet {
-      transform: translate(-50%, -42%) scaleX(-1);
-    }
+    /* hero wrap bottom margin */
+    .ov-hero-wrap { margin-bottom: 60px; }
 
     /* flip background image on history & investment sections */
     .ov-history-section::before,
