@@ -139,7 +139,7 @@
           <div style="font-size:clamp(10px,0.72vw,11.5px); color:#009189; margin-top:4px;">+43.1% مقارنة بـ 2024: 91.8</div>
         </div>
         <div style="background:#fff; border:1px solid #e5e5e5; border-radius:8px; padding:18px 20px;">
-          <div class="fr-counter" style="font-size:clamp(20px,2vw,28px); font-weight:800; color:#009189; line-height:1.1;">1.73 ر.س</div>
+          <div class="fr-counter" style="font-size:clamp(20px,2vw,28px); font-weight:800; color:#009189; line-height:1.1;">1.73 ريال سعودي</div>
           <div style="font-size:clamp(11px,0.82vw,13px); font-weight:500; color:#1a1a1a; margin-top:5px;">ربحية السهم (أساسي)</div>
           <div style="font-size:clamp(10px,0.72vw,11.5px); color:#e03e3e; margin-top:4px;">-33.5% مقارنة بـ 2024: 2.59</div>
         </div>
@@ -195,7 +195,7 @@
   <section class="ov-section" style="padding-top:0; background:#fff;">
     <div class="ov-section-inner">
       <div style="width:100%; height:1px; background:#EEEEEE; margin-bottom:28px;"></div>
-      <p style="font-size:clamp(12px,0.9vw,14px); font-weight:700; color:#1a1a1a; margin-bottom:16px;">الأداء المالي لـ 5 سنوات (ألف ر.س)</p>
+      <p style="font-size:clamp(12px,0.9vw,14px); font-weight:700; color:#1a1a1a; margin-bottom:16px;">الأداء المالي لـ 5 سنوات (ألف ريال سعودي)</p>
 
       <style>
         .chart-fade { opacity:0; transform:translateY(16px); transition:opacity 0.8s ease, transform 0.8s ease; }
@@ -379,10 +379,10 @@
             cursor.style.display = '';
             tip.innerHTML =
               '<strong style="font-size:1.1em;color:#1a1a1a;">'+col.year+'</strong><br><br>'+
-              '<span style="color:#009189;">الإيرادات: '+col.rev+' ألف ر.س</span><br>'+
-              '<span style="color:#20419A;">إجمالي الربح: '+col.gp+' ألف ر.س</span><br>'+
-              '<span style="color:#00AE81;">الربح التشغيلي: '+col.op+' ألف ر.س</span><br>'+
-              '<span style="color:#EF373E;">صافي الربح: '+col.np+' ألف ر.س</span>';
+              '<span style="color:#009189;">الإيرادات: '+col.rev+' ألف ريال سعودي</span><br>'+
+              '<span style="color:#20419A;">إجمالي الربح: '+col.gp+' ألف ريال سعودي</span><br>'+
+              '<span style="color:#00AE81;">الربح التشغيلي: '+col.op+' ألف ريال سعودي</span><br>'+
+              '<span style="color:#EF373E;">صافي الربح: '+col.np+' ألف ريال سعودي</span>';
             tip.classList.add('show');
           });
           zone.addEventListener('mousemove', function(ev){
@@ -426,7 +426,7 @@
   <section class="ov-section" style="padding-top:0; background:#fff;">
     <div class="ov-section-inner">
       <div style="width:100%; height:1px; background:#EEEEEE; margin-bottom:28px;"></div>
-      <p style="font-size:clamp(12px,0.9vw,14px); font-weight:700; color:#1a1a1a; margin-bottom:16px;">مقارنة 2025 مقابل 2024 (ألف ر.س)</p>
+      <p style="font-size:clamp(12px,0.9vw,14px); font-weight:700; color:#1a1a1a; margin-bottom:16px;">مقارنة 2025 مقابل 2024 (ألف ريال سعودي)</p>
 
       <style>
         .bc2-bar { transition:opacity 0.2s; cursor:pointer; }
@@ -524,7 +524,7 @@
             var cy = bbox.y;
             var px = cx*(svgRect.width/1352)  + (svgRect.left-wrapRect.left);
             var py = cy*(svgRect.height/300) + (svgRect.top-wrapRect.top);
-            tip.innerHTML = '<strong>'+this.dataset.label+'</strong><br>'+this.dataset.val+' ألف ر.س';
+            tip.innerHTML = '<strong>'+this.dataset.label+'</strong><br>'+this.dataset.val+' ألف ريال سعودي';
             tip.style.left = px+'px'; tip.style.top = py+'px';
             tip.classList.add('show');
             // clamp after render
@@ -772,7 +772,7 @@
                          stroke-dashoffset:439.82;
                          transform:rotate(-90deg);
                          transform-origin:214.5px 100px;"
-                  data-name="حقوق الملكية" data-val="ر.س 1,718,191"
+                  data-name="حقوق الملكية" data-val="ريال سعودي 1,718,191"
                   onmouseenter="showDonutTip('donut1-tip',this)" onmouseleave="hideDonutTip('donut1-tip')"/>
                 <circle class="donut-arc" id="d1-liab"
                   cx="214.5" cy="100" r="70"
@@ -782,7 +782,7 @@
                          stroke-dashoffset:439.82;
                          transform:rotate(236.16deg);
                          transform-origin:214.5px 100px;"
-                  data-name="الالتزامات" data-val="ر.س 178,696"
+                  data-name="الالتزامات" data-val="ريال سعودي 178,696"
                   onmouseenter="showDonutTip('donut1-tip',this)" onmouseleave="hideDonutTip('donut1-tip')"/>
               </g>
               <text x="114" y="69" font-size="10" fill="#009189" font-weight="600" text-anchor="end" font-family="Montserrat,sans-serif">حقوق الملكية: 90.6%</text>
@@ -813,7 +813,7 @@
                          stroke-dashoffset:439.82;
                          transform:rotate(-90deg);
                          transform-origin:214.5px 100px;"
-                  data-name="الأسمنت الرمادي" data-val="ر.س 625,380"
+                  data-name="الأسمنت الرمادي" data-val="ريال سعودي 625,380"
                   onmouseenter="showDonutTip('donut2-tip',this)" onmouseleave="hideDonutTip('donut2-tip')"/>
                 <circle class="donut-arc" id="d2-white"
                   cx="214.5" cy="100" r="70"
@@ -823,7 +823,7 @@
                          stroke-dashoffset:439.82;
                          transform:rotate(195.84deg);
                          transform-origin:214.5px 100px;"
-                  data-name="الأسمنت الأبيض" data-val="ر.س 162,246"
+                  data-name="الأسمنت الأبيض" data-val="ريال سعودي 162,246"
                   onmouseenter="showDonutTip('donut2-tip',this)" onmouseleave="hideDonutTip('donut2-tip')"/>
               </g>
               <text x="130.7" y="36.7" font-size="10" fill="#009189" font-weight="600" text-anchor="end" font-family="Montserrat,sans-serif">الأسمنت الرمادي: 79.4%</text>
@@ -854,7 +854,7 @@
                          stroke-dashoffset:439.82;
                          transform:rotate(-90deg);
                          transform-origin:214.5px 100px;"
-                  data-name="المملكة العربية السعودية" data-val="ر.س 784,881"
+                  data-name="المملكة العربية السعودية" data-val="ريال سعودي 784,881"
                   onmouseenter="showDonutTip('donut3-tip',this)" onmouseleave="hideDonutTip('donut3-tip')"/>
                 <circle class="donut-arc" id="d3-exp"
                   cx="214.5" cy="100" r="70"
@@ -864,7 +864,7 @@
                          stroke-dashoffset:439.82;
                          transform:rotate(268.92deg);
                          transform-origin:214.5px 100px;"
-                  data-name="الأسواق التصديرية" data-val="ر.س 2,745"
+                  data-name="الأسواق التصديرية" data-val="ريال سعودي 2,745"
                   onmouseenter="showDonutTip('donut3-tip',this)" onmouseleave="hideDonutTip('donut3-tip')"/>
               </g>
               <text x="109.5" y="99" font-size="10" fill="#009189" font-weight="600" text-anchor="end" font-family="Montserrat,sans-serif">المملكة العربية السعودية: 99.7%</text>
@@ -928,7 +928,7 @@
   <section class="ov-section" style="padding-top:0; background:#fff;">ت
     <div class="ov-section-inner">
       <div style="width:100%; height:1px; background:#EEEEEE; margin-bottom:28px;"></div>
-      <p style="font-size:clamp(12px,0.9vw,14px); font-weight:700; color:#1a1a1a; margin-bottom:16px;">الإيرادات حسب المنطقة الجغرافية — 2025 مقابل 2024 (ر.س)</p>
+      <p style="font-size:clamp(12px,0.9vw,14px); font-weight:700; color:#1a1a1a; margin-bottom:16px;">الإيرادات حسب المنطقة الجغرافية — 2025 مقابل 2024 (ريال سعودي)</p>
       <table style="width:100%; border-collapse:collapse; font-size:clamp(10.5px,0.78vw,12.5px);">
         <thead>
           <tr style="background:#009189; color:#fff;">
@@ -981,7 +981,7 @@
   <section class="ov-section" style="padding-top:0; background:#fff;">
     <div class="ov-section-inner">
       <div style="width:100%; height:1px; background:#EEEEEE; margin-bottom:28px;"></div>
-      <p style="font-size:clamp(12px,0.9vw,14px); font-weight:700; color:#1a1a1a; margin-bottom:16px;">قائمة الدخل (ألف ر.س)</p>
+      <p style="font-size:clamp(12px,0.9vw,14px); font-weight:700; color:#1a1a1a; margin-bottom:16px;">قائمة الدخل (ألف ريال سعودي)</p>
       <table style="width:100%; border-collapse:collapse; font-size:clamp(10.5px,0.78vw,12.5px);">
         <thead>
           <tr style="background:#009189; color:#fff;">
@@ -1076,7 +1076,7 @@
   <section class="ov-section" style="padding-top:0; background:transparent;">
     <div class="ov-section-inner">
       <div style="width:100%; height:1px; background:#EEEEEE; margin-bottom:28px;"></div>
-      <p style="font-size:clamp(12px,0.9vw,14px); font-weight:700; color:#1a1a1a; margin-bottom:16px;">جدول الميزانية العمومية (ألف ر.س)</p>
+      <p style="font-size:clamp(12px,0.9vw,14px); font-weight:700; color:#1a1a1a; margin-bottom:16px;">جدول الميزانية العمومية (ألف ريال سعودي)</p>
       <table style="width:100%; border-collapse:collapse; font-size:clamp(10.5px,0.78vw,12.5px);">
         <thead>
           <tr style="background:#343741; color:#fff;">
@@ -1170,11 +1170,11 @@
           </div>
           <div style="background:#fff; border-radius:8px; padding:18px 20px; text-align:center;">
             <div class="fr-counter" style="font-size:clamp(22px,2.2vw,32px); font-weight:800; color:#1a1a1a; line-height:1.1;">665,338</div>
-            <div style="font-size:clamp(10.5px,0.78vw,12px); color:#555; margin-top:6px;">الأصول المتداولة (ألف ر.س)</div>
+            <div style="font-size:clamp(10.5px,0.78vw,12px); color:#555; margin-top:6px;">الأصول المتداولة (ألف ريال سعودي)</div>
           </div>
           <div style="background:#fff; border-radius:8px; padding:18px 20px; text-align:center;">
             <div class="fr-counter" style="font-size:clamp(22px,2.2vw,32px); font-weight:800; color:#1a1a1a; line-height:1.1;">141,427</div>
-            <div style="font-size:clamp(10.5px,0.78vw,12px); color:#555; margin-top:6px;">الالتزامات المتداولة (ألف ر.س)</div>
+            <div style="font-size:clamp(10.5px,0.78vw,12px); color:#555; margin-top:6px;">الالتزامات المتداولة (ألف ريال سعودي)</div>
           </div>
         </div>
       </div>
@@ -1211,7 +1211,7 @@
         <ul>
           <li><a href="ar-governance.html">الحوكمة</a></li>
           <li><a href="#">بوابة علاقات المستثمرين</a></li>
-          <li><a href="#">إفصاحات تداول</a></li>
+          <li><a href="https://www.saudiexchange.sa/wps/portal/saudiexchange/newsandreports/issuer-news/issuer-announcements/!ut/p/z1/04_Sj9CPykssy0xPLMnMz0vMAfIjo8ziTR3NDIw8LAz8DTxCnA3MDILdzUJDLAxdjMz0I4EKzHEq8DTUD9aP0o9KqgyuzE3Kz9GPNDG0NIKIOObl5ZfmJafmpuaV6Eca6ocTMqkgOzGpKq3SEQDORSqc/?page=1" target="_blank">إفصاحات تداول</a></li>
         </ul>
       </div>
     </div>
@@ -1278,15 +1278,15 @@
 
     function parseAndRegister(el) {
       const raw = el.textContent.trim();
-      // يدعم: 787.6 | 1,896.9 | 32.7% | 4.70x | 1.73 ر.س | 243.1M | 665,338
-      const match = raw.match(/^([\d,]+\.?\d*)\s*(ر\.س|%|x|M)?/);
+      // يدعم: 787.6 | 1,896.9 | 32.7% | 4.70x | 1.73 ريال سعودي | 243.1M | 665,338
+      const match = raw.match(/^([\d,]+\.?\d*)\s*(ريال سعودي|%|x|M)?/);
       if (!match) return;
       const numStr   = match[1];
       const num      = parseFloat(numStr.replace(/,/g, ''));
       if (isNaN(num) || num === 0) return;
       const useComma = numStr.includes(',');
       let suffix = '';
-      if      (match[2] === 'ر.س') suffix = ' ر.س';
+      if      (match[2] === 'ريال سعودي') suffix = ' ريال سعودي';
       else if (match[2] === '%')   suffix = '%';
       else if (match[2] === 'x')   suffix = 'x';
       else if (match[2] === 'M')   suffix = 'M';
